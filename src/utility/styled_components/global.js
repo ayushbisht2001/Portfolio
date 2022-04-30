@@ -1,41 +1,41 @@
 import styled , {css} from "styled-components";
 
-const  styles = (props) => `
-width: ${(props) => props.w || "100%"};
-height: ${(props) => props.h || "100%"};
-display: ${(props) => props.display || ""};
-align-items: ${(props) => props.align || ""};
-justify-content: ${(props) => props.justify || ""};
-flex-direction : ${(props) => props.direction || "column"};
-flex-wrap : ${(props) => props.wrap || "wrap"};
-background: ${(props) => props.bg || "none"};
-color: ${(props) => props.color || "black"};   
-margin : ${(props) => props.m || "auto"};
-padding : ${(props) => props.p || "0px"};   
-min-width : ${(props) => props.minWidth || ""};
-max-width : ${(props)=> props.maxWidth || ""};
-min-height : ${(props) => props.minHeight || ""};
-max-height : ${(props) => props.maxHeight || ""};
-position : ${props => props.pos || "relative" };
-top : ${props => props.top || ""};
-border-radius : ${props => props.radius || "0px"};
-bottom : ${props => props.bottom || "0px"};
-right : ${props => props.right || "0px"};
-left : ${props => props.left || "0px"};
-z-index : ${props => props.zi || "0"};
-overflow : ${props => props.overflow || "visible"};
-class : ${props => props.cName || ""};
-border : ${props => props.border || ""};
-opacity : ${props => props.opacity || ""};
-${props => ({...props})};
-style : ${ props => ({...props.sx})};
+export const styles = (props) => `
+      width: ${(props) => props.w || "auto"};
+      height: ${(props) => props.h || "auto"};
+      display: ${(props) => props.d || ""};
+      align-items: ${(props) => props.align || ""};
+      justify-content: ${(props) => props.justify || ""};
+      flex-direction : ${(props) => props.direction || ""};
+      flex-wrap : ${(props) => props.wrap || ""};
+      background: ${(props) => props.bg || ""};
+      color: ${(props) => props.color || ""};   
+      margin : ${(props) => props.m || ""};
+      padding : ${(props) => props.p || ""};   
+      min-width : ${(props) => props.minW || ""};
+      max-width : ${(props)=> props.maxW || ""};
+      min-height : ${(props) => props.minH || ""};
+      max-height : ${(props) => props.maxH || ""};
+      position : ${props => props.pos || "" };
+      top : ${props => props.top || ""};
+      border-radius : ${props => props.rad || ""};
+      bottom : ${props => props.bottom || ""};
+      right : ${props => props.right || ""};
+      left : ${props => props.left || ""};
+      z-index : ${props => props.zi || ""};
+      overflow : ${props => props.overflow || ""};
+      class : ${props => props.cName || ""};
+      border : ${props => props.border || ""};
+      opacity : ${props => props.o || ""};
+      ${props => ({...props})};
+      style : ${ props => ({...props.sx})};
 
-`
+      `
 
 
 
 export const Container = styled.div`
-  ${styles(props)};
+  ${props => styles(props) };
 
   ${props => css`${props.sx}`}
 
