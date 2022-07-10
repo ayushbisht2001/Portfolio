@@ -20,6 +20,38 @@ export const darkTheme = {
       secondary : lightColor1,
       ternary : lightColor2,
   },
+  
+  shape : {
+    primary : comColor1,
+    secondary : lightColor1,
+    ternary : lightColor1,
+  },
+
+  button: {
+    primary: {},
+    secondary: {}
+  }
+}
+
+};
+
+export const lightTheme = {
+
+  palette: {
+    bg : lightColor1,
+    frame : comColor1,
+
+    text : {
+      primary : darkColor1,
+      secondary : comColor1,
+      ternary : lightColor2,
+  },
+
+  shape : {
+    primary : comColor1,
+    secondary : lightColor1,
+    ternary : lightColor2,
+  },
 
   button: {
     primary: {},

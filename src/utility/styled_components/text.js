@@ -8,7 +8,6 @@ import { ptextColor,pHColor1, pHColor2  } from "./colors";
 
 
 export const Text = styled.p`
-  ${styles(props)};
 
   font-size: ${(props) => props.size || "18px"};
   font-family: ${(props) => props.family || "Montserrat, sans-serif"};
@@ -24,7 +23,6 @@ export const Text = styled.p`
 `;
 
 export const PText = styled(Text)`
-  ${styles(props)};
   color : ${(props) => props.theme.ptext.color};
 
   ${(props) =>
@@ -34,7 +32,6 @@ export const PText = styled(Text)`
 `;
 
 export const SText = styled(Text)`
-  ${styles(props)};
   color : ${(props) => props.theme.ptext.color};
 
   ${(props) =>
@@ -45,10 +42,11 @@ export const SText = styled(Text)`
 
 
 export const HeadingMain = styled.h1`
-  ${styles(props)};
   font-size: ${(props) => props.size || "25px"};
   font-family: ${(props) => props.family || "Montserrat, sans-serif"};
   font-weight: ${(props) => props.weight || "bold"};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
+  z-index : 10;
 
   ${(props) =>
     css`
@@ -58,7 +56,6 @@ export const HeadingMain = styled.h1`
 `;
 
 export const Heading1 = styled(HeadingMain)`
-  ${styles(props)};
   color : ${(props) => props.theme.h1.color};
 
   ${(props) =>
@@ -69,7 +66,6 @@ export const Heading1 = styled(HeadingMain)`
 
 export const Heading2 = styled(HeadingMain)`
 
-  ${styles(props)};
   font-size: ${(props) => props.size || "20px"};
   color : ${(props) => props.theme.h2.color};
 
@@ -77,4 +73,30 @@ export const Heading2 = styled(HeadingMain)`
     css`
       ${props.sx}
     `}
+`;
+
+
+
+export const Span = styled.span`
+  font-size: ${(props) => props.size || "inherit"};
+  font-family: ${(props) => props.family || "Montserrat, sans-serif"};
+  font-weight: ${(props) => props.weight || "inherit"};
+
+  ${(props) =>
+    css`
+      ${props.sx}
+    `}
+
+`;
+
+
+export const AniSpan = styled.span`
+  font-size: ${(props) => props.size || "inherit"};
+  display : inline-block;
+  font-family : "Calibre","Inter","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif;
+  ${(props) =>
+    css`
+      ${props.sx}
+    `}
+
 `;
