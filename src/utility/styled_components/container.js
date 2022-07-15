@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin : ${props => props.m || "auto"};
   width : ${props => props.w || "min( 100% , 1200px )"};
   height: ${(props) => props.h || "auto"};
-
+  overflow : ${props => props.of || "auto"};
   ${props => ({...props})};
   ${props => css`${props.sx}`};
 

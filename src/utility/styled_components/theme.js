@@ -7,23 +7,29 @@ import {
   pHColor2,
   darkColor1,
   darkColor2,
+  darkColor3,
+  darkColor4,
+darkGray,
+blue2,
+darkColor5
+
 } from "./colors";
 
 export const darkTheme = {
 
   palette: {
-    bg : darkColor1,
+    bg : darkColor4,
     frame : comColor1,
 
     text : {
-      primary : comColor1,
+      primary : lightColor1,
       secondary : lightColor1,
       ternary : lightColor2,
   },
   
   shape : {
-    primary : comColor1,
-    secondary : lightColor1,
+    primary : darkGray,
+    secondary : comColor1,
     ternary : lightColor1,
   },
 
@@ -42,14 +48,14 @@ export const lightTheme = {
     frame : comColor1,
 
     text : {
-      primary : darkColor1,
+      primary : darkColor5,
       secondary : comColor1,
       ternary : lightColor2,
   },
 
   shape : {
-    primary : comColor1,
-    secondary : lightColor1,
+    primary : blue2,
+    secondary : darkColor5,
     ternary : lightColor2,
   },
 
