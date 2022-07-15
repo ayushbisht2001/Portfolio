@@ -1,7 +1,7 @@
 const mouse = {
   x: null,
   y: null,
-  radius: 140,
+  radius: 180,
 };
 
 window.addEventListener("mousemove", function (e) {
@@ -13,21 +13,30 @@ class Particle {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.size = 3;
+    this.size = 5;
     this.baseX = x; // initial position of particle w.r.t to x-coord
     this.baseY = y;
-    this.color = "pink";
+    this.color = "blue";
     this.type = "circle";
     this.density = Math.random() * 20;
   }
 
   draw(ctx) {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = this.color;
     if (this.type == "circle") {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
+    } else if (this.type == "triangle") {
+       
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(this.x + this.size, this.y);
+      ctx.lineTo(this.x , this.y - this.size);
+      ctx.lineTo(this.x  , this.y );
+      ctx.stroke();
+      ctx.closePath();
     }
   }
 
@@ -45,7 +54,10 @@ class Particle {
     if (distance < mouse.radius) {
       this.x -= directionX;
       this.y -= directionY;
+      this.color = "red";
     } else {
+      this.color = "blue";
+
       if (this.x !== this.baseX) {
         let dx = this.x - this.baseX;
         this.x -= dx / 10;
