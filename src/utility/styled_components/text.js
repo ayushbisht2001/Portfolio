@@ -5,7 +5,15 @@ import { ptextColor,pHColor1, pHColor2  } from "./colors";
 
 
 
-
+// 'Anton', sans-serif
+// 'Fredoka One', cursive
+// 'Lora', serif
+// 'Mulish', sans-serif
+// 'Paytone One', sans-serif
+// 'Press Start 2P', cursive
+// 'Russo One', sans-serif
+// 'Shadows Into Light', cursive
+// 'Titan One', cursive
 
 export const Text = styled.p`
 
@@ -43,7 +51,7 @@ export const SText = styled(Text)`
 
 export const HeadingMain = styled.h1`
   font-size: ${(props) => props.size || "25px"};
-  font-family: ${(props) => props.family || "Montserrat, sans-serif"};
+  font-family: ${(props) => props.family || "'Fredoka One', cursive"};
   font-weight: ${(props) => props.weight || "bold"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   z-index : 10;
@@ -93,7 +101,7 @@ export const Span = styled.span`
 export const AniSpan = styled.span`
   font-size: ${(props) => props.size || "inherit"};
   display : inline-block;
-  font-family : "Calibre","Inter","San Francisco","SF Pro Text",-apple-system,system-ui,sans-serif;
+  font-family : inherit;
   ${(props) =>
     css`
       ${props.sx}

@@ -1,7 +1,10 @@
+import { getElementXY } from "../utility";
+
+
 const mouse = {
   x: null,
   y: null,
-  radius: 180,
+  radius: 40,
 };
 
 window.addEventListener("mousemove", function (e) {
@@ -10,16 +13,20 @@ window.addEventListener("mousemove", function (e) {
 });
 
 class Particle {
-  constructor(x, y) {
+  constructor({x = 0, y = 0, primary = "red", secondary = "pink"}) {
     this.x = x;
     this.y = y;
-    this.size = 5;
+    this.size = 1;
     this.baseX = x; // initial position of particle w.r.t to x-coord
     this.baseY = y;
-    this.color = "blue";
+    this.color = primary;
+    this.primary = primary;
+    this.secondary = secondary;
     this.type = "circle";
-    this.density = Math.random() * 20;
+    this.density = Math.random() * 30;
   }
+
+  
 
   draw(ctx) {
     ctx.fillStyle = this.color;
@@ -28,7 +35,8 @@ class Particle {
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
-    } else if (this.type == "triangle") {
+    } else
+     if (this.type == "triangle") {
        
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
@@ -40,9 +48,13 @@ class Particle {
     }
   }
 
-  update() {
-    let dx = mouse.x - this.x;
-    let dy = mouse.y - this.y;
+  update(canvas) {
+    
+    let cord = getElementXY(canvas);
+    let mx = mouse.x - cord.left; // getting mouse x relative to canvas position
+    let my = mouse.y - cord.top;
+    let dx = mx - this.x;
+    let dy = my - this.y;
     let distance = Math.sqrt(dx * dx + dy * dy); // pythagorus formula
     let forceDirectionX = dx / distance;
     let forceDirectionY = dy / distance;
@@ -54,9 +66,10 @@ class Particle {
     if (distance < mouse.radius) {
       this.x -= directionX;
       this.y -= directionY;
-      this.color = "red";
+      this.color = this.secondary;
+
     } else {
-      this.color = "blue";
+      this.color = this.primary;
 
       if (this.x !== this.baseX) {
         let dx = this.x - this.baseX;
@@ -64,7 +77,7 @@ class Particle {
       }
       if (this.y !== this.baseY) {
         let dy = this.y - this.baseY;
-        this.y -= dy;
+        this.y -= dy/10;
       }
     }
   }

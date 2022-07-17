@@ -24,7 +24,7 @@ export const darkTheme = {
     text : {
       primary : lightColor1,
       secondary : lightColor1,
-      ternary : lightColor2,
+      ternary : darkColor5,
   },
   
   shape : {
