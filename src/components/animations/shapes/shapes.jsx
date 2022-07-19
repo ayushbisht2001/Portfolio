@@ -1,3 +1,4 @@
+import React, {useEffect, useRef, useState} from 'react'
 import styled, { css } from "styled-components";
 import { Box } from "../../../utility/styled_components/box";
 
@@ -207,21 +208,79 @@ export const Shape = styled.svg`
     `};
 `;
 
+
+
 export const Circle = (props) => {
-  const { sx } = props;
+  const { sx, isLive = false, scale = 1 } = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+
+  const handleEvent = (e) =>{
+    console.table(ref.current.style)
+    let x = e.x;
+    let y = e.y;
+    let moveX = 30*x/1000;
+    let moveY = 30*y/1000;    /* 
+    matrix3d(
+      scaleX, skewY, c1, d1, 
+      skewX, scaleY, c2, d2, 
+      a3, b3, scaleZ, d3, 
+      moveX, moveY, moveZ, perspective)
+    
+    */
+    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
+  
+  }
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", handleEvent);
+
+    return () =>{
+      window.removeEventListener('mousemove', handleEvent);
+    };
+  },[]);
+
   return (
-    <Shape {...props} width="182" height="182">
-      <path
-        id="circle"
-        d="M86 172C133.496 172 172 133.496 172 85.9999C172 38.5034 133.496 0 86 0C38.5035 0 0 38.5034 0 85.9999C0 133.496 38.5035 172 86 172Z"
-      />
-    </Shape>
+    <Shape {...props} width="180" height="180" ref = {ref}     >
+<path id="circle" d="M178 89.9999C178 138.601 138.601 178 90 178C41.3989 178 2 138.601 2 89.9999C2 41.3989 41.3989 2 90 2C138.601 2 178 41.3989 178 89.9999Z"   stroke-width="4"/>
+ 
+      </Shape>
   );
 };
 
 export const Ring = (props) => {
+  const { sx, isLive = false, scale = 1 } = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+
+  const handleEvent = (e) =>{
+    console.table(ref.current.style)
+    let x = e.x;
+    let y = e.y;
+    let moveX = 30*x/1000;
+    let moveY = 30*y/1000;    /* 
+    matrix3d(
+      scaleX, skewY, c1, d1, 
+      skewX, scaleY, c2, d2, 
+      a3, b3, scaleZ, d3, 
+      moveX, moveY, moveZ, perspective)
+    
+    */
+    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
+  
+  }
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", handleEvent);
+
+    return () =>{
+      window.removeEventListener('mousemove', handleEvent);
+    };
+  },[]);
   return (
-    <Shape {...props} width="200" height="200">
+    <Shape {...props} width="200" height="200"  ref = {ref} >
       <path
         id="ring"
         d="M97.5 169C43.7612 169 -4.84318e-09 131.154 -3.12036e-09 84.5C-1.39754e-09 37.8456 43.7612 1.61598e-09 97.5 3.60041e-09C151.239 5.58484e-09 195 37.8456 195 84.5C195 131.154 151.239 169 97.5 169ZM97.5 8.80888C49.1876 8.80888 9.97755 42.7394 9.97755 84.5C9.97755 126.261 49.1876 160.191 97.5 160.191C145.812 160.191 185.022 126.261 185.022 84.5C185.022 42.7394 145.637 8.80888 97.5 8.80888Z"
@@ -264,8 +323,39 @@ export const ULines = (props) => {
 };
 
 export const Triangle = (props) => {
+  const { sx, isLive = false , scale=1} = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+
+  const handleEvent = (e) =>{
+    console.table(ref.current.style)
+    let x = e.x;
+    let y = e.y;
+    let moveX = 30*x/1000;
+    let moveY = 30*y/1000;    
+    /* 
+    matrix3d(
+      scaleX, skewY, c1, d1, 
+      skewX, scaleY, c2, d2, 
+      a3, b3, scaleZ, d3, 
+      moveX, moveY, moveZ, perspective)
+    
+    */
+    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
+  
+  }
+  
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", handleEvent);
+
+    return () =>{
+      window.removeEventListener('mousemove', handleEvent);
+    };
+  },[]);
   return (
-    <Shape {...props} width="70" height="76">
+    <Shape {...props} width="70" height="76" ref = {ref} >
       <path
         id="triangle"
         d="M1.62952 34.3366L69.1872 1.20297L63.3166 74.8293L1.62952 34.3366Z"
@@ -275,8 +365,41 @@ export const Triangle = (props) => {
 };
 
 export const ORing = (props) => {
+  const { sx, isLive = false, scale  = 1} = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+
+  const handleEvent = (e) =>{
+    console.table(ref.current.style)
+    let x = e.x;
+    let y = e.y;
+    let moveX = 30*x/1000;
+    let moveY = 30*y/1000;
+    /* 
+    matrix3d(
+      scaleX, skewY, c1, d1, 
+      skewX, scaleY, c2, d2, 
+      a3, b3, scaleZ, d3, 
+      moveX, moveY, moveZ, perspective)
+    
+    */
+      ref.current.style.transform = `
+      matrix3d(${scale}, 0, 0, 0,
+               0,${scale}, 0, 0, 
+               0,0, 1, 0, 
+               ${moveX}, ${moveY}, 0, 1)`;  
+  }
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", handleEvent);
+
+    return () =>{
+      window.removeEventListener('mousemove', handleEvent);
+    };},[])
+
   return (
-    <Shape {...props} height="207" viewBox="0 0 222 207">
+    <Shape {...props} height="207" viewBox="0 0 222 207" ref= {ref}>
       <g id="oCircle">
         <path
           id="XMLID_1597_"
@@ -387,6 +510,7 @@ export const ORing = (props) => {
 export const DotWave = (props) => {
   return (
     <Shape {...props} width="370" height="250">
+      
       <g id="dotWave">
         <path
           id="XMLID_720_"
@@ -506,6 +630,7 @@ export const DotWave = (props) => {
           d="M187.289 94.0789C186.672 94.0789 186.054 93.7499 185.746 93.421C185.437 93.092 185.129 92.4341 185.129 92.1051C185.129 91.7762 185.129 91.4472 185.129 91.4472C185.129 91.1182 185.437 91.1184 185.746 90.7894C186.672 90.1315 187.906 90.1315 188.831 90.7894C189.14 91.1184 189.14 91.1182 189.448 91.4472C189.448 91.7761 189.757 92.1051 189.757 92.1051C189.757 92.763 189.448 93.092 189.14 93.421C188.523 94.0789 187.906 94.0789 187.289 94.0789Z"
         />
       </g>
+    
     </Shape>
   );
 };
@@ -585,8 +710,41 @@ export const Strips = (props) => {
 };
 
 export const Square = (props) => {
+  const { sx, isLive = false, scale  = 1} = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+
+  const handleEvent = (e) =>{
+    console.table(ref.current.style)
+    let x = e.x;
+    let y = e.y;
+    let moveX = 30*x/1000;
+    let moveY = 30*y/1000;
+    /* 
+    matrix3d(
+      scaleX, skewY, c1, d1, 
+      skewX, scaleY, c2, d2, 
+      a3, b3, scaleZ, d3, 
+      moveX, moveY, moveZ, perspective)
+    
+    */
+      ref.current.style.transform = `
+      matrix3d(${scale}, 0, 0, 0,
+               0,${scale}, 0, 0, 
+               0,0, 1, 0, 
+               ${moveX}, ${moveY}, 0, 1)`;  
+  }
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", handleEvent);
+
+    return () =>{
+      window.removeEventListener('mousemove', handleEvent);
+    };
+  },[]);
   return (
-    <Shape {...props} width="163" height="163">
+    <Shape {...props} width="163" height="163" ref = {ref} >
       <rect id="square" x="0.5" y="0.5" width="162" height="162" />
     </Shape>
   );
@@ -624,3 +782,5 @@ export const CurlyRing = (props) => {
     </Shape>
   );
 };
+
+

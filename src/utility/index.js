@@ -10,3 +10,14 @@ export const getElementXY = (ele) =>{
     }
 
 }
+export const mouse = {
+    x: null,
+    y: null,
+    radius: 40,
+  };
+  
+  window.addEventListener("mousemove", function (e) {
+    mouse.x = e.x;
+    mouse.y = e.y;
+  });
+  

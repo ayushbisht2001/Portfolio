@@ -1,16 +1,6 @@
-import { getElementXY } from "../utility";
+import { getElementXY, mouse } from "../utility";
 
 
-const mouse = {
-  x: null,
-  y: null,
-  radius: 40,
-};
-
-window.addEventListener("mousemove", function (e) {
-  mouse.x = e.x;
-  mouse.y = e.y;
-});
 
 class Particle {
   constructor({x = 0, y = 0, primary = "red", secondary = "pink"}) {
