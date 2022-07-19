@@ -5,7 +5,7 @@ import { mouse } from '../utility';
 
 export class FractalTree{
 
-    constructor(ctx, startX = 500, startY = 500,  height = 100,bWidth = 1, angle = 0, left = 0.6, right = 0.6, colors = {branch : "brown", leaf : "green"}){
+    constructor(ctx, startX = 500, startY = 500,  height = 100,bWidth = 1, angle = 0, left = 0.8, right = 0.8, colors = {branch : "brown", leaf : "green"}){
         this.startX = startX;
         this.startY = startY;
         this.bWidth = bWidth;
@@ -28,16 +28,18 @@ export class FractalTree{
         this.ctx.translate(startX, startY);
         this.ctx.rotate( angle * Math.PI/180);
         this.ctx.moveTo(0, 0);
-        this.ctx.lineTo(0, -height);
+        this.ctx.lineTo(0, height);
         this.ctx.stroke();
 
         if(height < 20){
+
+            
             this.ctx.restore();
             return;
         }
 
-        this.draw(0, -height, height*this.lFactor, angle+6, this.bWidth * 0.2);
-        this.draw(0, -height, height*this.rFactor, angle-5, this.bWidth * 0.2);
+        this.draw(0, height, height*this.lFactor, angle+6, this.bWidth * 0.2);
+        this.draw(0, height, height*this.rFactor, angle-5, this.bWidth * 0.2);
 
         this.ctx.restore();
 
@@ -46,12 +48,14 @@ export class FractalTree{
 
     update(){
 
-        let moveX = mouse.x/100;
-        let moveY = mouse.y/100;        
+        let moveX = 40*(mouse.x - this.startX)/100;
 
-        this.rFactor = Math.min(3, moveX/10); 
-        this.lFactor = Math.min(3, moveX/10); 
-        console.log("update tree")
+        moveX = (moveX < -40 )? -40 :( moveX > 40 )? 40 : moveX;
+        let moveY = Math.min( 0.84,  ( mouse.y - this.startY)*0.8/500);        
+        this.rFactor = moveY
+        this.lFactor = moveY
+        this.diversion = moveX;
+
     }
 }
 
@@ -98,7 +102,7 @@ const AnimatedTree = () => {
             canvas.style.background = "black";
             const ctx = canvas.getContext('2d');
             
-            let tree = new FractalTree(ctx, 600, 700, 100, 1);
+            let tree = new FractalTree(ctx, 500, 100, 100, 1);
             tree.draw();
             setState([tree]);
             animate();
