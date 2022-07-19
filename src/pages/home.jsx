@@ -65,11 +65,11 @@ export default function Home() {
             primary="#03071e"
             secondary="#457B9D"
           /> */}
-          {/* <AniHeading
+          <AniHeading
             title={"I'm a Software Developer"}
             sx={{ fontSize: "40px", display: "block" }}
             type="t"
-          /> */}
+          />
         </Box>
 
         <CurlyRing left="55%" top="50%" tf="scale(1.3)" type="p" />
