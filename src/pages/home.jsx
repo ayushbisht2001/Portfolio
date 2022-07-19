@@ -22,7 +22,6 @@ export default function Home() {
   return (
     <ThemeProvider theme={darkTheme}>
       <ContainerFluid h="100vh" overflowX="hidden" position="relative">
-        {/* <Circle type = 'p' left ="20%" bottom="20%"  /> */}
         <Triangle
           right="1%"
           bottom="12%"
@@ -49,6 +48,8 @@ export default function Home() {
           {/* <AniHeading
                 title={"AYUSH BISHT"}
                 sx={{ fontSize: "60px", display: "block" }}
+                type = "s"
+                color = "#E63946"
               /> */}
           <AnimateText
             width={600}
@@ -64,11 +65,11 @@ export default function Home() {
             primary="#03071e"
             secondary="#457B9D"
           /> */}
-          <AniHeading
+          {/* <AniHeading
             title={"I'm a Software Developer"}
             sx={{ fontSize: "40px", display: "block" }}
             type="t"
-          />
+          /> */}
         </Box>
 
         <CurlyRing left="55%" top="50%" tf="scale(1.3)" type="p" />

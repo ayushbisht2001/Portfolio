@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Particle from "./AnimateParticles";
+import { getElementXY, mouse } from "../utility";
 
 const AnimateText = (props) => {
   const { 
@@ -23,7 +24,7 @@ const AnimateText = (props) => {
   const canvRef = useRef();
   const [particles, setParticles] = useState([]);
 
-  function connect() {
+async function connect() {
     const canvas = canvRef.current;
     let ctx = canvas.getContext("2d");
     for (let a = 0; a < particles.length; a++) {
@@ -44,21 +45,22 @@ const AnimateText = (props) => {
     }
   }
 
-  function animate() {
+  async function animate() {
     if (canvRef.current) {
-      const canvas = canvRef.current;
-      let ctx = canvas.getContext("2d");
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].draw(ctx);
-        particles[i].update(canvas);
-      }
+ 
+        const canvas = canvRef.current;
+        let ctx = canvas.getContext("2d");
+  
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].draw(ctx);
+          particles[i].update(canvas);
+        }
 
       // connect();
     }
-
     window.requestAnimationFrame(animate);
+
   }
 
   useEffect(() => {
@@ -92,8 +94,9 @@ const AnimateText = (props) => {
       }
 
       setParticles(particle_array);
-
       animate();
+      
+    
     }
   }, []);
 

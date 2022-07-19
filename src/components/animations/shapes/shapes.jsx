@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import styled, { css } from "styled-components";
 import { Box } from "../../../utility/styled_components/box";
+import { handleLiveShape } from '../../../utility';
 
 export const ShapeBox = styled(Box)`
   width: 100px;
@@ -215,29 +216,14 @@ export const Circle = (props) => {
   const ref = useRef();
   const [state, setState] = useState()
 
-  const handleEvent = (e) =>{
-    console.table(ref.current.style)
-    let x = e.x;
-    let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;    /* 
-    matrix3d(
-      scaleX, skewY, c1, d1, 
-      skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
-      moveX, moveY, moveZ, perspective)
-    
-    */
-    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
   
-  }
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", handleEvent);
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref));
 
     return () =>{
-      window.removeEventListener('mousemove', handleEvent);
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref) );
     };
   },[]);
 
@@ -254,29 +240,14 @@ export const Ring = (props) => {
   const ref = useRef();
   const [state, setState] = useState()
 
-  const handleEvent = (e) =>{
-    console.table(ref.current.style)
-    let x = e.x;
-    let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;    /* 
-    matrix3d(
-      scaleX, skewY, c1, d1, 
-      skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
-      moveX, moveY, moveZ, perspective)
-    
-    */
-    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
   
-  }
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", handleEvent);
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', handleEvent);
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
     };
   },[]);
   return (
@@ -327,31 +298,13 @@ export const Triangle = (props) => {
   const ref = useRef();
   const [state, setState] = useState()
 
-  const handleEvent = (e) =>{
-    console.table(ref.current.style)
-    let x = e.x;
-    let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;    
-    /* 
-    matrix3d(
-      scaleX, skewY, c1, d1, 
-      skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
-      moveX, moveY, moveZ, perspective)
-    
-    */
-    ref.current.style.transform = `matrix3d(${scale}, 0, 0, 0, 0,${scale}, 0, 0, 0, 0, 1, 0, ${moveX}, ${moveY}, 0, 1)`;
-  
-  }
-  
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", handleEvent);
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', handleEvent);
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
     };
   },[]);
   return (
@@ -369,34 +322,15 @@ export const ORing = (props) => {
   const ref = useRef();
   const [state, setState] = useState()
 
-  const handleEvent = (e) =>{
-    console.table(ref.current.style)
-    let x = e.x;
-    let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;
-    /* 
-    matrix3d(
-      scaleX, skewY, c1, d1, 
-      skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
-      moveX, moveY, moveZ, perspective)
-    
-    */
-      ref.current.style.transform = `
-      matrix3d(${scale}, 0, 0, 0,
-               0,${scale}, 0, 0, 
-               0,0, 1, 0, 
-               ${moveX}, ${moveY}, 0, 1)`;  
-  }
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", handleEvent);
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', handleEvent);
-    };},[])
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+    };
+  },[]);
 
   return (
     <Shape {...props} height="207" viewBox="0 0 222 207" ref= {ref}>
@@ -713,34 +647,14 @@ export const Square = (props) => {
   const { sx, isLive = false, scale  = 1} = props;
   const ref = useRef();
   const [state, setState] = useState()
-
-  const handleEvent = (e) =>{
-    console.table(ref.current.style)
-    let x = e.x;
-    let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;
-    /* 
-    matrix3d(
-      scaleX, skewY, c1, d1, 
-      skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
-      moveX, moveY, moveZ, perspective)
-    
-    */
-      ref.current.style.transform = `
-      matrix3d(${scale}, 0, 0, 0,
-               0,${scale}, 0, 0, 
-               0,0, 1, 0, 
-               ${moveX}, ${moveY}, 0, 1)`;  
-  }
+  
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", handleEvent);
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', handleEvent);
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
     };
   },[]);
   return (
