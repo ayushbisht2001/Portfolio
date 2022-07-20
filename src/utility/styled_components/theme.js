@@ -22,7 +22,7 @@ export const darkTheme = {
     frame : comColor1,
 
     text : {
-      primary : lightColor1,
+      primary : comColor1,
       secondary : lightColor1,
       ternary : darkColor5,
   },

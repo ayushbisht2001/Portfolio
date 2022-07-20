@@ -182,8 +182,7 @@ export const Shape = styled.svg`
     fill: var(--fill-val);
   }
 
-  & #triangle,
-  #square , #oCircle path{
+  & #triangle, #square , #oCircle path{
     --fill-val: ${(props) =>
       props.pfill ||
       (props.type == "s"
@@ -660,6 +659,27 @@ export const Square = (props) => {
   return (
     <Shape {...props} width="163" height="163" ref = {ref} >
       <rect id="square" x="0.5" y="0.5" width="162" height="162" />
+    </Shape>
+  );
+};
+
+export const Rectangle = (props) => {
+  const { sx, isLive = false, scale  = 1} = props;
+  const ref = useRef();
+  const [state, setState] = useState()
+  
+  useEffect(()=>{    
+    
+    if(isLive)
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+
+    return () =>{
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+    };
+  },[]);
+  return (
+    <Shape {...props} width="163" height="163" ref = {ref} >
+      <rect id="square" x="0.5" y="0.5" width="100" height="162" />
     </Shape>
   );
 };

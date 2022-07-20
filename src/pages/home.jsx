@@ -15,12 +15,12 @@ import {
   Triangle,
   Square,
   ORing,
+  Rectangle
 } from "../components/animations/shapes/shapes";
 import AnimateText from "../animate_custom_lib/AnimateText";
 
 export default function Home() {
   return (
-    <ThemeProvider theme={darkTheme}>
       <ContainerFluid h="100vh" overflowX="hidden" position="relative">
         <Triangle
           right="1%"
@@ -82,7 +82,14 @@ export default function Home() {
         /> */}
         {/* <Triangle left="10%" top="30%" tf="rotate(30deg) scale(0.5)" type="t" /> */}
         <Triangle left="7%" top="5%"   type="s" isLive ={true} scale = {0.6}  tf = "scale(0.6)" />
+
+        <Triangle left="40%" top="5%"   type="t" isLive ={true} scale = {0.4}  pfill = "none" tf = "scale(0.4)" />
+        <Square left="55%" bottom="53%"  type="s" isLive ={true} scale = {0.2} pfill = "none"   tf = "scale(0.2)"   />
+        <Ring type="t" left="20%" bottom="20%" tf = "scale(0.2)"  isLive = {true} scale = {0.2}  />
+
+        <Triangle left="30%" bottom="5%"   type="s" isLive ={true} scale = {0.4}  pfill = "none"  tf = "scale(0.4)" />
+        <Rectangle left="15%" top="13%"  type="s" isLive ={true} scale = {0.2} pfill = "none"   tf = "scale(0.2)"   />
+        
       </ContainerFluid>
-    </ThemeProvider>
   );
 }

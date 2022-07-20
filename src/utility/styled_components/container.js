@@ -5,7 +5,7 @@ import { styles } from "./global";
 
 export const Container = styled.div`
   
-  background: ${(props) => props.theme.palette.bg || "black"};
+  background: ${(props) => props.bg || props.theme.palette.bg };
   padding : ${(props) => props.p || "auto"};   
   margin : ${props => props.m || "auto"};
   width : ${props => props.w || "min( 100% , 1200px )"};

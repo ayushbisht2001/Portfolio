@@ -33,16 +33,16 @@ export const mouse = {
     let moveY = 30*y/1000;
     /* 
     matrix3d(
-      scaleX, skewY, c1, d1, 
+      scaleX, skewY, rotateY, d1, 
       skewX, scaleY, c2, d2, 
-      a3, b3, scaleZ, d3, 
+      rotateY, b3, scaleZ, d3, 
       moveX, moveY, moveZ, perspective)
     
     */
       ref.current.style.transform = `
-      matrix3d(${scale}, 0, 0, 0,
+      matrix3d(${scale}, 0, 0.06, 0,
                0,${scale}, 0, 0, 
-               0,0, 1, 0, 
+               -0.03 ,0, 1, 0, 
                ${moveX}, ${moveY}, 0, 1)`;  
 
 

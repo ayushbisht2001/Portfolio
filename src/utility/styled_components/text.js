@@ -20,8 +20,10 @@ export const Text = styled.p`
   font-size: ${(props) => props.size || "18px"};
   font-family: ${(props) => props.family || "Montserrat, sans-serif"};
   font-weight: ${(props) => props.weight || "normal"};
-  margin : ${(props) => props.p || "5px"};
+  margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
+
   ${(props) =>
     css`
       ${props.sx}
@@ -31,7 +33,6 @@ export const Text = styled.p`
 `;
 
 export const PText = styled(Text)`
-  color : ${(props) => props.theme.ptext.color};
 
   ${(props) =>
     css`
@@ -87,9 +88,11 @@ export const Heading2 = styled(HeadingMain)`
 
 export const Span = styled.span`
   font-size: ${(props) => props.size || "inherit"};
-  font-family: ${(props) => props.family || "Montserrat, sans-serif"};
+  font-family: ${(props) => props.family || "inherit"};
   font-weight: ${(props) => props.weight || "inherit"};
-
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.secondary  )};
+  margin : ${(props) => props.m || "5px"};
+  padding : ${(props) => props.p || "5px"};
   ${(props) =>
     css`
       ${props.sx}

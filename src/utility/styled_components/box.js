@@ -32,7 +32,7 @@ margin : ${props => props.m || "0px"};
 width : ${props => props.w || "auto"};
 height: ${(props) => props.h || "auto"};
 display : ${(props) => props.d || "block"};
-z-index : 1;
+z-index : ${(props) => props.zi || "1"};;
 ${props => css`${props.sx}`};
 
 `;
@@ -59,3 +59,5 @@ ${props => css`${props.sx}`};
 
 
 `
+
+ 

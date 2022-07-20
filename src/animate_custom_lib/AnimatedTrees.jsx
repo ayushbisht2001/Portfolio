@@ -5,7 +5,7 @@ import { mouse } from '../utility';
 
 export class FractalTree{
 
-    constructor(ctx, startX = 500, startY = 500,  height = 100,bWidth = 1, angle = 0, left = 0.8, right = 0.8, colors = {branch : "brown", leaf : "green"}){
+    constructor(ctx, startX = 500, startY = 500,  height = 100,bWidth = 1, angle = 0, left = 0.8, right = 0.8, colors = {branch : "rgb(56, 56, 56)", leaf : "#E63946"}){
         this.startX = startX;
         this.startY = startY;
         this.bWidth = bWidth;
@@ -33,13 +33,18 @@ export class FractalTree{
 
         if(height < 20){
 
-            
+            this.ctx.fillStyle = this.lColor;
+            this.ctx.beginPath();
+            this.ctx.arc(startX, startY, 2, 0, Math.PI * 2);
+            this.ctx.closePath();
+            this.ctx.fill();
             this.ctx.restore();
             return;
         }
 
         this.draw(0, height, height*this.lFactor, angle+6, this.bWidth * 0.2);
-        this.draw(0, height, height*this.rFactor, angle-5, this.bWidth * 0.2);
+        this.draw(0, height, height*this.rFactor, angle-6, this.bWidth * 0.2);
+        this.draw(0, height, 1*height*this.rFactor, angle+12, this.bWidth * 0.2);
 
         this.ctx.restore();
 
@@ -48,13 +53,13 @@ export class FractalTree{
 
     update(){
 
-        let moveX = 40*(mouse.x - this.startX)/100;
+        let moveX = 25*(mouse.x - this.startX)/100;
 
-        moveX = (moveX < -40 )? -40 :( moveX > 40 )? 40 : moveX;
-        let moveY = Math.min( 0.84,  ( mouse.y - this.startY)*0.8/500);        
+        moveX = (moveX < -25 )? -25 :( moveX > 25 )? 25 : moveX;
+        let moveY = Math.min( 0.83,  ( mouse.y - this.startY)*0.8/500);        
         this.rFactor = moveY
         this.lFactor = moveY
-        this.diversion = moveX;
+        // this.diversion = moveX;
 
     }
 }
