@@ -8,6 +8,7 @@ const AnimateText = (props) => {
     color, 
     width = 1000 ,
     height = 1000,   
+    scale = 2,
     sx ,
     primary,
     secondary
@@ -86,8 +87,8 @@ async function connect() {
       for (let y = 0, y2 = textCoord.height; y < y2; y++) {
         for (let x = 0, x2 = textCoord.width; x < x2; x++) {
           if (textCoord.data[((y * 4 * textCoord.width + x * 4)+ 3)] > 128) {
-            let pX = x * 2;
-            let pY = y * 2;
+            let pX = x * scale;
+            let pY = y * scale;
             particle_array.push(new Particle({x : pX, y : pY, primary, secondary}));
           }
         }

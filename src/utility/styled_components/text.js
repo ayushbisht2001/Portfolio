@@ -18,12 +18,12 @@ import { ptextColor,pHColor1, pHColor2  } from "./colors";
 export const Text = styled.p`
 
   font-size: ${(props) => props.size || "18px"};
-  font-family: ${(props) => props.family || "Montserrat, sans-serif"};
+  font-family: ${(props) => props.family || "Comfortaa"};
   font-weight: ${(props) => props.weight || "normal"};
   margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
-
+  
   ${(props) =>
     css`
       ${props.sx}

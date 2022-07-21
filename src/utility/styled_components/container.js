@@ -11,6 +11,7 @@ export const Container = styled.div`
   width : ${props => props.w || "min( 100% , 1200px )"};
   height: ${(props) => props.h || "auto"};
   overflow : ${props => props.of || "auto"};
+  position : ${props => props.pos || "relative"};
   ${props => ({...props})};
   ${props => css`${props.sx}`};
 
