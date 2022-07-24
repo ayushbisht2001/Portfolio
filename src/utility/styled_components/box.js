@@ -57,7 +57,19 @@ flex-direction : ${(props) => props.direction || "row"};
 flex-wrap : ${(props) => props.wrap || "wrap"};
 ${props => css`${props.sx}`};
 
-
 `
 
- 
+export const LinkBox = styled(Box)`
+
+  min-width : 50px;
+  max-height : 100px;
+  padding : 10px 5px;
+  margin : 5px;
+  cursor : pointer;
+  display : flex;
+  flex-direction : row;
+  justify-content : flex-start;
+  align-items : center;
+
+
+`

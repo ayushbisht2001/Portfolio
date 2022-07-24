@@ -3,6 +3,41 @@ import { mouse } from '../utility';
 
 
 
+function drawCT(ctx, startX , startY , height , angle  , p, q){
+    if( p ==0 || q == 0 || p == q){
+
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        ctx.arc(startX, startY, 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+        return;
+    }
+
+    console.log(p, q)
+
+    ctx.beginPath();
+    ctx.save();
+    ctx.strokeStyle = "red";
+    ctx.fillStyle = "yellow";
+    ctx.translate(startX, startY);
+    ctx.rotate( angle * Math.PI/180);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(0, height);
+    ctx.stroke();
+
+    console.log("hello")
+
+    drawCT(ctx, 0, height, height*0.8, angle+6,  p - 1, q - 1 ) ;
+    drawCT(ctx, 0, height, height*0.8, angle-6,  p - 1, q  );
+
+ ctx.restore();
+
+ return;
+}
+
+
 export class FractalTree{
 
     constructor(ctx, startX = 500, startY = 500,  height = 100,bWidth = 1, angle = 0, left = 0.8, right = 0.8, colors = {branch : "rgb(56, 56, 56)", leaf : "#E63946"}){
@@ -44,13 +79,20 @@ export class FractalTree{
 
         this.draw(0, height, height*this.lFactor, angle+6, this.bWidth * 0.2);
         this.draw(0, height, height*this.rFactor, angle-6, this.bWidth * 0.2);
-        this.draw(0, height, 1*height*this.rFactor, angle+12, this.bWidth * 0.2);
 
         this.ctx.restore();
 
     }
 
+    drawCombinatorialTree(startX = this.startX, startY = this.startY, height = this.height, angle = this.diversion ,p = 40 , q = 10 )
+    {
 
+        
+        drawCT(this.ctx, this.startX, this.startY, this.height, this.diversion, p, q);
+
+    }
+
+ 
     update(){
 
         let moveX = 25*(mouse.x - this.startX)/100;
@@ -85,7 +127,7 @@ const AnimatedTree = () => {
             // console.table(state);
             let  tree = state[0];
             tree.update();
-            tree.draw();
+            tree.drawCombinatorialTree(10, 5);
             window.requestAnimationFrame(animate);
         }
           
@@ -108,13 +150,14 @@ const AnimatedTree = () => {
             const ctx = canvas.getContext('2d');
             
             let tree = new FractalTree(ctx, 500, 100, 100, 1);
-            tree.draw();
+            tree.drawCombinatorialTree(200, 300);
+            // tree.draw()
             setState([tree]);
-            animate();
+            // animate();
         }
 
     }, [])
-    window.requestAnimationFrame(animate);
+    // window.requestAnimationFrame(animate);
 
 
     return (

@@ -17,10 +17,10 @@ import { ptextColor,pHColor1, pHColor2  } from "./colors";
 
 export const Text = styled.p`
 
-  font-size: ${(props) => props.size || "18px"};
-  font-family: ${(props) => props.family || "Comfortaa"};
+  font-size: ${(props) => props.size || "1rem"};
+  font-family: ${(props) => props.family || "'Comfortaa', cursive"};
   font-weight: ${(props) => props.weight || "normal"};
-  margin : ${(props) => props.m || "5px"};
+  margin : ${(props) => props.m || "0px"};
   padding : ${(props) => props.p || "5px"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   
@@ -41,7 +41,12 @@ export const PText = styled(Text)`
 `;
 
 export const SText = styled(Text)`
-  color : ${(props) => props.theme.ptext.color};
+  color : ${(props) => props.color ||  props.theme.palette.text.ternary};
+  font-size : 1rem;
+  
+  &:hover { 
+    color : ${props => props.hcolor ? props.hcolor : ( props.link ? props.theme.palette.text.secondary : "" ) };
+  }
 
   ${(props) =>
     css`

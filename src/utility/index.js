@@ -39,11 +39,25 @@ export const mouse = {
       moveX, moveY, moveZ, perspective)
     
     */
-      ref.current.style.transform = `
+   if(ref.current)
+{      ref.current.style.transform = `
       matrix3d(${scale}, 0, 0.06, 0,
                0,${scale}, 0, 0, 
                -0.03 ,0, 1, 0, 
                ${moveX}, ${moveY}, 0, 1)`;  
 
+              }
 
   }
+
+
+  // export const winScrollPosition = {
+  //   left : 0,
+  //   top : 0
+  // }
+
+  // window.addEventListener('scroll', function(e) {
+  //   winScrollPosition.left = e.scrollLeft;
+  //   winScrollPosition.top = e.scrollTop;
+
+  // })
