@@ -25,7 +25,8 @@ export const mouse = {
 
   export const handleLiveShape = (e, ref, props) => {
     const{
-      scale = 1
+      scale = 1,
+      direction = 1
     } = props
     let x = e.x;
     let y = e.y;
@@ -44,7 +45,7 @@ export const mouse = {
       matrix3d(${scale}, 0, 0.06, 0,
                0,${scale}, 0, 0, 
                -0.03 ,0, 1, 0, 
-               ${moveX}, ${moveY}, 0, 1)`;  
+               ${moveX * direction}, ${moveY * direction}, 0, 1)`;  
 
               }
 

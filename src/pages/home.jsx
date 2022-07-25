@@ -40,6 +40,7 @@ export default function Home() {
         type="s"
         tf="scale(0.7)"
         isLive={true}
+        direction = {-1}
         scale={0.7}
       />
 
@@ -125,6 +126,8 @@ export default function Home() {
         isLive={true}
         scale={0.6}
         tf="scale(0.6)"
+        direction = {-1}
+
       />
 
       <Triangle
@@ -152,6 +155,8 @@ export default function Home() {
         tf="scale(0.2)"
         isLive={true}
         scale={0.2}
+        direction = {-1}
+
       />
 
       <Triangle
