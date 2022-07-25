@@ -75,7 +75,7 @@ export default function WorkCard() {
 }
 
 const ImgBox2 = styled(Box)`
-  --border-clr: ${(props) => props.theme.palette.text.ternary};
+  --border-clr: ${(props) => props.theme.palette.bg};
   --border-clr2: ${(props) => props.theme.palette.text.primary};
   --shadow: ${(props) => props.theme.palette.ternary || "black"};
   width: 16rem;

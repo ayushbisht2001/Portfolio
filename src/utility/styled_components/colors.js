@@ -13,3 +13,6 @@ export const ptextColor = comColor1;
 export const pHColor1 = darkColor2;
 export const pHColor2 = lightColor1;
 export const blue2 = "rgb(109, 131, 242)";
+
+
+export const iuri = "#682ae9";

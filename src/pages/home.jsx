@@ -22,6 +22,7 @@ import { LinkIcon } from "../utility/styled_components/button";
 import { BsLinkedin } from "react-icons/bs";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
+import { iuri } from "../utility/styled_components/colors";
 
 export default function Home() {
   return (
@@ -79,7 +80,7 @@ export default function Home() {
           width={600}
           height={110}
           title="AYUSH BISHT"
-          primary="#E63946"
+          primary= {iuri}
           secondary="#F1FAEE"
         />
         {/* <AnimateText

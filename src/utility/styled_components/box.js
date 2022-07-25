@@ -1,5 +1,4 @@
 import styled, {css} from "styled-components";
-import { styles } from "./global";
 
 
 
@@ -65,11 +64,27 @@ export const LinkBox = styled(Box)`
   max-height : 100px;
   padding : 10px 5px;
   margin : 5px;
-  cursor : pointer;
   display : flex;
   flex-direction : row;
   justify-content : flex-start;
   align-items : center;
 
+
+`
+
+export const Chips = styled.span`
+
+  width : ${props => props.w || "100px"};
+  height: ${(props) => props.h || "50px"};
+  background: ${(props) => props.bg || props.theme.palette.primary};
+  color: ${(props) => props.color || ""};   
+  margin : ${(props) => props.m || ""};
+  padding : ${(props) => props.p || ""};   
+  border-radius : ${props => props.rad || "10px"};
+  position : ${props => props.pos || "relative" };
+  top : ${props => props.top || ""};
+  bottom : ${props => props.bottom || ""};
+  left : ${props => props.left || ""};
+  right : ${props => props.right || ""};
 
 `

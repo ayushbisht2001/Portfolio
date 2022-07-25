@@ -13,24 +13,25 @@ import {
   darkGray,
   blue2,
   darkColor5,
+  iuri,
 } from "./colors";
 
 export const darkTheme = {
   palette: {
     bg: darkColor6,
     frame: comColor1,
-    primary: comColor1,
+    primary: iuri,
     secondary: lightColor1,
     ternary: darkGray,
     text: {
-      primary: comColor1,
+      primary: iuri,
       secondary: lightColor1,
       ternary: darkGray,
     },
 
     shape: {
       primary: darkColor4,
-      secondary: comColor1,
+      secondary: iuri,
       ternary: lightColor1,
     },
 
