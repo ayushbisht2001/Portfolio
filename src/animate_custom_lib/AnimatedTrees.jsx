@@ -3,9 +3,9 @@ import { mouse } from '../utility';
 
 
 
+
 function drawCT(ctx, startX , startY , height , angle  , p, q){
     if( p ==0 || q == 0 || p == q){
-
         ctx.fillStyle = "blue";
         ctx.beginPath();
         ctx.arc(startX, startY, 2, 0, Math.PI * 2);
@@ -84,7 +84,7 @@ export class FractalTree{
 
     }
 
-    drawCombinatorialTree(startX = this.startX, startY = this.startY, height = this.height, angle = this.diversion ,p = 40 , q = 10 )
+    drawCombinatorialTree(startX = this.startX, startY = this.startY, height = this.height, angle = this.diversion ,p = 10 , q = 9 )
     {
 
         
@@ -150,8 +150,8 @@ const AnimatedTree = () => {
             const ctx = canvas.getContext('2d');
             
             let tree = new FractalTree(ctx, 500, 100, 100, 1);
-            tree.drawCombinatorialTree(200, 300);
-            // tree.draw()
+            // tree.drawCombinatorialTree();
+            tree.draw()
             setState([tree]);
             // animate();
         }

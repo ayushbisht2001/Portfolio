@@ -215,7 +215,6 @@ export const Circle = (props) => {
   const ref = useRef();
   const [state, setState] = useState()
 
-  
   useEffect(()=>{    
     
     if(isLive)
@@ -235,7 +234,7 @@ export const Circle = (props) => {
 };
 
 export const Ring = (props) => {
-  const { sx, isLive = false, scale = 1 } = props;
+  const { sx, isLive = false, scale = 1} = props;
   const ref = useRef();
   const [state, setState] = useState()
 
