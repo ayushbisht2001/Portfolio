@@ -68,7 +68,8 @@ export default function Home() {
         <AniHeading
           title={"Namaste, my name is"}
           weight="200"
-          sx={{ fontSize: "25px", display: "block" }}
+          size = "2.4rem"
+          sx={{  display: "block" }}
           type="t"
         />
         {/* <AniHeading
@@ -78,7 +79,7 @@ export default function Home() {
                 color = "#E63946"
               /> */}
         <AnimateText
-          width={600}
+          width={1000}
           height={110}
           title="AYUSH BISHT"
           primary= {iuri}
@@ -93,7 +94,8 @@ export default function Home() {
           /> */}
         <AniHeading
           title={"I'm a Software Developer"}
-          sx={{ fontSize: "40px", display: "block" }}
+          sx={{ display: "block" }}
+          size = "3.4rem"
           type="t"
         />
 

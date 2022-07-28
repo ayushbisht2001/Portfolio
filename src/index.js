@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
-import { darkTheme, lightTheme } from "./utility/styled_components/theme";
+import { darkTheme, lightTheme, comTheme } from "./utility/styled_components/theme";
 
 
 ReactDOM.render(

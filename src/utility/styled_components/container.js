@@ -12,6 +12,7 @@ export const Container = styled.div`
   height: ${(props) => props.h || "auto"};
   overflow : ${props => props.of || "auto"};
   position : ${props => props.pos || "relative"};
+  z-index : ${props => props.zi || ""};
   ${props => ({...props})};
   ${props => css`${props.sx}`};
 

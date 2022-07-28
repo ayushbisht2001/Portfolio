@@ -40,7 +40,7 @@ export default function AniHeading(props) {
   const t_list = title.split("\n");
 
   return (
-    <HeadingMain size ="50px" sx = {sx}  type = {type} {...props} >
+    <HeadingMain   sx = {sx}  type = {type} {...props} >
       <SpanList data = {t_list}   />
     </HeadingMain>
   );

@@ -1,6 +1,30 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, memo } from "react";
 import Particle from "./AnimateParticles";
 import { getElementXY, mouse } from "../utility";
+import AniHeading from "../components/reusable_components/heading";
+
+
+
+const AnimateTextHOC = ( Component) => {
+
+
+  return memo((props) => {
+
+
+    return window.innerWidth > 600 ? (
+      <Component {...props} />
+    ) :
+    <AniHeading 
+      {...props}
+      title = {props.title} 
+      size = "5.5rem"
+
+    />
+
+
+  })
+
+}
 
 const AnimateText = (props) => {
   const { 
@@ -114,4 +138,4 @@ async function connect() {
   );
 };
 
-export default AnimateText;
+export default AnimateTextHOC(AnimateText);
