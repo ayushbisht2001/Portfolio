@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, createRef , useState} from "react";
 import styled from "styled-components";
 import AnimateText from "../../animate_custom_lib/AnimateText";
 import { Box, LinkBox } from "../../utility/styled_components/box";
@@ -20,10 +20,29 @@ const Card = (props) => {
     stack = [],
     time,
     image,
+     setRef,
+     setScreen 
   } = props;
 
+  const tref  = useRef();
+  const [state, setState] = useState(null);
+
+  useEffect(()=>{
+
+    if(state)
+    setRef((prev)=> [...prev, state]);
+
+  },[state])
+
+  
+  useEffect(()=>{
+    if(tref.current){
+      setState(tref.current)
+    }
+  }, [])
+
   return (
-    <CardBox w="100%" h="auto">
+    <CardBox w="100%" h="auto" bg="transparent" ref = {tref}>
       <Box
         d="flex"
         justify="center"
@@ -32,31 +51,31 @@ const Card = (props) => {
         w="100%"
         m="50px auto"
         wrap="wrap"
+        onClick = { () => setScreen((prev)=> !prev)}
       >
-        <Box w="350px" h="300px" o="hidden">
+        {/* <Box w="350px" h="300px" o="hidden">
           <ImgBox2 w="100px" h="100px">
             <img src={`${URL}/assets/images/projects/${image}`} />
           </ImgBox2>
-        </Box>
-        <Box w="50%" h="auto">
-          <AniHeading size="60px" title={title} type="p" />
+        </Box> */}
+        <Box w="60%" h="auto">
+          <AniHeading   title={title} type="p" />
           <Span type="t" size="20px" m="120px 0px">
             {" "}
             //{time}{" "}
           </Span>
-          <PText type="s" m="10px 10px" >
+          <PText size = "1.5rem" type="s" m="10px 10px">
             {" "}
             {desc}
           </PText>
           <LinkBox>
-            <LinkIcon to="github.com" >
+            <LinkIcon to="github.com">
               <AiFillGithub />
             </LinkIcon>
-            <LinkButton to = "github.com"  >
-              File Link 
-            {/* <SText link weight = "bold" ></SText> */}
+            <LinkButton to="github.com">
+              File Link
+              {/* <SText link weight = "bold" ></SText> */}
             </LinkButton>
-
           </LinkBox>
         </Box>
       </Box>
@@ -64,11 +83,20 @@ const Card = (props) => {
   );
 };
 
-export default function WorkCard() {
+export default function WorkCard(props) {
+  const { setCardCoord, setScreen  } = props;
+
+ 
+
   return (
     <Wrapper pos="relative" h="auto">
       {ProjectList.map((project, ind) => (
-        <Card {...project} />
+        <Card
+          {...project}
+          setRef = {setCardCoord}
+          key = {`card-${ind}`}
+          setScreen  = {setScreen }
+        />
       ))}
     </Wrapper>
   );

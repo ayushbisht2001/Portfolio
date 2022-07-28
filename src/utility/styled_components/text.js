@@ -24,6 +24,20 @@ export const Text = styled.p`
   padding : ${(props) => props.p || "5px"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   
+  
+
+
+  @media (max-width: 800px) {   
+    font-size : ${(props) => props.md || "0.4rem"};
+  }
+
+  @media (max-width: 500px) {   
+    font-size : ${(props) => props.sm || "0.3"};
+  }
+
+  @media (max-width: 300px) {   
+    font-size : ${(props) => props.xs || "0.2"};
+  }
   ${(props) =>
     css`
       ${props.sx}
@@ -33,6 +47,19 @@ export const Text = styled.p`
 `;
 
 export const PText = styled(Text)`
+
+
+@media (max-width: 800px) {   
+  font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 3 )`};
+}
+
+@media (max-width: 500px) {   
+  font-size : ${(props) => props.sm ||  `calc( ${props.size} - ${props.size} / 3 )`};
+}
+
+@media (max-width: 300px) {   
+  font-size : ${(props) => props.xs ||  `calc( ${props.size} - ${props.size} / 3 )`};
+}
 
   ${(props) =>
     css`
@@ -48,6 +75,22 @@ export const SText = styled(Text)`
     color : ${props => props.hcolor ? props.hcolor : ( props.link ? props.theme.palette.text.secondary : "" ) };
   }
 
+  @media (max-width: 1200px) {   
+    font-size : ${(props) => props.xl || "1rem"};
+  }
+
+
+  @media (max-width: 800px) {   
+    font-size : ${(props) => props.md || "0.6"};
+  }
+
+  @media (max-width: 500px) {   
+    font-size : ${(props) => props.sm || "0.4"};
+  }
+
+  @media (max-width: 300px) {   
+    font-size : ${(props) => props.xs || "0.3"};
+  }
   ${(props) =>
     css`
       ${props.sx}
@@ -56,12 +99,28 @@ export const SText = styled(Text)`
 
 
 export const HeadingMain = styled.h1`
-  font-size: ${(props) => props.size || "25px"};
+  font-size: ${(props) => props.size || "3.6rem"};
   font-family: ${(props) => props.family || "'Fredoka One', cursive"};
   font-weight: ${(props) => props.weight || "bold"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   z-index : 10;
 
+  @media (max-width: 1200px) {   
+    font-size : ${(props) => props.xl || `calc( ${props.size} - ${props.size} / 3)`};
+  }
+
+
+  @media (max-width: 800px) {   
+    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 2)`};
+  }
+
+  @media (max-width: 500px) {   
+    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.size} / 2)`};
+  }
+
+  @media (max-width: 300px) {   
+    font-size : ${(props) => props.xs || `calc( ${props.size} - ${props.size} / 2)`};
+  }
   ${(props) =>
     css`
       ${props.sx}
@@ -72,6 +131,7 @@ export const HeadingMain = styled.h1`
 export const Heading1 = styled(HeadingMain)`
   color : ${(props) => props.theme.h1.color};
 
+ 
   ${(props) =>
     css`
       ${props.sx}
@@ -83,6 +143,22 @@ export const Heading2 = styled(HeadingMain)`
   font-size: ${(props) => props.size || "20px"};
   color : ${(props) => props.theme.h2.color};
 
+  @media (max-width: 1200px) {   
+    font-size : ${(props) => props.xl || "20px"};
+  }
+
+
+  @media (max-width: 800px) {   
+    font-size : ${(props) => props.md || "15px"};
+  }
+
+  @media (max-width: 500px) {   
+    font-size : ${(props) => props.sm || "12px"};
+  }
+
+  @media (max-width: 300px) {   
+    font-size : ${(props) => props.xs || "10px"};
+  }
   ${(props) =>
     css`
       ${props.sx}
@@ -98,6 +174,23 @@ export const Span = styled.span`
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.secondary  )};
   margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
+  
+  @media (max-width: 1200px) {   
+    font-size : ${(props) => props.xl || "inherit"};
+  }
+
+
+  @media (max-width: 800px) {   
+    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 5 )`};
+  }
+
+  @media (max-width: 500px) {   
+    font-size : ${(props) => props.sm ||  `calc( ${props.size} - ${props.size} / 2 )`};
+  }
+
+  @media (max-width: 300px) {   
+    font-size : ${(props) => props.xs ||  `calc( ${props.size} - ${props.size} / 2 )`};
+  }
   ${(props) =>
     css`
       ${props.sx}

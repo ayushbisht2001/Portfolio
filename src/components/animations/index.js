@@ -34,8 +34,8 @@ position : fixed;
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
 
-left : calc( 18vw - 4rem );
-top : calc( 18rem);
+left : calc( 34vw  - 7rem);
+top : calc( 26rem);
 bottom : 0px;
 transition : 1s all ease 0.5;
 

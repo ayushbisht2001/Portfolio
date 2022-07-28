@@ -3,7 +3,7 @@ import {
   Container,
   ContainerFluid,
 } from "../utility/styled_components/container";
-import { Chips, Row } from "../utility/styled_components/box";
+import { Chips, Row , Box} from "../utility/styled_components/box";
 import WorkCard from "../components/work/WorkCard";
 import AnimateText from "../animate_custom_lib/AnimateText";
 import styled from "styled-components";
@@ -11,47 +11,39 @@ import { Pulse, Spine } from "../components/animations";
 import { Span } from "../utility/styled_components/text";
 import Wrapper from "../components/reusable_components/wrapper";
 import { iuri } from "../utility/styled_components/colors";
+import DeviceFrame from "../components/reusable_components/frame";
 
 const Work = () => {
-  const [scroll, setScroll] = useState({ left: 0, top: 0 });
 
-  function handleScroll(e) {
+  const [ card_coord, setCardCoord] = useState([]);
+  const [ coord, setCoord] = useState([])
+  const [ screen, setScreen] = useState(false)
 
-    if(window.pageYOffset > scroll.top){
-        ref.current.style.height -= 10 ;
-
-    }else
-    {
-        ref.current.style.height += 10;
-
-    }
-
-    setScroll({ left: window.pageXOffset, top: window.pageYOffset });
-
-
-  }
-
-  const ref = useRef()
-
-  useEffect(() => {
-
-    // if(ref.current){
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => {
-    //       window.removeEventListener("scroll", handleScroll);
-    //     };
-    // }
-  
-  }, []);
-
+  useEffect(()=>{
+    
+    console.table( "work", card_coord);
+    setCoord(card_coord)
+  }, [card_coord])
 
   return (
     <Wrapper >
+
+      <Box w="100vw" h="150px" zi = '1' bg = "transparent" >
+
+      </Box>
+
+        <Container    pos = "fixed" w = "100vw" h = "100vh" top ="0px" of = "hidden"
+            sx = { ` perspective : 200px; perspective-origin : 40% 30%; z-index : 1;`}  >
+        <DeviceFrame card_coord = {[...coord]} screen = {screen} />
+
+      </Container>
       <Spine >
       <Pulse top = "-9px"  left = "-6px"  />
           <Chips rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"></Chips>
       </Spine>
-      <Container pos="relative" h="auto"  >
+      <Container pos="relative" h="auto"  zi = "1"  bg = "transparent" >
+
+
         <AnimateText
           width={800}
           height={195}
@@ -61,15 +53,21 @@ const Work = () => {
           secondary="#F1FAEE"
           sx={{
             top: "50px",
-            zIndex: 120,
+            background : "transparent"
           }}
         />
-      <CardContainer pos="relative" h="auto" >
+      <CardContainer pos="relative" h="auto" zi = "1" bg="transparent" >
      
-        <WorkCard />
+        <WorkCard setCardCoord = {setCardCoord} setScreen = {setScreen} />
 
       </CardContainer>
+
       </Container>
+    
+
+      <Box w="100vw" h="150px"  >
+
+      </Box>
     </Wrapper>
   )
 };
@@ -78,9 +76,6 @@ export default Work;
 
 
 const CardContainer = styled(Container)`
-
-
-
 
 & .line{
  

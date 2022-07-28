@@ -21,19 +21,17 @@ export default Wrapper;
 
 
 const WrapperContainer = styled(ContainerFluid)`
-
- 
     &::before{
         content : '';
-        height : calc(100% - 20rem);
+        height : calc(100% - 30rem);
         position : absolute;
         background : ${props => props.theme.palette.ternary || "white"};
         opacity : 0.3;
         width : 2px;
         z-index: 100;
         transform : translateY(100px); 
-        top : 28vh;
-        left : calc( 18vw - 4rem );
+        top : 40vh;
+        left : calc( 34vw - 7rem);
     
         border-radius : 100%;
     }
