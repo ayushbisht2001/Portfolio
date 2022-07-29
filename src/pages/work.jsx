@@ -42,7 +42,7 @@ const Work = () => {
 
       </Container>
  
-      <Container pos="relative" h="auto"  zi = "1"  bg = "transparent"  marginTop ="15rem">
+      <Container pos="relative" h="auto"  zi = "1"  bg = "transparent"  marginTop ="25vh" of = "hidden" >
 
 
         <AnimateText
@@ -57,7 +57,7 @@ const Work = () => {
             background : "transparent"
           }}
         />
-      <CardContainer pos="relative" h="auto" zi = "1" bg="transparent" >
+      <CardContainer pos="relative" h="auto" zi = "1" bg="transparent" of ="hidden">
      
         <WorkCard setCardCoord = {setCardCoord} setScreen = {setScreen} />
 

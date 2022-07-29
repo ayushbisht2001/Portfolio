@@ -9,6 +9,7 @@ import { ProjectList } from "../../utility/data/projects";
 import { Link, NavLink } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { LinkButton, LinkIcon } from "../../utility/styled_components/button";
+import { Row } from "../../utility/styled_components/box";
 
 const URL = process.env.PUBLIC_URL;
 
@@ -42,30 +43,61 @@ const Card = (props) => {
   }, [])
 
   return (
-    <CardBox w="100%" h="auto" bg="transparent" ref = {tref}>
+    <CardBox w="100%" h="auto" bg="transparent" ref = {tref} of="hidden">
       <Box
         d="flex"
-        justify="center"
-        align="center"
         h="auto"
         w="100%"
         m="50px auto"
         wrap="wrap"
+        direction = "column"
+        pos ="relative"
+        of = "hidden"
+
         onClick = { () => setScreen((prev)=> prev === "forward" ? "reverse" : "forward")}
       >
      
-        <Box w="60%" h="auto">
-         <AniHeading braces = {true}  title={title} type="p" size = {"3rem"} />
-          <Span type="t" size="20px" m="120px 0px">
+        <Span size = "2rem"   left = "20%" pos = "relative"  >
+            {"{ "} 
+          </Span>
+          
+        <Row 
+        w="60%" h="auto"
+        cols = "auto auto"
+        rows = "auto"
+        m = "auto"
+        of = "hidden"
+        p = "0px 20px"
+        sm = {`
+          width : 80%;
+        `}
+        >
+
+        <Span family = "Comfortaa" type = "t" size = "1.3rem"    >
+            {"title  : "} 
+          </Span>
+         <AniHeading   title={title} type="p" size = {"3rem"} />
+          
+          <Span family = "Comfortaa" type = "t" size = "1.3rem"    >
+            time : 
+          </Span>
+          <Span type="t" size="20px"  >
             {" "}
-            //{time}{" "}
+             " {time}{" "} "
+          </Span>
+          <Span type = "t" size = "1.3rem" family = "Comfortaa">
+            desc : 
           </Span>
           <PText size = "1.2rem" type="s" m="10px 10px" >
+       
             {" "}
             {desc}
           </PText>
+          <Span type = "t" size = "1.3rem" family = "Comfortaa">
+            files : 
+          </Span>
           <LinkBox>
-            <LinkIcon to="github.com">
+            <LinkIcon to="github.com" size = "2rem" >
               <AiFillGithub />
             </LinkIcon>
             <LinkButton to="github.com">
@@ -73,7 +105,14 @@ const Card = (props) => {
               {/* <SText link weight = "bold" ></SText> */}
             </LinkButton>
           </LinkBox>
-        </Box>
+        </Row>
+
+        <Span  left = "20%" size = "2rem"  pos = "relative"  >
+            {" } "}&nbsp; 
+            {" ,"} 
+         
+          
+          </Span>
       </Box>
     </CardBox>
   );
@@ -85,7 +124,7 @@ export default function WorkCard(props) {
  
 
   return (
-    <Wrapper pos="relative" h="auto">
+    <Wrapper pos="relative" h="auto" of ="hidden">
       {ProjectList.map((project, ind) => (
         <Card
           {...project}
@@ -103,6 +142,7 @@ export default function WorkCard(props) {
 const Wrapper = styled(Box)`
   perspective: 900px;
   perspective-origin: 50% 50vh;
+  overflow : hidden;
 `;
 
 const CardBox = styled(Box)`
