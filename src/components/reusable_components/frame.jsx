@@ -1,17 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Box } from "../../utility/styled_components/box";
+import {ProjectList} from "../../utility/data/projects";
+import { frameAnimate, frameAnimateReverse } from "../../utility/styled_components/keyframes";
+
+
 const URL = process.env.PUBLIC_URL;
 
-const option = ["scintilla.png", "pypaint.png", "kaivalaya.png", "AON.jpeg"];
+const option = ProjectList;
 
 const INITIAL_STATE = [
   {
-    bg: `${URL}/assets/images/projects/scintilla.png`,
+    bg: `${URL}/assets/images/projects/${option[0].image}`,
     offset: "100%",
   },
   {
-    bg: `${URL}/assets/images/projects/pypaint.png`,
+    bg: `${URL}/assets/images/projects/${option[1].image}`,
     offset: "0%",
   },
 ];
@@ -22,34 +26,30 @@ const DeviceFrame = (props) => {
   const [state, setState] = useState([]);
   const ref = useRef();
   const [frameProp, setFrameProp] = useState({
-    tf: "translateZ(20px) translateX(30vw)",
-    w: "calc( 100% - 40vw)",
-    h: "60vh",
+   animate : "reverse"
   });
 
   function handleScroll(e) {
-    const scrollCurrent = window.innerHeight - 470;
+    const scrollCurrent = window.innerHeight - 300;
 
-    console.log(scrollCurrent + 350);
     for (let i = 0; i < state.length; i++) {
       const card_ele = state[i];
       const c_y = card_ele.getBoundingClientRect().top;
 
       if (scrollCurrent > c_y && scrollCurrent < c_y + 300) {
         const oX = (scrollCurrent - c_y) / 6;
-        console.log("here - ", i, "  - ", c_y);
 
         const NEW_STATE = [
           {
-            bg: `${URL}/assets/images/projects/${option[i]}`,
-            offset: `${100 - oX}%`,
-            zi: "2",
+            bg: `${URL}/assets/images/projects/${option[i].image}`,
+            offset: `${100}%`,
+            zi: "1",
           },
           {
             bg: `${URL}/assets/images/projects/${
-              option[(i + 1) % option.length]
+              option[( option.length + i - 1 ) % option.length].image
             }`,
-            offset: "100%",
+            offset: "0%",
             zi: "1",
           },
         ];
@@ -61,17 +61,19 @@ const DeviceFrame = (props) => {
 
   useEffect(() => {
     setState([...card_coord]);
-    console.log("frame state - ", card_coord);
   }, [card_coord]);
 
   useEffect(() => {
-    if (screen) {
+
+    if (screen == "forward") {
       setFrameProp({
-        tf: "translateX(0px) translateZ(120px) ",
+        animate : css`${frameAnimate} 1s linear forwards`
       });
-    } else {
+    } else
+    if(screen == "reverse")
+    {
       setFrameProp({
-        tf: " translateX(30vw) translateZ(20px)",
+        animate : css`${frameAnimateReverse} 0.6s linear forwards`
       });
     }
   }, [screen]);
@@ -84,7 +86,7 @@ const DeviceFrame = (props) => {
   }, [state]);
 
   return (
-    <Frame   w=  "calc( 100% - 40vw)"  h = "60vh" ref={ref} {...frameProp}>
+    <Frame o = "0.25"  w=  "100vw"  h = "100vh" ref={ref} {...frameProp}>
       <Box
         bg={`url(${projectFrame[0].bg})`}
         w={`${projectFrame[0].offset}`}
@@ -105,20 +107,18 @@ export default DeviceFrame;
 
 const Frame = styled(Box)`
   background: ${(props) => props.bg || props.theme.palette.bg};
-  border-radius: 20px;
+  border-radius: 15px;
   position: fixed;
-  border: solid 20px ${(props) => props.bg || props.theme.palette.ternary};
+  border: solid 1.3rem ${(props) => props.bg || props.theme.palette.ternary};
   top: 0px;
   left: 0px;
-  right: 2px;
   bottom: 0px;
-  margin: calc(70vh - ${(props) => props.h}) auto;
-  z-index: 10;
+  margin: auto;
+  z-index: 3;
   transform-style: preserver-3d;
 
-  transform: ${(props) => props.tf || "translateZ(20px) translateX(30vw)"};
-  transition: 0.3s all ease-in 0.2s;
-  opacity: 0.15;
+  transform: ${(props) => props.tf || "translate3d(50vw, 15vh, -100px)"};
+  transition: 0.2s all ease 0.2s;
 
   & div {
     background-size: cover;
@@ -131,10 +131,23 @@ const Frame = styled(Box)`
       width : 100%;
       position: absolute;
       background: ${(props) => props.bg || props.theme.palette.primary};
-      opacity: 0.4;
+      opacity: 0;
 
+    }
+  }
+
+  @media (max-width : 600px){
+    &{
+    height : 60vh;
     }
   }
 `;
 
-const LaptopFrame = styled(Box)``;
+const LaptopFrame = styled(Frame)`
+
+  width : ${props => props.w || "calc(40vh / 3)" };
+  height : ${props => props.h || "calc(40vh)"}; 
+  
+
+
+`;

@@ -99,23 +99,23 @@ export const SText = styled(Text)`
 
 
 export const HeadingMain = styled.h1`
-  font-size: ${(props) => props.size || "3.6rem"};
+  font-size: ${(props) => props.size || "3rem"};
   font-family: ${(props) => props.family || "'Fredoka One', cursive"};
   font-weight: ${(props) => props.weight || "bold"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   z-index : 10;
 
   @media (max-width: 1200px) {   
-    font-size : ${(props) => props.xl || `calc( ${props.size} - ${props.size} / 3)`};
+    font-size : ${(props) => props.xl || `calc( ${props.size}  )`};
   }
 
 
   @media (max-width: 800px) {   
-    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 2)`};
+    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 5)`};
   }
 
   @media (max-width: 500px) {   
-    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.size} / 2)`};
+    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.size} / 3)`};
   }
 
   @media (max-width: 300px) {   

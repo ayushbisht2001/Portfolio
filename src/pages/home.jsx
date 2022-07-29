@@ -68,7 +68,7 @@ export default function Home() {
         <AniHeading
           title={"Namaste, my name is"}
           weight="200"
-          size = "2.4rem"
+          size = "1.8rem"
           sx={{  display: "block" }}
           type="t"
         />
@@ -95,7 +95,7 @@ export default function Home() {
         <AniHeading
           title={"I'm a Software Developer"}
           sx={{ display: "block" }}
-          size = "3.4rem"
+          size = "2.5rem"
           type="t"
         />
 

@@ -31,7 +31,8 @@ margin : ${props => props.m || "0px"};
 width : ${props => props.w || "auto"};
 height: ${(props) => props.h || "auto"};
 display : ${(props) => props.d || "block"};
-z-index : ${(props) => props.zi || "1"};;
+z-index : ${(props) => props.zi || "1"};
+animation : ${props => props.animate || ""};
 ${props => css`${props.sx}`};
 
 `;

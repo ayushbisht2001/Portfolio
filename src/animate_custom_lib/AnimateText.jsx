@@ -17,7 +17,7 @@ const AnimateTextHOC = ( Component) => {
     <AniHeading 
       {...props}
       title = {props.title} 
-      size = "5.5rem"
+      size = "2.8rem"
 
     />
 
