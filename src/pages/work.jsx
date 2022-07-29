@@ -17,7 +17,7 @@ const Work = () => {
 
   const [ card_coord, setCardCoord] = useState([]);
   const [ coord, setCoord] = useState([])
-  const [ screen, setScreen] = useState(false)
+  const [ screen, setScreen] = useState("reverse")
 
   useEffect(()=>{
     
@@ -26,21 +26,18 @@ const Work = () => {
   }, [card_coord])
 
   return (
-    <Wrapper >
+    <Wrapper spine = {true} >
 
       <Box w="100vw" h="150px" zi = '1' bg = "transparent" >
 
       </Box>
 
         <Container    pos = "fixed" w = "100vw" h = "100vh" top ="0px" of = "hidden"
-            sx = { ` perspective : 200px; perspective-origin : 40% 30%; z-index : 1;`}  >
+            sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`}  >
         <DeviceFrame card_coord = {[...coord]} screen = {screen} />
 
       </Container>
-      <Spine >
-      <Pulse top = "-9px"  left = "-6px"  />
-          <Chips rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"></Chips>
-      </Spine>
+ 
       <Container pos="relative" h="auto"  zi = "1"  bg = "transparent" >
 
 

@@ -34,9 +34,17 @@ position : fixed;
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
 
-left : calc( 34vw  - 7rem);
-top : calc( 26rem);
+left : calc( 34vw  - 10rem);
+top : calc( 60vh);
 bottom : 0px;
 transition : 1s all ease 0.5;
+
+@media(max-width : 500px){
+    &{
+        left : calc( 34vw  - 5rem);
+        top : calc( 50vh);
+
+    }
+}
 
 `

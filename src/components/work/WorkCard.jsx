@@ -51,7 +51,7 @@ const Card = (props) => {
         w="100%"
         m="50px auto"
         wrap="wrap"
-        onClick = { () => setScreen((prev)=> !prev)}
+        onClick = { () => setScreen((prev)=> prev === "forward" ? "reverse" : "forward")}
       >
         {/* <Box w="350px" h="300px" o="hidden">
           <ImgBox2 w="100px" h="100px">
@@ -59,12 +59,12 @@ const Card = (props) => {
           </ImgBox2>
         </Box> */}
         <Box w="60%" h="auto">
-          <AniHeading   title={title} type="p" />
+          <AniHeading   title={title} type="p" size = {"3rem"} />
           <Span type="t" size="20px" m="120px 0px">
             {" "}
             //{time}{" "}
           </Span>
-          <PText size = "1.5rem" type="s" m="10px 10px">
+          <PText size = "1.2rem" type="s" m="10px 10px">
             {" "}
             {desc}
           </PText>
