@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingMain, AniSpan } from "../../utility/styled_components/text";
+import { HeadingMain, AniSpan, Span } from "../../utility/styled_components/text";
 
 const SpanList = function (props) {
   const { data = [], type } = props;
@@ -35,12 +35,16 @@ const SpanList = function (props) {
 };
 
 export default function AniHeading(props) {
-  let { title, aType, sx, type  } = props;
+  let { title, aType, sx, type , braces = false } = props;
 
   const t_list = title.split("\n");
 
   return (
     <HeadingMain   sx = {sx}  type = {type} {...props} >
+      {braces ? 
+      <Span type = "t" family = "Comfortaa" size = "1.5rem"  > {"title : "} &nbsp;  </Span > 
+      :"" 
+    }
       <SpanList data = {t_list}   />
     </HeadingMain>
   );

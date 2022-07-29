@@ -12,6 +12,7 @@ import { Span } from "../utility/styled_components/text";
 import Wrapper from "../components/reusable_components/wrapper";
 import { iuri } from "../utility/styled_components/colors";
 import DeviceFrame from "../components/reusable_components/frame";
+import NavBar from "../components/navbar/navbar";
 
 const Work = () => {
 
@@ -27,18 +28,21 @@ const Work = () => {
 
   return (
     <Wrapper spine = {true} >
-
-      <Box w="100vw" h="150px" zi = '1' bg = "transparent" >
-
-      </Box>
+      <NavBar />     
 
         <Container    pos = "fixed" w = "100vw" h = "100vh" top ="0px" of = "hidden"
-            sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`}  >
+            sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`} 
+            md = {`
+            perspective : none; 
+            
+            `}
+            
+            >
         <DeviceFrame card_coord = {[...coord]} screen = {screen} />
 
       </Container>
  
-      <Container pos="relative" h="auto"  zi = "1"  bg = "transparent" >
+      <Container pos="relative" h="auto"  zi = "1"  bg = "transparent"  marginTop ="25vh" of = "hidden" >
 
 
         <AnimateText
@@ -53,7 +57,7 @@ const Work = () => {
             background : "transparent"
           }}
         />
-      <CardContainer pos="relative" h="auto" zi = "1" bg="transparent" >
+      <CardContainer pos="relative" h="auto" zi = "1" bg="transparent" of ="hidden">
      
         <WorkCard setCardCoord = {setCardCoord} setScreen = {setScreen} />
 

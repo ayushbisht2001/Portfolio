@@ -22,7 +22,7 @@ bottom : ${props => props.bottom || ""};
 right : ${props => props.right || ""};
 left : ${props => props.left || ""};
 z-index : ${props => props.zi || ""};
-overflow : ${props => props.overflow || ""};
+overflow : ${props => props.of || ""};
 class : ${props => props.cName || ""};
 border : ${props => props.border || ""};
 opacity : ${props => props.o || ""};
@@ -35,6 +35,27 @@ z-index : ${(props) => props.zi || "1"};
 animation : ${props => props.animate || ""};
 ${props => css`${props.sx}`};
 
+
+@media (max-width: 1400px) {   
+  ${(props) => props.xl || "none"};
+}
+
+@media (max-width: 1100px) {   
+  ${(props) => props.lg || "none"};
+}
+
+@media (max-width: 800px) {   
+  ${(props) => props.md || "none"};
+}
+
+@media (max-width: 500px) {   
+  ${(props) => props.sm || "none"};
+}
+
+@media (max-width: 300px) {   
+  ${(props) => props.xs || "none"};
+}
+    
 `;
 
 export const Row = styled(Box)`
@@ -44,8 +65,30 @@ export const Row = styled(Box)`
   grid-column-gap: ${(props) => props.cgap || "5px"};
   width : ${props => props.w || "100%"};
   
+
   ${props => css`${props.sx}`};
  
+
+  @media (max-width: 1400px) {   
+    ${(props) => props.xl || "none"};
+  }
+
+  @media (max-width: 1100px) {   
+    ${(props) => props.lg || "none"};
+  }
+
+  @media (max-width: 800px) {   
+    ${(props) => props.md || "none"};
+  }
+
+  @media (max-width: 500px) {   
+    ${(props) => props.sm || "none"};
+  }
+
+  @media (max-width: 300px) {   
+    ${(props) => props.xs || "none"};
+  }
+
 `;
 
 export const Col = styled(Box)`
@@ -55,6 +98,7 @@ align-items: ${(props) => props.align || "left"};
 justify-content: ${(props) => props.justify || "flex-start"};
 flex-direction : ${(props) => props.direction || "row"};
 flex-wrap : ${(props) => props.wrap || "wrap"};
+font-family : ${props => props.family || "inherit"};
 ${props => css`${props.sx}`};
 
 `

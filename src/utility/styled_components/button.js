@@ -50,12 +50,13 @@ export const LinkIcon = styled(Link)`
   text-decoration: none;
   width: ${(props) => props.w || "auto"};
   padding: 5px;
+  margin : ${props => props.m || "0px"};
   text-align: center;
   height: ${(props) => props.h || "auto"};
   background: none;
   color: ${(props) => props.color || props.theme.palette.text.secondary};
   text-align: center;
-  font-size: 2.2rem;
+  font-size:  ${(props) => props.size || "1.3rem"};
   & svg {
     margin: 5px 10px 5px 0px;
     transition: all 0.2s ease 0s;

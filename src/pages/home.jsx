@@ -23,10 +23,12 @@ import { BsLinkedin } from "react-icons/bs";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { iuri } from "../utility/styled_components/colors";
+import NavBar from "../components/navbar/navbar";
 
 export default function Home() {
   return (
     <ContainerFluid h="100vh" overflowX="hidden" position="relative">
+      <NavBar />
       <Triangle
         right="1%"
         bottom="12%"
