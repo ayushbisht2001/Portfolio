@@ -43,3 +43,17 @@ export const frameAnimateReverse = keyframes`
     }
 
 `
+
+export const scrollProject = keyframes`
+
+0%{
+    background-position : 100% 400px;
+}
+
+95%{
+    background-position : 100% 100%;
+}
+
+
+
+`

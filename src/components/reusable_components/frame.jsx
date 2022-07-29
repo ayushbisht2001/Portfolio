@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { css } from "styled-components";
 import { Box } from "../../utility/styled_components/box";
-import {ProjectList} from "../../utility/data/projects";
-import { frameAnimate, frameAnimateReverse } from "../../utility/styled_components/keyframes";
-
+import { ProjectList } from "../../utility/data/projects";
+import {
+  frameAnimate,
+  frameAnimateReverse,
+  scrollProject,
+} from "../../utility/styled_components/keyframes";
+import { Container } from "../../utility/styled_components/container";
 
 const URL = process.env.PUBLIC_URL;
 
@@ -20,106 +24,142 @@ const INITIAL_STATE = [
   },
 ];
 
-const DeviceFrame = (props) => {
+function FrameHOC(children, type, coords) {
+
+
+  return type === "xl" ? (
+    <XLFrame  top = {`calc(${coords.y - 250}px )`}   >{children}</XLFrame>
+  ) : type === "md" ? (
+    ""
+  ) : (
+    <SMFrame top = {`calc( ${coords.y - 200 }px)`} >{children}</SMFrame>
+  );
+}
+
+const FrameContainer = (props) => {
   const { card_coord, screen } = props;
   const [projectFrame, setProjectFrame] = useState(INITIAL_STATE);
-  const [state, setState] = useState([]);
-  const ref = useRef();
-  const [frameProp, setFrameProp] = useState({
-   animate : "reverse"
-  });
 
-  function handleScroll(e) {
-    const scrollCurrent = window.innerHeight - 300;
+  const[ coord_list, setCoords] = useState([])
 
-    for (let i = 0; i < state.length; i++) {
-      const card_ele = state[i];
-      const c_y = card_ele.getBoundingClientRect().top;
 
-      if (scrollCurrent > c_y && scrollCurrent < c_y + 300) {
-        const oX = (scrollCurrent - c_y) / 6;
+  const handleCoord = (e) => {
 
-        const NEW_STATE = [
-          {
-            bg: `${URL}/assets/images/projects/${option[i].image}`,
-            offset: `${100}%`,
-            zi: "1",
-          },
-          {
-            bg: `${URL}/assets/images/projects/${
-              option[( option.length + i - 1 ) % option.length].image
-            }`,
-            offset: "0%",
-            zi: "1",
-          },
-        ];
-
-        setProjectFrame(NEW_STATE);
-      }
+        if(e)
+    {   e.preventDefault();
+        e.stopPropagation()
     }
+
+    const array = card_coord.map( (cord) => {
+      return ({
+        y : parseInt(cord.getBoundingClientRect().top*1.3 ),
+        x : parseInt(cord.getBoundingClientRect().left / 3)
+      })
+    })
+
+    setCoords([...array])
   }
 
-  useEffect(() => {
-    setState([...card_coord]);
-  }, [card_coord]);
+  
+  useEffect(()=>{
 
-  useEffect(() => {
+    const array = ProjectList.map( (cord) =>  ({
+        y : 0,
+        x : 0
+      })
+    )
+    setCoords(array)
 
-    if (screen == "forward") {
-      setFrameProp({
-        animate : css`${frameAnimate} 1s linear forwards`
-      });
-    } else
-    if(screen == "reverse")
-    {
-      setFrameProp({
-        animate : css`${frameAnimateReverse} 0.6s linear forwards`
-      });
+    window.addEventListener('scroll', handleCoord, { passive: true });
+
+    return ()=> {
+      window.removeEventListener('scroll', handleCoord, { passive: true })
     }
-  }, [screen]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: false });
-    return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: false });
-    };
-  }, [state]);
+  }, [ card_coord ])
+
+
+
+  useEffect(()=>{
+
+    handleCoord()
+ 
+  }, [ card_coord ])
+
+
+
 
   return (
-    <Frame o = "0.25"  w=  "100vw"  h = "100vh" ref={ref} {...frameProp}>
-      <Box
-        bg={`url(${projectFrame[0].bg})`}
-        w={`${projectFrame[0].offset}`}
-        h="100%"
-        zi={projectFrame[0].zi}
-      ></Box>
-      <Box
-        bg={`url(${projectFrame[1].bg})`}
-        w={`${projectFrame[1].offset}`}
-        h="100%"
-        zi={projectFrame[1].zi}
-      ></Box>
-    </Frame>
+    <Container
+      of="hidden"
+      pos="absolute"
+      h="90vh"
+      w="50vw"
+      right="0px"
+      bottom="0px"
+      tf = " rotateY(-4deg)"
+      md = {`
+        width : 90vw;
+      `}
+    >
+      <Container
+      of="hidden"
+      pos="relative"
+      h="100%"
+      w="100%"
+      right="0px"
+      bottom="0px"
+      >
+        {coord_list.length > 0  ? ProjectList.map((project, ind) => {
+           return project.frame.length &&
+              project.frame.map((fm, index) => {
+                return FrameHOC(
+                  <Box
+                    bg={`url(${URL}/assets/images/projects/${fm.src})`}
+                    w= "100%"
+                    h="100%"
+
+                    animate = {css` ${scrollProject} 14s linear infinite`}
+                  ></Box>,
+                  fm.type,
+                  coord_list[ind]
+                );
+              });
+          })
+        : " "} 
+
+      </Container>
+     
+    </Container>
   );
 };
 
-export default DeviceFrame;
+
+
+export default FrameContainer;
+
+
+const Scree = styled(Box)`
+
+animation : ${props => props.animate || ""};
+background-repeat : no-repeat;
+background-size : 100% 400px;
+
+
+
+
+`
+
 
 const Frame = styled(Box)`
   background: ${(props) => props.bg || props.theme.palette.bg};
   border-radius: 15px;
-  position: fixed;
-  border: solid 1.3rem ${(props) => props.bg || props.theme.palette.ternary};
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  margin: auto;
-  z-index: 3;
+  border: solid 0.4rem ${(props) => props.border || props.theme.palette.ternary};
   transform-style: preserver-3d;
-
-  transform: ${(props) => props.tf || "translate3d(50vw, 15vh, -100px)"};
-  transition: 0.2s all ease 0.2s;
-
+  position : absolute;
+  transform : ${props => props.tf || "translateY(0)"};
+  transition : all 0.5s ease;
+  opacity : 0.35;
   & div {
     background-size: cover;
     position: absolute;
@@ -128,26 +168,54 @@ const Frame = styled(Box)`
     &::before {
       content: " ";
       height: 100%;
-      width : 100%;
+      width: 100%;
       position: absolute;
       background: ${(props) => props.bg || props.theme.palette.primary};
       opacity: 0;
-
     }
   }
 
-  @media (max-width : 600px){
-    &{
-    height : 60vh;
-    }
-  }
+ 
 `;
 
-const LaptopFrame = styled(Frame)`
 
-  width : ${props => props.w || "calc(40vh / 3)" };
-  height : ${props => props.h || "calc(40vh)"}; 
-  
 
+const XLFrame = styled(Frame)`
+  width: ${(props) => props.w || "calc(100% / 2 + 2rem )"};
+  height: ${(props) => props.h || "calc(100% / 3 + 2rem )"};
+  right : 10%;
+
+  @media (max-width: 800px) {
+    & {
+  width: ${(props) => props.w || "calc(100% / 2 )"};
+  height: ${(props) => props.h || "calc(100% / 5 )"};
+    }
+  }
+  `;
+
+  const MDFrame = styled(Frame)`
+  width: ${(props) => props.w || "calc(20vw )"};
+  height: ${(props) => props.h || "calc(20vw / 2)"};
+  right : 15%;
+
+  @media (max-width: 800px) {
+    & {
+     width: ${(props) => props.w || "calc(100% / 2 + 2rem )"};
+  height: ${(props) => props.h || "calc(100% / 3 + 2rem )"};
+    }
+  }
+  `;
+
+const SMFrame = styled(Frame)`
+  width: ${(props) => props.w || "calc(10vw + 2rem)"};
+  height: ${(props) => props.h || "calc(10vw * 1.8)"};
+  left : 5%;
+
+  @media (max-width: 800px) {
+    & {
+    width: ${(props) => props.w || "calc(15vw + 2rem)"};
+    height: ${(props) => props.h || "calc(20vw * 1.8)"};
+    }
+  }
 
 `;

@@ -33,7 +33,7 @@ const Work = () => {
       </Box>
 
         <Container    pos = "fixed" w = "100vw" h = "100vh" top ="0px" of = "hidden"
-            sx = { ` perspective : 200px; perspective-origin : 40% 30%; z-index : 1;`}  >
+            sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`}  >
         <DeviceFrame card_coord = {[...coord]} screen = {screen} />
 
       </Container>

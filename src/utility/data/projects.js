@@ -8,7 +8,8 @@ export const ProjectList = [
       demo: "demo.com",
     },
     stack: ["Python", "Tk/Tcl"],
-    image : "pypaint.png"
+    image : "pypaint.png",
+    frame : [ { type : "xl", src : "pypaint.png" }, {type : "md", src : "pypaint.png"}, { type : "sm", src : "pypaint.png"}  ]
   },
   {
     title: "Adventure of Ninja",
@@ -19,7 +20,9 @@ export const ProjectList = [
       demo: "demo.com",
     },
     stack: ["Python", "Django", "Tk/Tcl"],
-    image : "AON.jpeg"
+    image : "AON.jpeg",
+    frame : [ { type : "xl", src : "AON.jpeg" }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "AON.jpeg"}  ]
+
 
   },
   {
@@ -32,6 +35,8 @@ export const ProjectList = [
     },
     stack: ["Python", "DRF", "React", "Redux"],
     image : "scintilla.png"
+    ,frame : [ { type : "xl", src : "scintillaScroll1.png" }, {type : "md", src : "scintilla.png"}, { type : "sm", src : "scintillaScroll2.png"}  ]
+    
 
   },
   {
@@ -44,6 +49,7 @@ export const ProjectList = [
     },
     stack: ["Python", "DRF", "React", "Redux"],
     image : "kaivalaya.png"
+    ,frame : [ { type : "xl", src : "kaivalayaScroll1.png" }, {type : "md", src : "kaivalaya.png"}, { type : "sm", src : "kaivalayaScroll2.png"}  ]
 
   },
 ];

@@ -13,6 +13,7 @@ export const Container = styled.div`
   overflow : ${props => props.of || "auto"};
   position : ${props => props.pos || "relative"};
   z-index : ${props => props.zi || ""};
+  transform : ${props => props.tf || ""};
   ${props => ({...props})};
   ${props => css`${props.sx}`};
 
