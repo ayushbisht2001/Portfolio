@@ -105,7 +105,6 @@ export const HeadingMain = styled.h1`
   font-weight: ${(props) => props.weight || "bold"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   z-index : 10;
-  ${props => ({...props})};
 
   @media (max-width: 1200px) {   
     font-size : ${(props) => props.xl || `calc( ${props.size}  )`};
