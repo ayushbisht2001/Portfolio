@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useState, useEffect} from "react";
 import { Row, Col } from "../../utility/styled_components/box";
 import { Container } from "../../utility/styled_components/container";
 import { Span } from "../../utility/styled_components/text";
@@ -8,9 +8,10 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import styled from "styled-components";
 import { Box } from "../../utility/styled_components/box";
-import { useEffect } from "react";
 
-export default function NavBar() {
+
+
+const NavBar = () => {
 
 
     const [y, setY] = useState(0);
@@ -69,7 +70,7 @@ export default function NavBar() {
   );
 }
 
-
+export default NavBar;
 
 
 const NavBg = styled(Container)`
