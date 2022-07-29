@@ -12,7 +12,7 @@ import { Span } from "../utility/styled_components/text";
 import Wrapper from "../components/reusable_components/wrapper";
 import { iuri } from "../utility/styled_components/colors";
 import DeviceFrame from "../components/reusable_components/frame";
-import NavBar from "../components/navbar/navbar";
+import NavBar from "../components/navbar/NavBar";
 
 const Work = () => {
 
