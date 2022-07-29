@@ -23,7 +23,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { iuri } from "../utility/styled_components/colors";
-import NavBar from "../components/navbar/NavBar";
+import NavBar from "../components/navbar/navbar";
 
 export default function Home() {
   return (
