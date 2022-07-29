@@ -164,6 +164,7 @@ const Frame = styled(Box)`
     background-size: cover;
     position: absolute;
     right: 0px;
+    border-radius: 15px;
 
     &::before {
       content: " ";

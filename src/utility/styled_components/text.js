@@ -18,8 +18,8 @@ import { ptextColor,pHColor1, pHColor2  } from "./colors";
 export const Text = styled.p`
 
   font-size: ${(props) => props.size || "1rem"};
-  font-family: ${(props) => props.family || "'Comfortaa', cursive"};
-  font-weight: ${(props) => props.weight || "normal"};
+  font-family: ${(props) => props.family || "Comfortaa , cursive"};
+  font-weight: ${(props) => props.weight || "0"};
   margin : ${(props) => props.m || "0px"};
   padding : ${(props) => props.p || "5px"};
   color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
@@ -171,7 +171,7 @@ export const Span = styled.span`
   font-size: ${(props) => props.size || "inherit"};
   font-family: ${(props) => props.family || "inherit"};
   font-weight: ${(props) => props.weight || "inherit"};
-  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.secondary  )};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
   

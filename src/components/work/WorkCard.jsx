@@ -53,18 +53,14 @@ const Card = (props) => {
         wrap="wrap"
         onClick = { () => setScreen((prev)=> prev === "forward" ? "reverse" : "forward")}
       >
-        {/* <Box w="350px" h="300px" o="hidden">
-          <ImgBox2 w="100px" h="100px">
-            <img src={`${URL}/assets/images/projects/${image}`} />
-          </ImgBox2>
-        </Box> */}
+     
         <Box w="60%" h="auto">
-          <AniHeading   title={title} type="p" size = {"3rem"} />
+         <AniHeading braces = {true}  title={title} type="p" size = {"3rem"} />
           <Span type="t" size="20px" m="120px 0px">
             {" "}
             //{time}{" "}
           </Span>
-          <PText size = "1.2rem" type="s" m="10px 10px">
+          <PText size = "1.2rem" type="s" m="10px 10px" >
             {" "}
             {desc}
           </PText>
@@ -102,72 +98,7 @@ export default function WorkCard(props) {
   );
 }
 
-const ImgBox2 = styled(Box)`
-  --border-clr: ${(props) => props.theme.palette.bg};
-  --border-clr2: ${(props) => props.theme.palette.text.primary};
-  --shadow: ${(props) => props.theme.palette.ternary || "black"};
-  width: 16rem;
-  height: 16rem;
-  background: var(--border-clr);
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-
-  & > img {
-    width: 20rem;
-    border-radius: 10px;
-    margin: auto;
-    transform-style: preserve-3d;
-    transition: all 500ms ease-in;
-    transform: rotateY(15deg) rotateX(50deg) rotateZ(-15deg)
-      translate(20px, 100px);
-    box-shadow: -40px 50px 120px -10px var(--shadow);
-
-    &:hover {
-      transform: rotateY(15deg) rotateX(50deg) rotateZ(-15deg)
-        translate(20px, 100px) scale(1.3);
-    }
-  }
-`;
-const ImgBox = styled(Box)`
-  --border-clr: ${(props) => props.theme.palette.text.ternary};
-  filter: drop-shadow(1px 0px 0px var(--border-clr))
-    drop-shadow(-1px 0px 0px var(--border-clr))
-    drop-shadow(0px 1px 0px var(--border-clr))
-    drop-shadow(0px -1px 0px var(--border-clr))
-    drop-shadow(1px 1px 0px var(--border-clr))
-    drop-shadow(-1px -1px 0px var(--border-clr))
-    drop-shadow(-1px 1px 0px var(--border-clr))
-    drop-shadow(1px -1px 0px var(--border-clr));
-
-  & div:nth-of-type(1) {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    position: relative;
-    overflow: hidden;
-    background: ${(props) => props.bg || props.theme.palette.bg};
-  }
-
-  & > div img {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    top: 100%;
-    right: -40px;
-    transition-delay: 0.2s;
-    animation: moveproject 0.7s ease-out forwards;
-    filter: grayscale(90%);
-    border-radius: 25px;
-
-    &:hover {
-      filter: grayscale(0%);
-    }
-  }
-  @keyframes moveproject {
-    to {
-      transform: translate(-40px, -170px);
-    }
-  }
-`;
+ 
 
 const Wrapper = styled(Box)`
   perspective: 900px;
