@@ -30,7 +30,22 @@ export const Shape = styled.svg`
   animation-function: ${(props) => props.afun || "linear"};
   transform: ${(props) => props.tf || "scale(1)"};
   fill-opacity: ${(props) => props.fo || "1"};
+  transform-origin: ${(props) => props.tforigin || "center"};
 
+  & path {
+    fill : ${(props) => props.pfill || props.theme.palette.shape.primary};
+    stroke-width : ${(props) => props.strokeW || "1"};
+    --stroke-val: ${(props) =>
+      props.stroke ||
+      (props.type == "s"
+        ? props.theme.palette.shape.secondary
+        : props.type == "t"
+        ? props.theme.palette.shape.ternary
+        : props.theme.palette.shape.primary)};
+    stroke: var(--stroke-val);
+    animation : ${props => props.pAnimate || ""};
+    transition : 2s;
+    }
   & circle:nth-of-type(1){
 
      fill : ${(props) => props.theme.palette.shape.primary};
@@ -90,7 +105,7 @@ export const Shape = styled.svg`
         : props.type == "t"
         ? props.theme.palette.shape.ternary
         : props.theme.palette.shape.primary)};
-    stroke-width: 1;
+    stroke-width : ${props => props.strokeW || "1"};
     stroke: var(--stroke-val);
     fill: none;
     fill-opacity: 0.6;
@@ -123,7 +138,8 @@ export const Shape = styled.svg`
     animation: u-lines 2s linear forwards;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    stroke-width: 1.4;
+    stroke-width : ${props => props.strokeW || "1.4"};
+
     stroke: var(--stroke-val);
     fill: none;
 
@@ -201,6 +217,8 @@ export const Shape = styled.svg`
     fill: var(--fill-val);
     stroke: var(--stroke-val);
   }
+
+  stroke-width : ${props => props.strokeW || ""};
 
   ${(props) =>
     css`

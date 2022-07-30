@@ -1,4 +1,4 @@
-import { keyframes, Keyframes } from "styled-components";
+import styled, { keyframes, Keyframes } from "styled-components";
 
 
 
@@ -57,5 +57,40 @@ export const scrollProject = keyframes`
 }
 
 
+
+`
+
+
+export const navAnimate = keyframes`
+
+0%{
+    d : path("M 10 10 H 90 V 90 H 10 L 10 10");
+
+}
+    100%{
+        d : path("M 50,5 95,97.5 5,97.5 Z");
+    }
+
+`
+export const navReverseAnimate = keyframes`
+0%{
+    d : path("M 50,5 95,97.5 5,97.5 Z");
+
+}
+100%{
+        d : path("M 10 10 H 90 V 90 H 10 L 10 10");
+    }
+
+`
+
+
+export  const bgTransition = keyframes`
+    
+    from{
+        opacity : 0;
+    }
+    to{
+        opacity : 1;
+    }
 
 `

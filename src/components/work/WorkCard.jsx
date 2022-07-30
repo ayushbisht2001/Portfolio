@@ -24,6 +24,8 @@ const Card = (props) => {
     image,
     setRef,
     setScreen,
+    type = "",
+    role
   } = props;
 
   const tref = useRef();
@@ -40,7 +42,7 @@ const Card = (props) => {
   }, []);
 
   return (
-    <CardBox w="100%" h="auto" bg="transparent" ref={tref} of="hidden"   >
+    <CardBox w="100%" h="auto" bg="transparent" ref={tref} of="hidden">
       <Box
         d="flex"
         h="auto"
@@ -50,7 +52,6 @@ const Card = (props) => {
         direction="column"
         pos="relative"
         of="hidden"
-      
         onClick={() =>
           setScreen((prev) => (prev === "forward" ? "reverse" : "forward"))
         }
@@ -82,12 +83,24 @@ const Card = (props) => {
             {" "}
             " {time} "<Span>{","}</Span>
           </Span>
+          {type == "work" ? (
+            <>
+              <Span family="Comfortaa" type="t" size="1.3rem">
+                role :
+              </Span>
+              <Span type="t" size="20px">
+                {" "}
+                " {role} "<Span>{","}</Span>
+              </Span>
+            </>
+          ) : (
+            ""
+          )}
           <Span type="t" size="1.3rem" family="Comfortaa">
             desc :
           </Span>
           <PText size="1.2rem" type="s" m="10px 10px" weight="0">
-            " {desc} "
-            <Span>{","}</Span>
+            " {desc} "<Span>{","}</Span>
           </PText>
           <Span type="t" size="1.3rem" family="Comfortaa">
             stack :
@@ -106,13 +119,17 @@ const Card = (props) => {
                 m="0"
                 p="0"
                 title="source code"
-                type = "s"
+                type="s"
               >
                 <AiFillGithub style={{ margin: "0px" }} />
               </LinkIcon>,
-              <LinkIcon to="github.com" m="0" p="0" size="2rem" title="live" 
-              type = "s"
-              
+              <LinkIcon
+                to="github.com"
+                m="0"
+                p="0"
+                size="2rem"
+                title="live"
+                type="s"
               >
                 <TbLivePhoto style={{ margin: "0px" }} />
               </LinkIcon>,
@@ -120,8 +137,6 @@ const Card = (props) => {
           >
             <Span>{","}</Span>
           </PArray>
-
-       
         </Row>
         <Span size="2rem" sx=" left  : 20%" pos="relative">
           {" } , "}
@@ -132,20 +147,25 @@ const Card = (props) => {
 };
 
 export default function WorkCard(props) {
-  const { setCardCoord, setScreen } = props;
+  const { setCardCoord, setScreen, data = [], type = "" } = props;
 
   return (
-    <Wrapper pos="relative" h="auto" of="hidden" 
-    sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`} 
+    <Wrapper
+      pos="relative"
+      h="auto"
+      of="hidden"
+      sx={` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`}
     >
-      {ProjectList.map((project, ind) => (
-        <Card
-          {...project}
-          setRef={setCardCoord}
-          key={`card-${ind}`}
-          setScreen={setScreen}
-        />
-      ))}
+      {data.length &&
+        data.map((project, ind) => (
+          <Card
+            {...project}
+            setRef={setCardCoord}
+            key={`card-${ind}`}
+            setScreen={setScreen}
+            type={type}
+          />
+        ))}
     </Wrapper>
   );
 }
@@ -158,5 +178,5 @@ const Wrapper = styled(Box)`
 
 const CardBox = styled(Box)`
   background: ${(props) => props.bg || props.theme.palette.bg};
-  transform : ${props => props.tf || ""};
+  transform: ${(props) => props.tf || ""};
 `;
