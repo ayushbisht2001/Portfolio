@@ -59,7 +59,10 @@ export const LinkIcon = styled(Link)`
   text-align: center;
   font-size:  ${(props) => props.size || "inherit"};
   font-family : ${props => props.family || "inherit"};
- 
+  
+  &:hover {
+    color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};
+  }
 
 
   & svg {
