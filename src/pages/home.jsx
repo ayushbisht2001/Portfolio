@@ -55,7 +55,7 @@ export default function Home() {
         scale={0.5}
       />
       <Circle left="0%" top="0%" tf="scale(0.8)" />
-      <ULines right="-80px" top="-120px" tf="scale(0.4) " fo="0.4" type="s" />
+      {/* <ULines right="-80px" top="-120px" tf="scale(0.4) " fo="0.4" type="s" /> */}
 
       <Ring
         type="t"

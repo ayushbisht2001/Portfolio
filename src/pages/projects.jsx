@@ -29,8 +29,7 @@ const Project = () => {
     <Wrapper spine={true} 
       
     >
-      {/* <NavBar /> */}
-      <MobNavBar />
+      <NavBar />
 
       <Container
         pos="fixed"
