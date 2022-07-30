@@ -49,21 +49,32 @@ export const LinkButton = styled(Link)`
 export const LinkIcon = styled(Link)`
   text-decoration: none;
   width: ${(props) => props.w || "auto"};
-  padding: 5px;
-  margin : ${props => props.m || "0px"};
+  padding : ${props => props.p || "5px"};
+
+  margin : ${props => props.m || "5px"};
   text-align: center;
   height: ${(props) => props.h || "auto"};
   background: none;
-  color: ${(props) => props.color || props.theme.palette.text.secondary};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   text-align: center;
-  font-size:  ${(props) => props.size || "1.3rem"};
+  font-size:  ${(props) => props.size || "inherit"};
+  font-family : ${props => props.family || "inherit"};
+ 
+
+
   & svg {
     margin: 5px 10px 5px 0px;
     transition: all 0.2s ease 0s;
 
     &:hover {
-      color: ${(props) => props.hcolor || props.theme.palette.text.primary};
+      color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};
+
       transform: scale(1.1);
     }
   }
+
+  @media (max-width : 600px){
+
+    font-size :  ${ props => `calc( ${props.size} - ${props.size} / 5 )`};
+   }
 `;

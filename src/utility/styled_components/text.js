@@ -176,7 +176,6 @@ export const Span = styled.span`
   margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
   position : ${props => props.pos || ""};
-  ${props => ({...props})};
 
   @media (max-width: 1200px) {   
     font-size : ${(props) => props.xl || "inherit"};

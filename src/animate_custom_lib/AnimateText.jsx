@@ -11,14 +11,14 @@ const AnimateTextHOC = ( Component) => {
   return memo((props) => {
 
 
-    return window.innerWidth > 600 ? (
+    return window.innerWidth > 700 ? (
       <Component {...props} />
     ) :
     <AniHeading 
       {...props}
       title = {props.title} 
-      size = "2.8rem"
-
+      
+      sx = {props.sm}
     />
 
 

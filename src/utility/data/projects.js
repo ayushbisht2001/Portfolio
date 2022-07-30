@@ -8,6 +8,7 @@ export const ProjectList = [
       demo: "demo.com",
     },
     stack: ["Python", "Tk/Tcl"],
+
     image : "pypaint.png",
     frame : [ { type : "xl", src : "pypaint.png" }, {type : "md", src : "pypaint.png"}, { type : "sm", src : "pypaint.png"}  ]
   },

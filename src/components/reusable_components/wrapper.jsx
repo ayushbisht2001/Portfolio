@@ -13,7 +13,8 @@ const Wrapper = (props) => {
     } = props;
 
     return (
-        <WrapperContainer {...props}  >
+      
+      <WrapperContainer {...props}    >
 
         { spine ? <Spine >
                     <Pulse top = "-9px"  left = "-6px"  />

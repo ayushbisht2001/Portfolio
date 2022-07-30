@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, createRef , useState} from "react";
+import React, { useRef, useEffect, createRef, useState } from "react";
 import styled from "styled-components";
 import AnimateText from "../../animate_custom_lib/AnimateText";
 import { Box, LinkBox } from "../../utility/styled_components/box";
@@ -10,7 +10,8 @@ import { Link, NavLink } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { LinkButton, LinkIcon } from "../../utility/styled_components/button";
 import { Row } from "../../utility/styled_components/box";
-
+import { TbLivePhoto } from "react-icons/tb";
+import { PArray } from "../reusable_components";
 const URL = process.env.PUBLIC_URL;
 
 const Card = (props) => {
@@ -21,130 +22,141 @@ const Card = (props) => {
     stack = [],
     time,
     image,
-     setRef,
-     setScreen 
+    setRef,
+    setScreen,
   } = props;
 
-  const tref  = useRef();
+  const tref = useRef();
   const [state, setState] = useState(null);
 
-  useEffect(()=>{
+  useEffect(() => {
+    if (state) setRef((prev) => [...prev, state]);
+  }, [state]);
 
-    if(state)
-    setRef((prev)=> [...prev, state]);
-
-  },[state])
-
-  
-  useEffect(()=>{
-    if(tref.current){
-      setState(tref.current)
+  useEffect(() => {
+    if (tref.current) {
+      setState(tref.current);
     }
-  }, [])
+  }, []);
 
   return (
-    <CardBox w="100%" h="auto" bg="transparent" ref = {tref} of="hidden">
+    <CardBox w="100%" h="auto" bg="transparent" ref={tref} of="hidden"   >
       <Box
         d="flex"
         h="auto"
         w="100%"
-        m="50px auto"
+        m="20px auto"
         wrap="wrap"
-        direction = "column"
-        pos ="relative"
-        of = "hidden"
-
-        onClick = { () => setScreen((prev)=> prev === "forward" ? "reverse" : "forward")}
+        direction="column"
+        pos="relative"
+        of="hidden"
+      
+        onClick={() =>
+          setScreen((prev) => (prev === "forward" ? "reverse" : "forward"))
+        }
       >
-     
-        <Span size = "2rem"   left = "20%" pos = "relative"  >
-            {"{ "} 
-          </Span>
-          
-        <Row 
-        w="60%" h="auto"
-        cols = "auto auto"
-        rows = "auto"
-        m = "auto"
-        of = "hidden"
-        p = "0px 20px"
-        sm = {`
+        <Span size="2rem" sx=" left  : 20%" pos="relative">
+          {"{"}
+        </Span>
+
+        <Row
+          w="60%"
+          h="auto"
+          cols="auto auto"
+          rows="auto"
+          m="auto"
+          of="hidden"
+          p="0px 20px"
+          sm={`
           width : 80%;
         `}
         >
-
-        <Span family = "Comfortaa" type = "t" size = "1.3rem"    >
-            {"title  : "} 
+          <Span family="Comfortaa" type="t" size="1.3rem">
+            {"title  : "}
           </Span>
-         <AniHeading   title={title} type="p" size = {"3rem"} />
-          
-          <Span family = "Comfortaa" type = "t" size = "1.3rem"    >
-            time : 
+          <AniHeading title={title + " ,"} type="p" size={"3rem"} />
+          <Span family="Comfortaa" type="t" size="1.3rem">
+            time :
           </Span>
-          <Span type="t" size="20px"  >
+          <Span type="t" size="20px">
             {" "}
-             " {time}{" "} "
+            " {time} "<Span>{","}</Span>
           </Span>
-          <Span type = "t" size = "1.3rem" family = "Comfortaa">
-            desc : 
+          <Span type="t" size="1.3rem" family="Comfortaa">
+            desc :
           </Span>
-          <PText size = "1.2rem" type="s" m="10px 10px" >
-       
-            {" "}
-            {desc}
+          <PText size="1.2rem" type="s" m="10px 10px" weight="0">
+            " {desc} "
+            <Span>{","}</Span>
           </PText>
-          <Span type = "t" size = "1.3rem" family = "Comfortaa">
-            files : 
+          <Span type="t" size="1.3rem" family="Comfortaa">
+            stack :
           </Span>
-          <LinkBox>
-            <LinkIcon to="github.com" size = "2rem" >
-              <AiFillGithub />
-            </LinkIcon>
-            <LinkButton to="github.com">
-              File Link
-              {/* <SText link weight = "bold" ></SText> */}
-            </LinkButton>
-          </LinkBox>
-        </Row>
+          <PArray data={stack}>
+            <Span>{","}</Span>
+          </PArray>
+          <Span type="t" size="1.3rem" family="Comfortaa">
+            files :
+          </Span>
+          <PArray
+            data={[
+              <LinkIcon
+                to="github.com"
+                size="2rem"
+                m="0"
+                p="0"
+                title="source code"
+                type = "s"
+              >
+                <AiFillGithub style={{ margin: "0px" }} />
+              </LinkIcon>,
+              <LinkIcon to="github.com" m="0" p="0" size="2rem" title="live" 
+              type = "s"
+              
+              >
+                <TbLivePhoto style={{ margin: "0px" }} />
+              </LinkIcon>,
+            ]}
+          >
+            <Span>{","}</Span>
+          </PArray>
 
-        <Span  left = "20%" size = "2rem"  pos = "relative"  >
-            {" } "}&nbsp; 
-            {" ,"} 
-         
-          
-          </Span>
+       
+        </Row>
+        <Span size="2rem" sx=" left  : 20%" pos="relative">
+          {" } , "}
+        </Span>
       </Box>
     </CardBox>
   );
 };
 
 export default function WorkCard(props) {
-  const { setCardCoord, setScreen  } = props;
-
- 
+  const { setCardCoord, setScreen } = props;
 
   return (
-    <Wrapper pos="relative" h="auto" of ="hidden">
+    <Wrapper pos="relative" h="auto" of="hidden" 
+    sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`} 
+    >
       {ProjectList.map((project, ind) => (
         <Card
           {...project}
-          setRef = {setCardCoord}
-          key = {`card-${ind}`}
-          setScreen  = {setScreen }
+          setRef={setCardCoord}
+          key={`card-${ind}`}
+          setScreen={setScreen}
         />
       ))}
     </Wrapper>
   );
 }
 
- 
-
 const Wrapper = styled(Box)`
   perspective: 900px;
   perspective-origin: 50% 50vh;
-  overflow : hidden;
+  overflow: hidden;
 `;
 
 const CardBox = styled(Box)`
   background: ${(props) => props.bg || props.theme.palette.bg};
+  transform : ${props => props.tf || ""};
 `;

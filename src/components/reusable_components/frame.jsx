@@ -11,45 +11,28 @@ import { Container } from "../../utility/styled_components/container";
 
 const URL = process.env.PUBLIC_URL;
 
-const option = ProjectList;
-
-const INITIAL_STATE = [
-  {
-    bg: `${URL}/assets/images/projects/${option[0].image}`,
-    offset: "100%",
-  },
-  {
-    bg: `${URL}/assets/images/projects/${option[1].image}`,
-    offset: "0%",
-  },
-];
+ 
 
 function FrameHOC(children, type, coords) {
 
 
   return type === "xl" ? (
-    <XLFrame  top = {`calc(${coords.y - 250}px )`}   >{children}</XLFrame>
+     
+    <XLFrame     top = {`calc(${coords.y*1.6 - 100}px )`}   >{children}</XLFrame>
   ) : type === "md" ? (
     ""
   ) : (
-    <SMFrame top = {`calc( ${coords.y - 200 }px)`} >{children}</SMFrame>
+    <SMFrame   top = {`calc( ${coords.y*1.8 - 10 }px)`} >{children}</SMFrame>
   );
 }
 
 const FrameContainer = (props) => {
   const { card_coord, screen } = props;
-  const [projectFrame, setProjectFrame] = useState(INITIAL_STATE);
 
   const[ coord_list, setCoords] = useState([])
 
 
   const handleCoord = (e) => {
-
-        if(e)
-    {   e.preventDefault();
-        e.stopPropagation()
-    }
-
     const array = card_coord.map( (cord) => {
       return ({
         y : parseInt(cord.getBoundingClientRect().top*1.3 ),
@@ -93,13 +76,14 @@ const FrameContainer = (props) => {
     <Container
       of="hidden"
       pos="absolute"
-      h="90vh"
+      h="100vh"
       w="50vw"
       right="0px"
       bottom="0px"
-      tf = " rotateY(-4deg)"
+      sx = { ` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`} 
       md = {`
-        width : 90vw;
+      width : 90vw;
+      perspective : none; 
       `}
     >
       <Container
@@ -109,12 +93,14 @@ const FrameContainer = (props) => {
       w="100%"
       right="0px"
       bottom="0px"
+      tf = " rotateY(-4deg)"
       >
         {coord_list.length > 0  ? ProjectList.map((project, ind) => {
            return project.frame.length &&
               project.frame.map((fm, index) => {
                 return FrameHOC(
                   <Box
+                    key = {"frame-" + index}
                     bg={`url(${URL}/assets/images/projects/${fm.src})`}
                     w= "100%"
                     h="100%"
@@ -144,10 +130,6 @@ const Scree = styled(Box)`
 animation : ${props => props.animate || ""};
 background-repeat : no-repeat;
 background-size : 100% 400px;
-
-
-
-
 `
 
 

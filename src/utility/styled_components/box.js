@@ -33,7 +33,7 @@ height: ${(props) => props.h || "auto"};
 display : ${(props) => props.d || "block"};
 z-index : ${(props) => props.zi || "1"};
 animation : ${props => props.animate || ""};
-${props => css`${props.sx}`};
+transform : ${props => props.tf || ""};
 
 
 @media (max-width: 1400px) {   
@@ -66,7 +66,7 @@ export const Row = styled(Box)`
   width : ${props => props.w || "100%"};
   
 
-  ${props => css`${props.sx}`};
+  
  
 
   @media (max-width: 1400px) {   
@@ -99,7 +99,7 @@ justify-content: ${(props) => props.justify || "flex-start"};
 flex-direction : ${(props) => props.direction || "row"};
 flex-wrap : ${(props) => props.wrap || "wrap"};
 font-family : ${props => props.family || "inherit"};
-${props => css`${props.sx}`};
+
 
 `
 
@@ -107,13 +107,11 @@ export const LinkBox = styled(Box)`
 
   min-width : 50px;
   max-height : 100px;
-  padding : 10px 5px;
-  margin : 5px;
   display : flex;
   flex-direction : row;
   justify-content : flex-start;
   align-items : center;
-
+  flex-wrap : wrap;
 
 `
 
