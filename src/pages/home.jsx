@@ -32,7 +32,7 @@ export default function Home() {
       <Triangle
         right="1%"
         bottom="12%"
-        tf="rotate(45deg) scale(2.5)"
+        tf="rotate(45deg) scale(2.4)"
         type="p"
       />
       <Square left="-5%" bottom="-3%" tf="rotate(30deg) scale(1.2) " />
