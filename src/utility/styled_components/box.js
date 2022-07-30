@@ -34,6 +34,10 @@ display : ${(props) => props.d || "block"};
 z-index : ${(props) => props.zi || "1"};
 animation : ${props => props.animate || ""};
 transform : ${props => props.tf || ""};
+font-family : ${props => props.family || "inherit"};
+gap : ${props => props.gap || ""};
+transition : ${props => props.trans || ""};
+${props => css`${props.sx}`};
 
 
 @media (max-width: 1400px) {   

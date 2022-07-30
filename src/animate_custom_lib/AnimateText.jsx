@@ -10,7 +10,6 @@ const AnimateTextHOC = ( Component) => {
 
   return memo((props) => {
 
-
     return window.innerWidth > 700 ? (
       <Component {...props} />
     ) :
