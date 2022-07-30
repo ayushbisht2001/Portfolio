@@ -29,7 +29,7 @@ export const Shape = styled.svg`
   animation-delay: ${(props) => props.delay || "1s"};
   animation-function: ${(props) => props.afun || "linear"};
   transform: ${(props) => props.tf || "scale(1)"};
-  fill-opacity: ${(props) => props.fo || "1"};
+  fill-opacity: ${(props) => props.fo || "0.5"};
   transform-origin: ${(props) => props.tforigin || "center"};
 
   & path {
@@ -78,7 +78,6 @@ export const Shape = styled.svg`
         ? props.theme.palette.shape.ternary
         : props.theme.palette.shape.primary)};
     stroke: var(--stroke-val);
-    fill-opacity: 1;
     fill: transparent;
     animation: circle-ani 4s linear forwards;
     stroke-dasharray: 1000;
@@ -216,6 +215,17 @@ export const Shape = styled.svg`
 
     fill: var(--fill-val);
     stroke: var(--stroke-val);
+
+    animation: triangle-ani 4s linear forwards;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    
+    @keyframes triangle-ani {
+      100% {
+        fill: var(--fill-val);
+        stroke-dashoffset: 0;
+      }
+    }
   }
 
   stroke-width : ${props => props.strokeW || ""};

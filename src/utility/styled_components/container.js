@@ -10,6 +10,11 @@ export const Container = styled.div`
   margin : ${props => props.m || "auto"};
   width : ${props => props.w || "min( 100% , 1200px )"};
   height: ${(props) => props.h || "auto"};
+  min-height : ${props => props.mh || ""};
+  min-width : ${props => props.mw || ""};
+  max-height : ${props => props.mxh || ""};
+  max-width : ${props => props.mxw || ""};
+
   overflow : ${props => props.of || "auto"};
   position : ${props => props.pos || "relative"};
   top : ${props => props.top || ""};

@@ -39,7 +39,7 @@ export const NavIcon = (props) => {
       type="s"
       width="100"
       height="100"
-      strokeW="5"
+      strokeW="10"
       tf="scale(0.3)"
       tforigin="top"
       pfill="none"
@@ -72,21 +72,47 @@ export const MobNavBar = () => {
   };
 
   const [attrs, setAttr] = useState({
-    x: "0",
+    x: "400px",
     opacity: "0",
+    d : "none"
+
   });
 
   const handleAnimation = () => {
     if (nav == "open") {
-      setAttr({
-        x: "0",
-        opacity: "1",
+
+      setAttr({    
+        d : "block",
+         x: "400px",
+        opacity: "0",
       });
+
+      setTimeout(() => {
+        setAttr(prev =>{ 
+          return ({
+          ...prev,
+          x: "0",
+          opacity: "1",
+        
+
+        })})
+      }, 10)
+
     } else {
+
       setAttr({
         x: "400px",
         opacity: "0",
+        d : "block"
       });
+
+      setTimeout(() => {
+        setAttr(prev =>{ 
+          return ({
+          ...prev,
+          d : "none"
+        })})
+      }, 1000)
     }
   };
 
@@ -118,7 +144,9 @@ export const MobNavBar = () => {
       </Container>
 
       {true ? (
-        <Box w="100%" h="100vh" pos="fixed" top="0px" zi="5">
+        <Box w="100%" h="100vh" pos="fixed" top="0px" zi="5"
+        d= { attrs.d}
+        >
           <MobNavBg
             d={nav === "open" ? "block" : "none"}
             o={attrs.opacity}
@@ -127,8 +155,8 @@ export const MobNavBar = () => {
           <Box
             sx="float : right;"
             top="22rem"
+            d = "flex"
             pos="relative"
-            d="flex"
             direction="column"
             w="auto"
             p="10px 20px"
