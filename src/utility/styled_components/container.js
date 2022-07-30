@@ -12,9 +12,14 @@ export const Container = styled.div`
   height: ${(props) => props.h || "auto"};
   overflow : ${props => props.of || "auto"};
   position : ${props => props.pos || "relative"};
+  top : ${props => props.top || ""};
+  border-radius : ${props => props.rad || ""};
+  bottom : ${props => props.bottom || ""};
+  right : ${props => props.right || ""};
+  left : ${props => props.left || ""};
   z-index : ${props => props.zi || ""};
   transform : ${props => props.tf || ""};
-  ${props => ({...props})};
+  margin-top : ${props => props.mt || ""};
   ${props => css`${props.sx}`};
 
   @media (max-width: 1400px) {   

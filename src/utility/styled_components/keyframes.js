@@ -6,11 +6,13 @@ export const pulse = keyframes`
 
     from{
         transform : scale(0);
+        border-width : 0px;
         
     }
     to{
         border-color : transparent;
-        transform : scale(3);
+        border-width : 5px;
+        transform : scale(3.5);
     }
 
 `

@@ -16,7 +16,7 @@ transition : 0.5 all ease 1s;
 border-radius : 50%;
 position : ${props => props.pos || "absolute" };
 transform : scale(1);
-animation : ${pulse} 1s linear forwards;
+animation : ${pulse} 2s linear forwards;
 top : ${props => props.top || ""};
 bottom : ${props => props.bottom || ""};
 left : ${props => props.left || ""};

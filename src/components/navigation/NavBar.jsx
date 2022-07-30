@@ -8,7 +8,7 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
 import styled from "styled-components";
 import { Box } from "../../utility/styled_components/box";
-
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -42,24 +42,24 @@ const NavBar = () => {
 
       <Row h="100%" w="100%" align="center" cols="50% 50%">
         <Col h="auto"  family = "Comfortaa"  >
-          <Span  type="s" weight="10" size="1.4rem">
+          <Span  type="s" weight="10" size="1.2rem">
             Nav[<Span>"ayush"</Span>]
           </Span>
         </Col>
         <Col  family = "Comfortaa"  d= "flex" direction ="row" wrap = "no-wrap" align = "center" justify = "flex-end" >
-          <Span type = "s" m = "auto 10px auto auto" >
-            Nav[ "<Span p="0px">home</Span>" ]
+          <Span size = "1rem" type = "s" m = "auto 10px auto auto" >
+            Nav[ "<Span p="0px"><LinkIcon p ="0" m = "0" to ="/">home</LinkIcon></Span>" ]
           </Span>
-          <Span type = "s" m = "auto 10px auto auto">
-            Nav["<Span p ="0px">works</Span>"]
+          <Span size = "1rem" type = "s" m = "auto 10px auto auto">
+            Nav["<Span p ="0px"><LinkIcon p ="0" m = "0" to ="/work">works</LinkIcon></Span>"]
           </Span>
-          <Span type = "s" m = "auto 10px auto auto">
-            Nav["<Span p="0px">projects</Span>" ]          </Span>
+          <Span size = "1rem" type = "s" m = "auto 10px auto auto">
+            Nav["<Span p="0px"><LinkIcon p ="0" m = "0" to ="/projects">projects</LinkIcon></Span>" ]          </Span>
           
-          <LinkIcon to="localhost.com" size = "1.5rem"  m = "10px 1px auto 10px">
+          <LinkIcon to="localhost.com" size = "1.5rem"  m = "8px 0px 0px 5px"  >
             <BsLinkedin />
           </LinkIcon>
-          <LinkIcon to="localhost.com" size = "1.5rem" m = "10px 1px auto 0px">
+          <LinkIcon to="localhost.com" size = "1.5rem" m = "8px 0px 0px 5px">
             <GoMarkGithub />
           </LinkIcon>
         </Col>

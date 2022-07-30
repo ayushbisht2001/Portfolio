@@ -23,11 +23,11 @@ import { BsLinkedin } from "react-icons/bs";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { iuri } from "../utility/styled_components/colors";
-import NavBar from "../components/navbar/NavBar";
+import NavBar from "../components/navigation/NavBar";
 
 export default function Home() {
   return (
-    <ContainerFluid h="100vh" overflowX="hidden" position="relative">
+    <ContainerFluid h="100vh" sx = "overflow-x : hidden;" position="relative">
       <NavBar />
       <Triangle
         right="1%"
@@ -86,6 +86,7 @@ export default function Home() {
           title="AYUSH BISHT"
           primary= {iuri}
           secondary="#F1FAEE"
+          size = "3rem"
         />
         {/* <AnimateText
             width={600}
@@ -101,14 +102,14 @@ export default function Home() {
           type="t"
         />
 
-        <LinkBox>
-          <LinkIcon to = "localhost.com">
+        <LinkBox   >
+          <LinkIcon size = "2rem" to = "localhost.com"  >
             <BsLinkedin />
           </LinkIcon>
-          <LinkIcon to = "localhost.com">
+          <LinkIcon  size = "2rem" to = "localhost.com">
             <GoMarkGithub />
           </LinkIcon>
-          <LinkIcon to = "localhost.com">
+          <LinkIcon size = "2rem" to = "localhost.com">
             <FaTwitterSquare />
           </LinkIcon>
         </LinkBox>
