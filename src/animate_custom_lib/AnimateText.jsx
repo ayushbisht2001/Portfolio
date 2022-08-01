@@ -49,6 +49,7 @@ const AnimateText = (props) => {
   const [particles, setParticles] = useState([]);
 
 async function connect() {
+  
     const canvas = canvRef.current;
     let ctx = canvas.getContext("2d");
     for (let a = 0; a < particles.length; a++) {
@@ -88,6 +89,7 @@ async function connect() {
   }
 
   useEffect(() => {
+
     if (canvRef) {
       const canvas = canvRef.current;
       canvas.width = width;

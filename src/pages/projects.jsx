@@ -41,7 +41,7 @@ const Project = () => {
               display : none;
             `}
       >
-        <DeviceFrame card_coord={[...coord]} screen={screen} />
+        <DeviceFrame card_coord={[...coord]} screen={screen} data = {ProjectList} />
       </Container>
 
       <Container

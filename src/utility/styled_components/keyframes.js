@@ -86,12 +86,12 @@ export const navReverseAnimate = keyframes`
 export const navRightMotion = keyframes`
     from{
 
-        transform : traslateX(0px);
+        transform : translateX(0px);
 
     }
 
     to{
-        transform : traslateX(500px);
+        transform : translateX(500px);
 
     }
 
@@ -99,11 +99,11 @@ export const navRightMotion = keyframes`
 
     export const navReverseRightMotion = keyframes`
     from{
-        transform : traslateX(500px);
+        transform : translateX(500px);
     }
 
     to{
-        transform : traslateX(0px);
+        transform : translateX(0px);
         
     }
 
@@ -131,6 +131,37 @@ export  const bgReverseTransition = keyframes`
     
     to{
         opacity : 0;
+    }
+
+`
+
+
+
+
+export const moveUp = keyframes`
+
+    from{
+
+        transform : translateY(0px);
+    }
+
+    to{
+        transform : translateY(-400px);
+
+    }
+
+`
+
+export const moveDown = keyframes`
+
+    from{
+
+        transform : translateY(0px);
+    }
+
+    to{
+        transform : translateY(400px);
+
     }
 
 `

@@ -103,7 +103,8 @@ justify-content: ${(props) => props.justify || "flex-start"};
 flex-direction : ${(props) => props.direction || "row"};
 flex-wrap : ${(props) => props.wrap || "wrap"};
 font-family : ${props => props.family || "inherit"};
-
+width : ${props => props.w || "100%"};
+height: ${(props) => props.h || "100%"};
 
 `
 

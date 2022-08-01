@@ -42,7 +42,7 @@ const Work = () => {
               display : none;
             `}
       >
-        <DeviceFrame card_coord={[...coord]} screen={screen} />
+        <DeviceFrame card_coord={[...coord]} screen={screen} data = {WorkList} />
       </Container>
 
       <Container

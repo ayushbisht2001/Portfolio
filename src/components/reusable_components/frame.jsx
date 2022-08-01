@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, createRef } from "react";
 import styled, { css } from "styled-components";
 import { Box } from "../../utility/styled_components/box";
 import { ProjectList } from "../../utility/data/projects";
@@ -8,34 +8,94 @@ import {
   scrollProject,
 } from "../../utility/styled_components/keyframes";
 import { Container } from "../../utility/styled_components/container";
+import { WorkList } from "../../utility/data/works";
+import _ from "lodash"
+import { TweenLite } from "gsap/gsap-core";
+import { gsap } from "gsap";
 
 const URL = process.env.PUBLIC_URL;
 
+
+const SM = (props) => {
+
+  const ref = useRef()
+
+  const{
+    coords,
+    children
+  } = props;
+
+  useEffect(() => {
+  TweenLite.set(ref.current, { y : coords.y*1.2, force3D: true })
  
+
+  }, [coords])
+
+  return (
+    <SMFrame      
+    ref = {ref}
+  // top = {`calc(${coords.y*1.6 - 100}px )`}  
+   >{children}</SMFrame>
+  )
+}
+const XL = (props) => {
+
+  const ref = useRef()
+
+  const{
+    coords,
+    children
+  } = props;
+
+  useEffect(() => {
+  TweenLite.set(ref.current, { y : coords.y, force3D: true })
+ 
+
+  }, [coords])
+
+  return (
+    <XLFrame 
+    ref = {ref}
+    // top = {`calc( ${coords.y*1.8 - 10 }px)`} 
+    >{children}</XLFrame>
+  )
+}
 
 function FrameHOC(children, type, coords) {
 
+  const ref = createRef()
+
+  
 
   return type === "xl" ? (
      
-    <XLFrame     top = {`calc(${coords.y*1.6 - 100}px )`}   >{children}</XLFrame>
+    <XL    
+      ref = {ref}
+      coords = {coords}
+    // top = {`calc(${coords.y*1.6 - 100}px )`}  
+     >{children}</XL>
   ) : type === "md" ? (
     ""
   ) : (
-    <SMFrame   top = {`calc( ${coords.y*1.8 - 10 }px)`} >{children}</SMFrame>
+    <SM 
+    ref = {ref}
+    coords= {coords}
+    // top = {`calc( ${coords.y*1.8 - 10 }px)`} 
+    >{children}</SM>
   );
 }
 
 const FrameContainer = (props) => {
-  const { card_coord, screen } = props;
+  const { card_coord, screen, data = [] } = props;
 
   const[ coord_list, setCoords] = useState([])
 
+  const ref = useRef([])
 
   const handleCoord = (e) => {
     const array = card_coord.map( (cord) => {
       return ({
-        y : parseInt(cord.getBoundingClientRect().top*1.3 ),
+        y :  parseInt(cord.getBoundingClientRect().top),
         x : parseInt(cord.getBoundingClientRect().left / 3)
       })
     })
@@ -46,7 +106,7 @@ const FrameContainer = (props) => {
   
   useEffect(()=>{
 
-    const array = ProjectList.map( (cord) =>  ({
+    const array = data.map( (cord) =>  ({
         y : 0,
         x : 0
       })
@@ -54,6 +114,7 @@ const FrameContainer = (props) => {
     setCoords(array)
 
     window.addEventListener('scroll', handleCoord, { passive: true });
+    handleCoord()
 
     return ()=> {
       window.removeEventListener('scroll', handleCoord, { passive: true })
@@ -62,12 +123,7 @@ const FrameContainer = (props) => {
   }, [ card_coord ])
 
 
-
-  useEffect(()=>{
-
-    handleCoord()
  
-  }, [ card_coord ])
 
 
 
@@ -95,7 +151,7 @@ const FrameContainer = (props) => {
       bottom="0px"
       tf = " rotateY(-4deg)"
       >
-        {coord_list.length > 0  ? ProjectList.map((project, ind) => {
+        {coord_list.length > 0  ? data.map((project, ind) => {
            return project.frame.length &&
               project.frame.map((fm, index) => {
                 return FrameHOC(
@@ -104,8 +160,8 @@ const FrameContainer = (props) => {
                     bg={`url(${URL}/assets/images/projects/${fm.src})`}
                     w= "100%"
                     h="100%"
-
-                    animate = {css` ${scrollProject} 14s linear infinite`}
+                    
+                    animate = { fm.isAnimate && css` ${scrollProject} 14s linear infinite`}
                   ></Box>,
                   fm.type,
                   coord_list[ind]
@@ -139,8 +195,7 @@ const Frame = styled(Box)`
   border: solid 0.4rem ${(props) => props.border || props.theme.palette.ternary};
   transform-style: preserver-3d;
   position : absolute;
-  transform : ${props => props.tf || "translateY(0)"};
-  transition : all 0.5s ease;
+  transform : ${props => props.tf || "translateY(400px)"};
   opacity : 0.35;
   & div {
     background-size: cover;
