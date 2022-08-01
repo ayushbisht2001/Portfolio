@@ -26,5 +26,18 @@ export const ProjectList = [
 
 
   },
-  
+  {
+    title: "LeetCode Clone",
+    time: "12 July , 2022",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac nunc vel elit sodales interdum et imperdiet velit. Fusce sed varius diam, vitae feugiat nisl. Duis ante velit,",
+    links: {
+      source: "github.com",
+      demo: "demo.com",
+    },
+    stack: ["React",  "Redux"],
+    image : "AON.jpeg",
+    frame : [ { type : "xl", src : "leetcodeclone2.png", isAnimate : true  }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "leetcodeclone2.png", isAnimate : false }  ]
+
+
+  },
 ];
