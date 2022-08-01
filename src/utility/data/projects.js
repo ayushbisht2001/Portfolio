@@ -10,7 +10,7 @@ export const ProjectList = [
     stack: ["Python", "Tk/Tcl"],
 
     image : "pypaint.png",
-    frame : [ { type : "xl", src : "pypaint.png" }, {type : "md", src : "pypaint.png"}, { type : "sm", src : "pypaint.png"}  ]
+    frame : [ { type : "xl", src : "pypaint.png" , isAnimate : false }, {type : "md", src : "pypaint.png"}, { type : "sm", src : "pypaint.png", isAnimate : false }  ]
   },
   {
     title: "Adventure of Ninja",
@@ -22,7 +22,7 @@ export const ProjectList = [
     },
     stack: ["Python",  "Pygame"],
     image : "AON.jpeg",
-    frame : [ { type : "xl", src : "AON.jpeg" }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "AON.jpeg"}  ]
+    frame : [ { type : "xl", src : "AON.jpeg", isAnimate : false  }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "AON.jpeg", isAnimate : false }  ]
 
 
   },

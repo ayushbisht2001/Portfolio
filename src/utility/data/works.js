@@ -10,7 +10,7 @@ export const WorkList = [
       stack: ["React", "Redux"],
       role : "Full Stack developer ( intern )",
       image : "pypaint.png",
-      frame : [ { type : "xl", src : "pypaint.png" }, {type : "md", src : "pypaint.png"}, { type : "sm", src : "pypaint.png"}  ]
+      frame : [ { type : "xl", src : "AiInsight2.jpg" , isAnimate : true}, {type : "md", src : "Aiinsight1.png"}, { type : "sm", src : "Aiinsight1.png" , isAnimate : false }  ]
     },
     {
       title: "Sacrd",
@@ -40,7 +40,7 @@ export const WorkList = [
         },
         stack: ["Django", "DRF", "React", "Redux"],
         image : "scintilla.png"
-        ,frame : [ { type : "xl", src : "scintillaScroll1.png" }, {type : "md", src : "scintilla.png"}, { type : "sm", src : "scintillaScroll2.png"}  ]
+        ,frame : [ { type : "xl", src : "scintillaScroll1.png", isAnimate : true }, {type : "md", src : "scintilla.png"}, { type : "sm", src : "scintillaScroll2.png", isAnimate : true }  ]
         
     
       },
@@ -56,7 +56,7 @@ export const WorkList = [
       },
       stack: ["Python", "DRF", "React", "Redux"],
       image : "scintilla.png"
-      ,frame : [ { type : "xl", src : "scintillaScroll1.png" }, {type : "md", src : "scintilla.png"}, { type : "sm", src : "scintillaScroll2.png"}  ]
+      ,frame : [ { type : "xl", src : "scintillaScroll1.png" , isAnimate : true }, {type : "md", src : "scintilla.png"}, { type : "sm", src : "scintillaScroll2.png" , isAnimate : true }  ]
       
   
     },
@@ -72,7 +72,7 @@ export const WorkList = [
       },
       stack: ["Python", "DRF", "React", "Redux"],
       image : "kaivalaya.png"
-      ,frame : [ { type : "xl", src : "kaivalayaScroll1.png" }, {type : "md", src : "kaivalaya.png"}, { type : "sm", src : "kaivalayaScroll2.png"}  ]
+      ,frame : [ { type : "xl", src : "kaivalayaScroll1.png", isAnimate : true  }, {type : "md", src : "kaivalaya.png"}, { type : "sm", src : "kaivalayaScroll2.png" , isAnimate : true }  ]
   
     },
   ];
