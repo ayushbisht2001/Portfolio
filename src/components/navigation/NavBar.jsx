@@ -29,7 +29,7 @@ export const NavIcon = (props) => {
       setAnimate("triangle");
       setNav("open");
     } else {
-      setNav("hide");
+      setNav("animate");
       setAnimate("square");
     }
   };
@@ -64,7 +64,6 @@ export const NavIcon = (props) => {
 export const MobNavBar = () => {
   const [y, setY] = useState(0);
   const [nav, setNav] = useState("hide");
-  const [nav_state, setNavState] = useState("hide");
 
   const handleScroll = (e) => {
     const val = (window.pageYOffset * 0.9) / 700;
@@ -72,53 +71,41 @@ export const MobNavBar = () => {
   };
 
   const [attrs, setAttr] = useState({
-    x: "400px",
-    opacity: "0",
-    d : "none"
-
+    bgAnimate : bgTransition,
+    navLinkTransition : navReverseRightMotion
   });
 
+
+
   const handleAnimation = () => {
-    if (nav == "open") {
 
-      setAttr({    
-        d : "block",
-         x: "400px",
-        opacity: "0",
-      });
-
-      setTimeout(() => {
-        setAttr(prev =>{ 
-          return ({
-          ...prev,
-          x: "0",
-          opacity: "1",
-        
-
-        })})
-      }, 10)
-
-    } else {
-
+    if(nav === "open"){
+      setAttr( {
+        bgAnimate : bgTransition,
+        navLinkTransition : navReverseRightMotion
+      })
+      setNav("show")
+    }else
+    if(nav === "animate")
+    {
       setAttr({
-        x: "400px",
-        opacity: "0",
-        d : "block"
-      });
-
-      setTimeout(() => {
-        setAttr(prev =>{ 
-          return ({
-          ...prev,
-          d : "none"
-        })})
-      }, 1000)
+        bgAnimate : bgReverseTransition,
+        navLinkTransition : navRightMotion
+      })
     }
+
   };
 
-  useEffect(() => {
-    handleAnimation();
-  }, [nav]);
+  const handleAnimationEnd = () => {
+
+    if(nav == "animate")
+      setNav("hide");
+
+  }
+ 
+  useEffect(()=> {
+    handleAnimation()
+  }, [nav])
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -143,13 +130,15 @@ export const MobNavBar = () => {
         <NavIcon setNav={setNav} />
       </Container>
 
-      {true ? (
+      {(nav === "show" || nav === "animate") ? (
         <Box w="100%" h="100vh" pos="fixed" top="0px" zi="5"
         d= { attrs.d}
         >
           <MobNavBg
-            d={nav === "open" ? "block" : "none"}
-            o={attrs.opacity}
+            animate = { css`${attrs.bgAnimate}` }
+            onAnimationEnd = {handleAnimationEnd}
+            d = "block"
+
           ></MobNavBg>
 
           <Box
@@ -165,7 +154,7 @@ export const MobNavBar = () => {
             justify="center"
             family="Comfortaa"
             gap="1rem"
-            tf={` translateX(${attrs.x})`}
+            animate = { css`${attrs.navLinkTransition} 1s linear forwards ` }
             trans="all 1s ease-out"
           >
             <Span size="4rem" type="s">
