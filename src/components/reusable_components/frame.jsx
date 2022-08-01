@@ -12,6 +12,11 @@ import { WorkList } from "../../utility/data/works";
 import _ from "lodash"
 import { TweenLite } from "gsap/gsap-core";
 import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
+
+gsap.registerPlugin(MotionPathPlugin);
+
 
 const URL = process.env.PUBLIC_URL;
 
@@ -26,7 +31,7 @@ const SM = (props) => {
   } = props;
 
   useEffect(() => {
-  TweenLite.set(ref.current, { y : coords.y*1.2, force3D: true })
+  gsap.to(ref.current, { y : coords.y*1.2, force3D: true })
  
 
   }, [coords])
@@ -48,7 +53,7 @@ const XL = (props) => {
   } = props;
 
   useEffect(() => {
-  TweenLite.set(ref.current, { y : coords.y, force3D: true })
+  gsap.to(ref.current, { y : coords.y, force3D: true })
  
 
   }, [coords])
