@@ -24,7 +24,7 @@ export const WorkList = [
       image : "AON.jpeg",
       role : "Full Stack developer ( intern )",
 
-      frame : [ { type : "xl", src : "AON.jpeg" }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "AON.jpeg"}  ]
+      frame : [ { type : "xl", src : "sacrd1.png" ,isAnimate : true }, {type : "md", src : "AON.jpeg"}, { type : "sm", src : "sacrd2.png", isAnimate : false}  ]
   
   
     },
