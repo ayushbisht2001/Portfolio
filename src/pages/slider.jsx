@@ -13,13 +13,18 @@ import { Box } from "../utility/styled_components/box";
 import _ from "lodash";
 import VirtualScroll from "virtual-scroll";
 import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
+
 import { TweenLite } from "gsap/gsap-core";
+
+gsap.registerPlugin(MotionPathPlugin);
 
 function Slider(props) {
 
   const ref = useRef();
   const bref  = useRef();
-
+  const target= useRef()
   const [target_pos, SetTargetPos] = useState({
 
     targetPosY: 0,
@@ -41,6 +46,9 @@ function Slider(props) {
       ...prev,
       targetPosY : 0
     }))
+    gsap.to(bref.current, {y: 0, force3D: true})
+
+    setFlag((prev) => prev  + 1)
   }
 
   const[flag, setFlag] = useState(0)
@@ -88,27 +96,63 @@ function Slider(props) {
         directionQueue : '',
     }))
 
-      TweenLite.set(bref.current, {y: 0, force3D: true})
+      gsap.to(bref.current, {y: 0, force3D: true})
   }
+
+ function getRoundedValue(valueToRound){
+    let roundedValue = valueToRound * 1000
+      roundedValue = Math.round(roundedValue)
+      roundedValue = roundedValue / 1000
+
+      return roundedValue
+  }
+
+
+  function prevSlide(){
+    console.log("move previous")
+    gsap.to(target.current, { y : "-100", force3D : true})
+  }
+
+  function nextSlide(){
+    console.log("move next")
+
+    gsap.to(target.current, { y : "+100", force3D : true})
+
+  }
+
 
   function wheelLoop(){
 
-    console.log("wheel loop")
-    let slideLimit = 165
+    let slideLimit = 60
     let newSlideTransform = target_pos.slideTransform + (target_pos.targetPosY - target_pos.slideTransform) * .09
-        newSlideTransform =  parseInt(newSlideTransform)
+        newSlideTransform =  getRoundedValue(newSlideTransform)
 
   
-
-      SetTargetPos((prev) => ({
+    if(newSlideTransform !== target_pos.oldSlideTransform)
+      {
+        SetTargetPos((prev) => ({
         ...prev,
         oldSlideTransform : prev.slideTransform,
         slideTransform : newSlideTransform
 
-      }))   
-      
-      TweenLite.set(bref.current, {y: 100, force3D: true})
+      }))         
+      gsap.to(bref.current, {y: target_pos.slideTransform, force3D: true})
+    }
+    console.log("wheel loop - ", target_pos.slideTransform)
+
+    if(target_pos.slideTransform <= -slideLimit ){
+      nextSlide()
       _.delay(resetWheel,500)
+
+    }
+    else if (target_pos.slideTransform >= slideLimit){
+      prevSlide()
+      _.delay(resetWheel,500)
+
+    }else {
+      // requestAnimationFrame(wheelLoop)
+    }
+
   }
 
   useEffect(() => {
@@ -149,6 +193,19 @@ function Slider(props) {
           trans="all 0.5s ease"
           ref = {bref}
           ></Box>
+
+        <Box
+          w = "100px"
+          h = "100px"
+          bg = "blue"
+          pos = "absolute"
+          left = "40%"
+          top = "40%"
+          ref = {target}
+        >
+
+        </Box>
+          
       </Container>
     </ContainerFluid>
   );

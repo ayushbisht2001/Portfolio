@@ -46,6 +46,47 @@ export const LinkButton = styled(Link)`
   }
 `;
 
+
+export const NativeLink = styled.a`
+
+text-decoration: none;
+width: ${(props) => props.w || "auto"};
+padding : ${props => props.p || "5px"};
+
+margin : ${props => props.m || "5px"};
+text-align: center;
+height: ${(props) => props.h || "auto"};
+background: none;
+color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
+text-align: center;
+font-size:  ${(props) => props.size || "inherit"};
+font-family : ${props => props.family || "inherit"};
+
+&:hover {
+  color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};
+}
+
+
+& svg {
+  margin: 5px 10px 5px 0px;
+  transition: all 0.2s ease 0s;
+
+  &:hover {
+    color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};
+
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width : 600px){
+
+  font-size :  ${ props => `calc( ${props.size} - ${props.size} / 5 )`};
+ }
+
+`
+
+
+
 export const LinkIcon = styled(Link)`
   text-decoration: none;
   width: ${(props) => props.w || "auto"};

@@ -5,6 +5,7 @@ import {
   ContainerFluid,
 } from "../utility/styled_components/container";
 import NavBar from "../components/navigation/NavBar";
+import Slider from "./slider";
  
 function Home(props) {
  
@@ -13,7 +14,7 @@ function Home(props) {
     <ContainerFluid h="100vh" bg="white" of="hidden">
       <NavBar />
       <Intro />
-
+      {/* <Slider /> */}
    
     </ContainerFluid>
   );

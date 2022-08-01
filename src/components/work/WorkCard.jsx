@@ -12,6 +12,8 @@ import { LinkButton, LinkIcon } from "../../utility/styled_components/button";
 import { Row } from "../../utility/styled_components/box";
 import { TbLivePhoto } from "react-icons/tb";
 import { PArray } from "../reusable_components";
+import { NativeLink } from "../../utility/styled_components/button";
+
 const URL = process.env.PUBLIC_URL;
 
 const Card = (props) => {
@@ -108,35 +110,44 @@ const Card = (props) => {
           <PArray data={stack}>
             <Span>{","}</Span>
           </PArray>
-          <Span type="t" size="1.3rem" family="Comfortaa">
+
+          { links ? 
+            <>
+             <Span type="t" size="1.3rem" family="Comfortaa">
             files :
           </Span>
           <PArray
             data={[
-              <LinkIcon
-                to="github.com"
+              <NativeLink
+                href={links.source}
                 size="2rem"
                 m="0"
                 p="0"
                 title="source code"
                 type="s"
+                target="_blank"
               >
                 <AiFillGithub style={{ margin: "0px" }} />
-              </LinkIcon>,
-              <LinkIcon
-                to="github.com"
+              </NativeLink>,
+              <NativeLink
+                href={links.demo}
                 m="0"
                 p="0"
                 size="2rem"
                 title="live"
                 type="s"
+                target="_blank"
               >
                 <TbLivePhoto style={{ margin: "0px" }} />
-              </LinkIcon>,
+              </NativeLink>,
             ]}
           >
             <Span>{","}</Span>
           </PArray>
+            </> : ""
+        }
+
+         
         </Row>
         <Span size="2rem" sx=" left  : 20%" pos="relative">
           {" } , "}
