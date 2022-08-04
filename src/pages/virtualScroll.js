@@ -7,10 +7,10 @@ import { TweenLite } from "gsap/gsap-core";
 
 gsap.registerPlugin(MotionPathPlugin);
 
-export class VS{
+export default  class VS{
 
 
-    constructor(ele, target, setState){
+    constructor(ele, target, stateCallback){
         
         this.vs = new VirtualScroll(
         {    el : ele,
@@ -18,36 +18,53 @@ export class VS{
             keyStep : 400
         }
         );
-
         this.debouncedBackToSlide = _.debounce(this.backToSlide, 200);
         this.target = target;
-        this.handleState = setState
-        
+        this.handler = ele;
+        this.targetPosY= 0;
+        this.handleState = stateCallback
+        this.slideTransform= 0;
+        this.oldSlideTransform= 0;
+        this.oldDeltaY= 0;
+        this.leave= false;
+        this.direction= '';
+
+        this.events()
+       
+
+
     }
 
-    
-  debounce(e){
 
-    console.log("debounce, here")
+    destroy(){
+        this.vs.destroy()
+    }
+ 
 
-    this.targetPosY = 0;
-    // TweenLite.set(bref.current, {y: 0, force3D: true})
-
-  }
-  
     print(){
         console.log(this.vs)
     }
 
-    events(handleState){
+    events(){
+        
+        let bindWheel = this.wheel.bind(this)
+        this.vs.on(bindWheel)
+        let bindWheelLoop =  this.wheelLoop.bind(this)
+        requestAnimationFrame(bindWheelLoop)
 
-        this.vs.on(this.scroll)
-        console.log(handleState)
+    }
+
+    wheel(event){
+        let targetModifier = event.deltaY
+        this.targetPosY += targetModifier
+        this.oldDeltaY = event.deltaY
+        console.log("wheel events", this.targetPosY)
+        this.debouncedBackToSlide()
     }
 
     scroll(el){
 
-        // this.handleState( prev => ({ ...prev, el}))
+        // this.handl( prev => ({ ...prev, el}))
         // console.log(this.x)
         console.table(this)
 
@@ -63,16 +80,32 @@ export class VS{
         }
       
       
-         prevSlide(){
-          console.log("move previous")
-          // gsap.to(target.current, { y : 0, force3D : true})
-        }
+        prevSlide(){
+
+        console.log("move previous", this)
+
+        // gsap.to(this.handler, { y : 0, force3D : true})
+        this.handleState((prev) => ({
+            ...prev,
+            slide_id : (prev.slide_id + 1)%3,
+            transformY : 400,
+            direction : "down"
+        }))
       
-         nextSlide(){
-          console.log("move next")
+
+    }
       
-          // gsap.to(target.current, { y : 0, force3D : true})
-      
+        nextSlide(){
+          console.log("move next", this)
+        //   gsap.to(this.handler, { y : 400, force3D : true})
+        this.handleState((prev) => ({
+            ...prev,
+            slide_id : (3 + prev.slide_id  - 1)%3,
+            transformY : -400,
+            direction : "up"
+        }))
+       
+
         }
 
     resetWheel(){
@@ -80,29 +113,39 @@ export class VS{
                 this.targetPosY = 0;
                 this.slideTransform = 0;
                 this.oldDeltaY = 0;
-                this.directionQueue = '';
-        
-              gsap.to(this.target, {y: 0, force3D: true})
+                this.oldSlideTransform = 0
+                console.log("reset whee", this)
+                gsap.to(this.handler, {y: 0, force3D: true})
+                requestAnimationFrame(this.wheelLoop.bind(this))
+                
           }
 
     wheelLoop(){
+    let slideLimit = 120;
     let newSlideTransformTemp = this.slideTransform + (this.targetPosY - this.slideTransform) * .09
-    newSlideTransformTemp =  getRoundedValue(newSlideTransformTemp)
-    gsap.to(ref.current, {y: this.slideTransform, force3D: true})
+    newSlideTransformTemp =  this.getRoundedValue(newSlideTransformTemp)
+    console.log("wheel loop", this.slideTransform)
+
+    if(true)
+    {    this.oldSlideTransform = this.slideTransform;
+        this.slideTransform = newSlideTransformTemp;
+
+        gsap.to(this.handler, {y: this.slideTransform, force3D: true})
+    }
 
     if(this.slideTransform <= -slideLimit ){
-      nextSlide()
-      _.delay(resetWheel,500)
+      this.nextSlide()
+      _.delay(this.resetWheel.bind(this),1000)
 
     }
     else if (this.slideTransform >= slideLimit){
-      prevSlide()
-      _.delay(resetWheel,500)
+      this.prevSlide()
+      _.delay(this.resetWheel.bind(this),1000)
 
     }
     else{
-
-      requestAnimationFrame(wheelLoop)
+    let bindWheel = this.wheelLoop.bind(this)
+      requestAnimationFrame(bindWheel)
 
     }
 
@@ -110,6 +153,9 @@ export class VS{
 
     backToSlide(){
 
+
+    console.log("debounce, here", this)
+    this.targetPosY = 0;
 
     }
 

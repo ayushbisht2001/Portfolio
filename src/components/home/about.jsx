@@ -3,12 +3,25 @@ import { Section } from '../../utility/styled_components/container'
 import { Row, Col } from '../../utility/styled_components/box'
 import { Button } from '../../utility/styled_components/button';
 import { getElementXY } from '../../utility';
+import _ from "lodash"
+import { TweenLite } from "gsap/gsap-core";
+import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
+import Intro from './intro';
+gsap.registerPlugin(MotionPathPlugin);
 
+
+const mapper = {
+    0 : "Ayush",
+    1: "Manju",
+    2 : "Tannu"
+}
 
 export default function AboutSlide(props) {
 
     const [state, setState] = useState({
-        direction : 0,
+        direction : "down",
         vis : "hidden"
     });
 
@@ -20,54 +33,48 @@ export default function AboutSlide(props) {
 
     const {
         movement, 
-        visible = false
+        visible = false, 
+        transformY = 0, 
+        slide_id, 
+        direction
     } = props
 
    
     useEffect(() => {
-        
 
-        if(movement === "up")
-        setDir(-1)
-        else
-        if(movement == "down")
-        setDir(1)
-        else
-        setDir(0)
-
-     console.table(props)
-     console.table(dir)
-
+        console.log("about props", props)
      
-    }, [visible, movement])
+    if(ref)
+    {    if(visible){
+
+         setState( (prev) => ({
+            ...prev, 
+            vis : "inherit",
+            direction : direction
+         }))
+
+        ref.current.style.opacity = 1
+
+
+        }else{
+            setState( (prev) => ({
+                ...prev, 
+                vis : "hidden",
+                direction : direction
+
+             }))
+             ref.current.style.opacity = 0
+
+        }
+
+}
+     
+    }, [visible])
 
   return (
-   <Section ref = {ref}  h ="100vh" w = "100%" of ="hidden"   >
- 
-    <Row
-        align = "center"
-        m = "auto"
-        cols = "40% 50%"
-        rows = "500px"
-        h = "100vh"
-        justify = "center"
-        w = "100%"
-        pos = "relative"
-    >
-        <Col
-        bg = "red"
-        tf = {`translateY(${dir*600}px)`}
-        trans = "all 1s ease"
-        >
-            Hello bitches
-        </Col>
-        <Col
-        bg = "red"
-        
-        >
-        </Col>
-
-    </Row>
+   <Section o = "0" trans = "opacity 1s ease-in-out"   bg = "blue" ref = {ref}  h ="100%" w = "100%" pos = "absolute"  visible = {state.vis}  >
+    <Intro title = {mapper[props.slide_id]} />
+   
    </Section>
     )
 }

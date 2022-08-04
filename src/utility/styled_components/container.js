@@ -81,7 +81,18 @@ z-index : ${props => props.zi || ""};
 transform : ${props => props.tf || ""};
 margin-top : ${props => props.mt || ""};
 visibility : ${props => props.visible || ""};
-
+border : ${props => props.border || ""};
+opacity : ${props => props.o || ""};
+padding : ${(props) => props.p || "0px"};   
+margin : ${props => props.m || "0px"};
+width : ${props => props.w || "auto"};
+height: ${(props) => props.h || "auto"};
+display : ${(props) => props.d || "block"};
+z-index : ${(props) => props.zi || "1"};
+animation : ${props => props.animate || ""};
+transform : ${props => props.tf || ""};
+font-family : ${props => props.family || "inherit"};
+transition : ${props => props.trans || ""};
 ${props => css`${props.sx}`};
 
 @media (max-width: 1400px) {   

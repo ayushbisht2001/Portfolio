@@ -25,7 +25,11 @@ import { FaTwitterSquare } from "react-icons/fa";
 import { iuri } from "../../utility/styled_components/colors";
 import NavBar from "../navigation/NavBar";
 
-export default function Intro() {
+export default function Intro(props) {
+
+  const{
+    title
+  } = props;
   return (
     <ContainerFluid
       mh="100vh"
@@ -147,20 +151,20 @@ export default function Intro() {
 
       <Box pos="absolute" top="33%" left="10%">
         <AniHeading
-          title={"Namaste, my name is"}
+          title={ title+ ", my name is"}
           weight="200"
           size="1.8rem"
           sx={{ display: "block" }}
           type="t"
         />
-        <AnimateText
+        {/* <AnimateText
           width={1000}
           height={110}
-          title="AYUSH BISHT"
+          title={"Ayush Bisht"}
           primary={iuri}
           secondary="#F1FAEE"
           size="3rem"
-        />
+        /> */}
 
         <AniHeading
           title={"I'm a Software Developer"}
