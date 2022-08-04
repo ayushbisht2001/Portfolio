@@ -12,9 +12,9 @@ function Home(props) {
 
   return (
     <ContainerFluid h="100vh" bg="white" of="hidden">
-      <NavBar />
-      <Intro />
-      {/* <Slider /> */}
+      {/* <NavBar />
+      <Intro /> */}
+      <Slider />
    
     </ContainerFluid>
   );

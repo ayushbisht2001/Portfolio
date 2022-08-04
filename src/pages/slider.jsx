@@ -25,6 +25,11 @@ function Slider(props) {
   const ref = useRef();
   const bref  = useRef();
   const target= useRef()
+
+  const animateFrame = useRef()
+  const prevAnimateFrame = useRef()
+
+
   const [target_pos, SetTargetPos] = useState({
 
     targetPosY: 0,
@@ -41,15 +46,17 @@ function Slider(props) {
   });
 
   function debounce(e){
-    console.log("here")
+
+    console.log("debounce, here")
+
     SetTargetPos((prev) => ({
       ...prev,
       targetPosY : 0
     }))
-    gsap.to(bref.current, {y: 0, force3D: true})
+    // TweenLite.set(bref.current, {y: 0, force3D: true})
 
-    setFlag((prev) => prev  + 1)
   }
+  const[newSlideTransform, setNewSlideTransform] = useState(0)
 
   const[flag, setFlag] = useState(0)
 
@@ -58,33 +65,19 @@ function Slider(props) {
   function handleScroll(event){
 
     let targetModifier = event.deltaY
-
-    console.log(targetModifier)
-
+    
+    
     SetTargetPos( (prev) => ( { 
       ...prev,
       targetPosY : prev.targetPosY + targetModifier,
       oldDeltaY : event.deltaY 
     }))
 
-    setFlag(flag => flag+1)
     debounceBackToSlide()
 
   }
 
-  const obj = {
- 
-    debounceBackToSlide: function (){
-      _.debounce(this.backToSlide, 200);
-    },
-    backToSlide: function () {
-      console.log("this", this);
-    }
 
-  }
-
-
-  const [state, setState] = useState(obj);
 
   function resetWheel(){
 
@@ -96,11 +89,12 @@ function Slider(props) {
         directionQueue : '',
     }))
 
-      gsap.to(bref.current, {y: 0, force3D: true})
+      // gsap.to(bref.current, {y: 0, force3D: true})
   }
 
  function getRoundedValue(valueToRound){
-    let roundedValue = valueToRound * 1000
+  
+  let roundedValue = valueToRound * 1000
       roundedValue = Math.round(roundedValue)
       roundedValue = roundedValue / 1000
 
@@ -110,35 +104,37 @@ function Slider(props) {
 
   function prevSlide(){
     console.log("move previous")
-    gsap.to(target.current, { y : "-100", force3D : true})
+    // gsap.to(target.current, { y : 0, force3D : true})
   }
 
   function nextSlide(){
     console.log("move next")
 
-    gsap.to(target.current, { y : "+100", force3D : true})
+    // gsap.to(target.current, { y : 0, force3D : true})
 
   }
 
 
-  function wheelLoop(){
+  function wheelLoop(time){
 
-    let slideLimit = 60
-    let newSlideTransform = target_pos.slideTransform + (target_pos.targetPosY - target_pos.slideTransform) * .09
-        newSlideTransform =  getRoundedValue(newSlideTransform)
+    let newSlideTransformTemp = target_pos.slideTransform + (target_pos.targetPosY - target_pos.slideTransform) * .09
+   
+    newSlideTransformTemp =  getRoundedValue(newSlideTransformTemp)
 
-  
-    if(newSlideTransform !== target_pos.oldSlideTransform)
-      {
-        SetTargetPos((prev) => ({
-        ...prev,
-        oldSlideTransform : prev.slideTransform,
-        slideTransform : newSlideTransform
+    setNewSlideTransform( () => newSlideTransformTemp)
 
-      }))         
-      gsap.to(bref.current, {y: target_pos.slideTransform, force3D: true})
-    }
-    console.log("wheel loop - ", target_pos.slideTransform)
+    animateFrame.current = requestAnimationFrame(wheelLoop)
+
+
+  }
+
+
+  useEffect(() => {
+
+    const slideLimit = 165
+    console.log("gsap update")
+
+    gsap.to(ref.current, {y: target_pos.slideTransform, force3D: true})
 
     if(target_pos.slideTransform <= -slideLimit ){
       nextSlide()
@@ -149,14 +145,16 @@ function Slider(props) {
       prevSlide()
       _.delay(resetWheel,500)
 
-    }else {
-      // requestAnimationFrame(wheelLoop)
+    }
+    else{
+
+      animateFrame.current = requestAnimationFrame(wheelLoop)
+
     }
 
-  }
+  }, [newSlideTransform])
 
   useEffect(() => {
-    const handleState = setState;
 
     let vs = new VirtualScroll({
       el: ref.current,
@@ -166,18 +164,21 @@ function Slider(props) {
 
     vs.on(handleScroll);
 
+    wheelLoop()
+
     return () => {
       vs.destroy();
     };
+
+
   }, []);
 
 
-  useEffect(() =>{
+ 
 
-    wheelLoop()
-    
-  }, [flag, bref])
+
   
+
 
   return (
     <ContainerFluid h="100vh" bg="white" of="hidden">
@@ -192,7 +193,10 @@ function Slider(props) {
           pos="absolute"
           trans="all 0.5s ease"
           ref = {bref}
-          ></Box>
+          >
+      {newSlideTransform}
+
+          </Box>
 
         <Box
           w = "100px"
