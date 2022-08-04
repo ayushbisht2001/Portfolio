@@ -27,7 +27,7 @@ export const mouse = {
     const{
       scale = 1,
       direction = 1
-    } = props
+    } = props || {}
     let x = e.x;
     let y = e.y;
     let moveX = 30*x/1000;

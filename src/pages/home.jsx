@@ -11,9 +11,9 @@ function Home(props) {
  
 
   return (
-    <ContainerFluid h="100vh" bg="white" of="hidden">
-      {/* <NavBar />
-      <Intro /> */}
+    <ContainerFluid h="100vh" bg="white"  >
+      <NavBar />
+      {/* <Intro /> */}
       <Slider />
    
     </ContainerFluid>

@@ -28,7 +28,7 @@ export default  class VS{
         this.oldDeltaY= 0;
         this.leave= false;
         this.direction= '';
-
+        this.sliderIsAnimating = false;
         this.events()
        
 
@@ -56,8 +56,10 @@ export default  class VS{
 
     wheel(event){
         let targetModifier = event.deltaY
-        this.targetPosY += targetModifier
+        if(!this.sliderIsAnimating)
+       { this.targetPosY += targetModifier
         this.oldDeltaY = event.deltaY
+         }
         console.log("wheel events", this.targetPosY)
         this.debouncedBackToSlide()
     }
@@ -88,7 +90,6 @@ export default  class VS{
         this.handleState((prev) => ({
             ...prev,
             slide_id : (prev.slide_id + 1)%3,
-            transformY : 400,
             direction : "down"
         }))
       
@@ -101,7 +102,6 @@ export default  class VS{
         this.handleState((prev) => ({
             ...prev,
             slide_id : (3 + prev.slide_id  - 1)%3,
-            transformY : -400,
             direction : "up"
         }))
        
@@ -113,7 +113,7 @@ export default  class VS{
                 this.targetPosY = 0;
                 this.slideTransform = 0;
                 this.oldDeltaY = 0;
-                this.oldSlideTransform = 0
+             
                 console.log("reset whee", this)
                 gsap.to(this.handler, {y: 0, force3D: true})
                 requestAnimationFrame(this.wheelLoop.bind(this))
@@ -121,12 +121,12 @@ export default  class VS{
           }
 
     wheelLoop(){
-    let slideLimit = 120;
+    let slideLimit = 165;
     let newSlideTransformTemp = this.slideTransform + (this.targetPosY - this.slideTransform) * .09
     newSlideTransformTemp =  this.getRoundedValue(newSlideTransformTemp)
     console.log("wheel loop", this.slideTransform)
 
-    if(true)
+    if(newSlideTransformTemp !== this.oldSlideTransform)
     {    this.oldSlideTransform = this.slideTransform;
         this.slideTransform = newSlideTransformTemp;
 
@@ -134,13 +134,17 @@ export default  class VS{
     }
 
     if(this.slideTransform <= -slideLimit ){
-      this.nextSlide()
-      _.delay(this.resetWheel.bind(this),1000)
+      
+        this.sliderIsAnimating = true;
+        this.nextSlide()
+
+      _.delay(this.resetWheel.bind(this),500)
 
     }
     else if (this.slideTransform >= slideLimit){
-      this.prevSlide()
-      _.delay(this.resetWheel.bind(this),1000)
+        this.sliderIsAnimating = true;
+          this.prevSlide()
+      _.delay(this.resetWheel.bind(this),500)
 
     }
     else{

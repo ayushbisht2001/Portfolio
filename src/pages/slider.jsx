@@ -12,7 +12,9 @@ import { getElementXY } from "../utility";
 import { Box } from "../utility/styled_components/box";
 import _ from "lodash";
 import VS from "./virtualScroll"
-
+import SliderBg from "../components/reusable_components/SliderBg";
+import Testimonials from "../components/home/testimonials";
+import Contact from "../components/home/contact_me";
 
 function Slider(props) {
 
@@ -76,20 +78,22 @@ useEffect(() => {
 
       setSlide(slide.slide_id)
     }, 200)
+    setTimeout(() =>{
+      vs.sliderIsAnimating = false;
 
+    }, [1000])
   }
 }, [slide])
   return (
-    <ContainerFluid  bg="white" pos = "auto"  of = "hidden"> 
-      {/* <NavBar /> */}
-      {/* <Intro /> */}
+    <ContainerFluid    pos = "auto"  of = "hidden" bg = "transparent" > 
+      <SliderBg   {...slide} />
 
-      <Container h="100vh" ref={handler_ref}   w="100%" bg="pink" of = "hidden">
-
-          <AboutSlide visible = {selectSlide === 0} {...slide} ref = {target_ref}  />
-          <AboutSlide visible =  {selectSlide === 1} {...slide}  ref = {target_ref}  />
-          <AboutSlide visible = {selectSlide === 2} {...slide}  ref = {target_ref}  />
-
+       <Container h="100vh" ref={handler_ref} w="100%"  of = "hidden"
+        bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
+       >          
+        <AboutSlide visible = {selectSlide === 0} {...slide} ref = {target_ref}  />
+        <Testimonials visible = {selectSlide === 1} {...slide} ref = {target_ref} />
+        <Contact visible = {selectSlide === 2} {...slide} ref = {target_ref}  />
 
       </Container>
     </ContainerFluid>

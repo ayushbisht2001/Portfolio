@@ -31,7 +31,7 @@ export const Shape = styled.svg`
   transform: ${(props) => props.tf || "scale(1)"};
   fill-opacity: ${(props) => props.fo || "0.5"};
   transform-origin: ${(props) => props.tforigin || "center"};
-
+  transition : ${props => props.trans || ""};
   & path {
     fill : ${(props) => props.pfill || props.theme.palette.shape.primary};
     stroke-width : ${(props) => props.strokeW || "1"};
@@ -246,10 +246,10 @@ export const Circle = (props) => {
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref));
+    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref) );
+      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props) );
     };
   },[]);
 
