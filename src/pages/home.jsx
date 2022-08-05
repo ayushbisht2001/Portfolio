@@ -6,6 +6,7 @@ import {
 } from "../utility/styled_components/container";
 import NavBar from "../components/navigation/NavBar";
 import Slider from "./slider";
+import { SlideContextProvider } from "../store/slider_store";
  
 function Home(props) {
  
@@ -14,7 +15,10 @@ function Home(props) {
     <ContainerFluid h="100vh" bg="white"  >
       <NavBar />
       {/* <Intro /> */}
+      <SlideContextProvider>
       <Slider />
+        
+      </SlideContextProvider>
    
     </ContainerFluid>
   );

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState,useContext} from "react";
 import Intro from "../components/home/intro";
 import {
   Container,
@@ -15,8 +15,17 @@ import VS from "./virtualScroll"
 import SliderBg from "../components/reusable_components/SliderBg";
 import Testimonials from "../components/home/testimonials";
 import Contact from "../components/home/contact_me";
+import { SlideContext, SlideContextProvider } from "../store/slider_store";
+
+
+ 
+
 
 function Slider(props) {
+
+  const { state : {
+
+  }, slideContextDispatch }  = useContext(SlideContext) 
 
 
   const[vs, setVS] = useState(null)
@@ -28,6 +37,7 @@ function Slider(props) {
 
   })
 
+  
   const[selectSlide, setSlide] = useState(0)
   const handler_ref = useRef()
   const target_ref = useRef()
@@ -43,7 +53,7 @@ function Slider(props) {
 
   useEffect(() => {
     
-    let vs_obj =  new VS(handler_ref.current, target_ref.current, setSlideState)
+    let vs_obj =  new VS(handler_ref.current, target_ref.current, setSlideState, slideContextDispatch)
     setVS(vs_obj)
 
 
@@ -96,6 +106,7 @@ useEffect(() => {
         <Contact visible = {selectSlide === 2} {...slide} ref = {target_ref}  />
 
       </Container>
+
     </ContainerFluid>
   );
 }

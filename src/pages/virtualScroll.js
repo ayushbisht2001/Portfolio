@@ -5,12 +5,14 @@ import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import { TweenLite } from "gsap/gsap-core";
 
+
+
 gsap.registerPlugin(MotionPathPlugin);
 
 export default  class VS{
 
 
-    constructor(ele, target, stateCallback){
+    constructor(ele, target, stateCallback, slideStoreDispatch){
         
         this.vs = new VirtualScroll(
         {    el : ele,
@@ -29,6 +31,7 @@ export default  class VS{
         this.leave= false;
         this.direction= '';
         this.sliderIsAnimating = false;
+        this.slideStore = slideStoreDispatch
         this.events()
        
 
@@ -92,7 +95,8 @@ export default  class VS{
             slide_id : (prev.slide_id + 1)%3,
             direction : "down"
         }))
-      
+        
+        
 
     }
       
@@ -129,8 +133,12 @@ export default  class VS{
     if(newSlideTransformTemp !== this.oldSlideTransform)
     {    this.oldSlideTransform = this.slideTransform;
         this.slideTransform = newSlideTransformTemp;
-
         gsap.to(this.handler, {y: this.slideTransform, force3D: true})
+
+        this.slideStore( { type : "MOVE_SLIDER_BG", payload : {
+            moveY : this.slideTransform
+        }})
+    
     }
 
     if(this.slideTransform <= -slideLimit ){
