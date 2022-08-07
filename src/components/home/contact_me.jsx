@@ -1,84 +1,125 @@
-import React , {useState, useRef, useEffect} from 'react'
-import { Col, Row } from '../../utility/styled_components/box'
+import React, {useState, useEffect, useRef, useContext} from 'react'
 import { Section } from '../../utility/styled_components/container'
-import { Span } from '../../utility/styled_components/text'
-import { CurlyRing } from '../animations/shapes/shapes'
+import { Row, Col, Box } from '../../utility/styled_components/box'
+import { Button } from '../../utility/styled_components/button';
+import { getElementXY } from '../../utility';
+import _ from "lodash"
+import { TweenLite } from "gsap/gsap-core";
+import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import AniHeading from '../reusable_components/heading'
+import { Span } from '../../utility/styled_components/text'
+import { Strips } from '../animations/shapes/shapes'
+import {SlideContext} from '../../store/slider_store'
+import SliderBg from '../reusable_components/SliderBg'
 
+
+gsap.registerPlugin(MotionPathPlugin);
+
+
+ 
 export default function Contact(props) {
-    const [state, setState] = useState({
-        direction : "down",
-        vis : "hidden"
-    });
+
+    
+  const { state : {
+    moveY
+}, slideContextDispatch }  = useContext(SlideContext) 
 
     const [ dir, setDir] = useState(0)
     
     const ref = useRef()
 
-  
+    const ani_ref = useRef()
 
     const {
-        movement, 
-        visible = false, 
-        transformY = 0, 
-        slide_id, 
-        direction
-    } = props
+        slide,
+        vs,
+        visible,
+        setSlideState ,
+    } = props;
 
-   
+    
+    const changeSlide = (e) => {
+
+        setSlideState((prev) => ({
+            ...prev,
+            cur_slide : prev.slide_id
+        }))
+
+        console.log("changeslide", setSlideState)
+    }
+
+
+
     useEffect(() => {
 
      
-    if(ref)
-    {    if(visible){
+    if(ani_ref && visible && slide.cur_slide !== slide.slide_id)
+    {    
+        
+        if(slide.direction === "next")
+      { 
+        // ani_ref.current.style.transform = "translate(0, -600px)"
+        TweenLite.to(ani_ref.current, {y : -600, onComplete : changeSlide})
+        }
+        else
+        TweenLite.to(ani_ref.current, {y : 600, onComplete : changeSlide})
 
-         setState( (prev) => ({
-            ...prev, 
-            vis : "inherit",
-            direction : direction
-         }))
+        
+        console.log("about gsap", slide.slide_id)
+    }
+     
+    }, [slide.slide_id])
 
-        ref.current.style.opacity = 1
+    useEffect(( ) => {
 
+        if(visible && slide.cur_slide === slide.slide_id){
 
-        }else{
-            setState( (prev) => ({
-                ...prev, 
-                vis : "hidden",
-                direction : direction
-
-             }))
-             ref.current.style.opacity = 0
-
+            TweenLite.to(ani_ref.current, { y : 0})
         }
 
-}
-     
-    }, [visible])
+    }, [slide.cur_slide])
+
+ 
+
+
+
   return (
-  <Section n o = "0" trans = "opacity 1s ease-in-out"   bg ="transparent" ref = {ref}  h ="100%" w = "100%" pos = "absolute"  visible = {state.vis} >
-    <Row
-              w = "100%"
-              h = "500px"
-              justify = "center"
-              align = "center"
-              rows = "auto"
-              cols = "300px auto"
-              p = "300px 100px"
+   <Section  ref = {ref}  h ="100%" w = "100%" pos = "absolute" 
+    visible = {visible ? "inherit" : "hidden"}  
     >
-        <Col>
+        
+      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "circle" />
 
-           <CurlyRing /> 
+        <Box
+        d = "flex"
+        direction = "columns"
+        w = "100%"
+        h = "100%"
+        align = "center"
+        justify = "center"
+        gap = "20px"
+        >
+        <Box
+            w = "100px"
+            h = "100px"
+        >
 
-        </Col>
-        <Col>
+        </Box>
+        <Box
+        ref = {ani_ref}
+        w = "auto"
+        h = "auto"
+        tf = "translate(0, 600px)"
+        >
+        <AniHeading  type = "p" title = "About Me" size = "4rem"  />
+        <Span   type ="s">I'm a typical software engineer!  + { slide.cur_slide}</Span>
+        </Box>
 
-            <AniHeading type = "p" title = "Contact me" size = "4rem"  />
-            <Span type ="s">7037296166</Span>
-
-        </Col>
-
-    </Row>
-  </Section>
-  )
+        </Box>
+       
+    
+   </Section>
+    )
 }

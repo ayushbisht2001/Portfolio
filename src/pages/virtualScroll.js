@@ -12,7 +12,7 @@ gsap.registerPlugin(MotionPathPlugin);
 export default  class VS{
 
 
-    constructor(ele, target, store, slideStoreDispatch){
+    constructor(ele, target, stateCallback, slideStoreDispatch){
         
         this.vs = new VirtualScroll(
         {    el : ele,
@@ -24,6 +24,7 @@ export default  class VS{
         this.target = target;
         this.handler = ele;
         this.targetPosY= 0;
+        this.handleState = stateCallback
         this.slideTransform= 0;
         this.oldSlideTransform= 0;
         this.oldDeltaY= 0;
@@ -32,7 +33,7 @@ export default  class VS{
         this.sliderIsAnimating = false;
         this.slideStore = slideStoreDispatch
         this.events()
-        this.store = store
+       
 
 
     }
@@ -93,48 +94,33 @@ export default  class VS{
         console.log("move previous", this)
 
         // gsap.to(this.handler, { y : 0, force3D : true})
-        this.gotoSlide(this.store.cur_slide_id - 1)
+        
+        this.handleState((prev) => ({
+            ...prev,
+            slide_id : prev.slide_id - 1 <= 0 ? 0 : prev.slide_id - 1,
+            direction : "prev"
+        }))
+        
+        // this.slideStore( { type : "MOVE_SLIDER_BG", payload : {
+        //     moveY : this.slideTransform,
+        // }})
+        
 
     }
       
         nextSlide(){
           console.log("move next", this)
         //   gsap.to(this.handler, { y : 400, force3D : true})
+        this.handleState((prev) => ({
+            ...prev,
+            prev_slide_id : prev.slide_id,
+            slide_id : prev.slide_id + 1 >= 2 ? 2 : prev.slide_id + 1,
+            direction : "next",
+
+        }))
+
+
        
-        this.gotoSlide(this.store.cur_slide_id + 1)
-        }
-
-        gotoSlide(slide_id){
-
-            console.log("got to slide", slide_id)
-            if(slide_id < 0)
-            {     this.slideStore( { 
-                    type : "UPDATE",
-                    payload : {
-                        cur_slide_id : this.store.slide_length - 1,
-                    }
-                })
-            }
-            else
-            if(slide_id > this.store.slide_length - 1){
-                this.slideStore( { 
-                    type : "UPDATE",
-                    payload : {
-                        cur_slide_id : 0,
-                    }
-                })   
-            }
-            else{
-                this.slideStore( { 
-                    type : "UPDATE",
-                    payload : {
-                        cur_slide_id : slide_id,
-                    }
-                })
-            }
-        
-            this.has_animated()
-
 
         }
 
@@ -156,7 +142,7 @@ export default  class VS{
     newSlideTransformTemp =  this.getRoundedValue(newSlideTransformTemp)
     console.log("wheel loop", this.slideTransform)
 
-    if(newSlideTransformTemp !== this.oldSlideTransform && !this.sliderIsAnimating)
+    if(newSlideTransformTemp !== this.oldSlideTransform)
     {    this.oldSlideTransform = this.slideTransform;
         this.slideTransform = newSlideTransformTemp;
         gsap.set(this.handler, {y: this.slideTransform, force3D: true})
@@ -170,7 +156,7 @@ export default  class VS{
     if(this.slideTransform <= -slideLimit ){
       
         this.sliderIsAnimating = true;
-        // this.targetPosY = 0
+        this.targetPosY = 0
         this.nextSlide()
 
       _.delay(this.resetWheel.bind(this),1000)
@@ -178,7 +164,7 @@ export default  class VS{
     }
     else if (this.slideTransform >= slideLimit){
         this.sliderIsAnimating = true;
-        // this.targetPosY = 0
+        this.targetPosY = 0
         this.prevSlide()
       _.delay(this.resetWheel.bind(this),1000)
 

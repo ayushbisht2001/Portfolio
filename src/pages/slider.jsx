@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState,useContext} from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import Intro from "../components/home/intro";
 import {
   Container,
@@ -11,86 +11,87 @@ import { getElementError } from "@testing-library/react";
 import { getElementXY } from "../utility";
 import { Box } from "../utility/styled_components/box";
 import _ from "lodash";
-import VS from "./virtualScroll"
+import VS from "./virtualScroll";
 import SliderBg from "../components/reusable_components/SliderBg";
 import Testimonials from "../components/home/testimonials";
 import Contact from "../components/home/contact_me";
 import { SlideContext, SlideContextProvider } from "../store/slider_store";
 
-
- 
-
-
 function Slider(props) {
+  const {
+    state: {},
+    slideContextDispatch,
+  } = useContext(SlideContext);
 
-  const { state, slideContextDispatch }  = useContext(SlideContext) 
+  const [vs, setVS] = useState(null);
+  const [slide, setSlideState] = useState({
+    slide_id: 0,
+    direction: "down",
+    transformY: 0,
+    prev_slide_id: 0,
+    cur_slide: 0,
+  });
 
+  const [selectSlide, setSlide] = useState(0);
+  const handler_ref = useRef();
+  const target_ref = useRef();
 
-  const[vs, setVS] = useState(null)
-  const[slide, setSlideState]  = useState({
-    slide_id : 0,
-    direction : "down",
-    transformY : 0,
-    prev_slide_id : 0,
-    cur_slide : 0
-  })
-
-  
-  const[selectSlide, setSlide] = useState(0)
-  const handler_ref = useRef()
-  const target_ref = useRef()
-
- 
   useEffect(() => {
-    
-    let vs_obj =  new VS(handler_ref.current, target_ref.current, state, slideContextDispatch)
-    setVS(vs_obj)
+    let vs_obj = new VS(
+      handler_ref.current,
+      target_ref.current,
+      setSlideState,
+      slideContextDispatch
+    );
+    setVS(vs_obj);
     return () => {
       vs_obj.destroy();
     };
   }, []);
 
+  useEffect(() => {
+    if (vs) {
+      let bindWheel = vs.wheelLoop.bind(vs);
+      requestAnimationFrame(bindWheel);
+    }
+  }, [vs]);
 
   useEffect(() => {
+    if (vs) {
+      console.log("state reset");
+      // vs.resetWheel()
 
-    if(vs){
-    let bindWheel = vs.wheelLoop.bind(vs);
-    requestAnimationFrame(bindWheel)
+      setTimeout(() => {
+        vs.has_animated();
+      }, [1000]);
     }
-
-  }, [vs])
-  
-
-useEffect(() => {
-
-  if(vs){
-
-    console.log("state reset")
-    // vs.resetWheel()
-    
-    setTimeout(() =>{
-      vs.has_animated()
-    }, [1000])
-    
-  }
-}, [slide])
+  }, [slide]);
   return (
-    <ContainerFluid    pos = "auto"  of = "hidden"
-    bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
-    h = "100vh"
-    > 
-      {/* <SliderBg   {...slide} vs = {vs} /> */}
-
-       <Container h="100vh" ref={handler_ref} w="100%"  of = "hidden"
-        bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
-       >    
-        <AboutSlide key = {"About1"} visible = {slide.slide_id === 0} slide = {slide} setSlideState = {setSlideState}   vs = {vs}  />
-        <AboutSlide key = {"About2"} visible = {slide.slide_id === 1} slide = {slide} setSlideState = {setSlideState}  vs = {vs} />
-        <AboutSlide key = {"About3"} visible = {slide.slide_id === 2} slide = {slide} setSlideState = {setSlideState}   vs = {vs} />
-
+    <Wrapper spine={true} pos="auto" of="hidden" h="100vh">
+      <Container h="100vh" ref={handler_ref}   of="hidden" w = "min(100%, 900px)" >
+        <AboutSlide
+          key={"About1"}
+          visible={slide.cur_slide === 0}
+          slide={slide}
+          setSlideState={setSlideState}
+          vs={vs}
+        />
+        <Contact
+          key={"Contact"}
+          visible={slide.cur_slide === 1}
+          slide={slide}
+          setSlideState={setSlideState}
+          vs={vs}
+        />
+        <Testimonials
+          key={"Testimonials"}
+          visible={slide.cur_slide === 2}
+          slide={slide}
+          setSlideState={setSlideState}
+          vs={vs}
+        />
       </Container>
-
-    </ContainerFluid>
+    </Wrapper>
   );
 }
 

@@ -1,110 +1,163 @@
-import React, {useContext, useEffect, createRef, useRef} from 'react'
-import { Container, ContainerFluid } from '../../utility/styled_components/container'
-import { Box } from '../../utility/styled_components/box'
-import { Triangle,  Rectangle, Circle } from '../animations/shapes/shapes';
-import { sliderItemDownTransition, sliderItemUpTransition } from '../../utility/styled_components/keyframes';
-import { css } from 'styled-components';
-import { SlideContext } from '../../store/slider_store';
-import gsap from 'gsap';
-import { handleSliderShapes } from '../../utility';
-
-
+import React, {
+  useContext,
+  useEffect,
+  createRef,
+  useRef,
+  useState,
+} from "react";
+import {
+  Container,
+  ContainerFluid,
+} from "../../utility/styled_components/container";
+import { Box } from "../../utility/styled_components/box";
+import { Triangle, Rectangle, Circle, Square } from "../animations/shapes/shapes";
+import {
+  sliderItemDownTransition,
+  sliderItemUpTransition,
+} from "../../utility/styled_components/keyframes";
+import { css } from "styled-components";
+import { SlideContext } from "../../store/slider_store";
+import gsap from "gsap";
+import { handleSliderShapes } from "../../utility";
+import { TweenLite } from "gsap/gsap-core";
 
 const slideOptionMapper = {
-    0 :"triangle",
-    1 : "cirlce",
-    2 : "square"
-}
+  0: "triangle",
+  1: "cirlce",
+  2: "square",
+};
 
+const Items = (props) => {
+  const { itype = "circle", tref } = props;
 
-const Items = (props) =>{
+  useEffect(() => {
+    console.log("items props", props);
+  }, []);
 
-const{
-         itype = "circle",
-         ref
-
-} = props;
-
-
-return (
-    itype === "triangle" ? 
-    <Box  {...props} ref = {ref}  w = "100px" h = "100px" bg = "red" pos = "absolute"  /> : 
-    ( itype ==="square" ? 
-    <Rectangle    {...props}   isLive = {true}  /> :
-    <Circle {...props}  isLive = {true} />
-    )
-)
-}
-
-
+  return itype === "triangle" ? (
+    <Triangle {...props} tref={tref} pfill = "none" />
+  ) : (itype === "square" ? 
+    <Square   {...props} tref={tref}  pfill = "none" />
+   : (
+    <Circle   {...props} tref={tref}  pfill = "none"  />
+  ));
+};
 
 export default function SliderBg(props) {
 
-    const{
-        direction = "up",
-        slide_id = 0,
-        vs
-    } = props;
+  const { direction = "up", slide_id = 0, vs, slide, visible, itype } = props;
 
-    const {
-      state : {
-        moveY,
-        moveX,
-        rotateX,
-        rotateY
-      }, slideReduceDispatch
-    } = useContext(SlideContext)
+  const [ref_list, setRef] = useState([
+    createRef(),
+    createRef(),
+    createRef(),
+    createRef(),
+    createRef(),
+    createRef(),
+  ]);
+  const {
+    state: { moveY, moveX, rotateX, rotateY },
+    slideReduceDispatch,
+  } = useContext(SlideContext);
 
-    const ref_list =  [createRef(),createRef(),createRef(),createRef(),createRef()]
+  useEffect(() => {
+    if (visible && slide.cur_slide === slide.slide_id) {
+      console.log("ref", ref_list);
 
-    const ref1 = useRef()
-    const ref2 = useRef()
-    const ref3 = useRef()
-
-
-    function handleAnimation(e){
-
-      if(vs){
-        vs.has_animated()
-      }
-
-
+      ref_list.forEach((ref, index) => {
+        TweenLite.to(ref.current, {
+          y: (moveY * (index + 1)) / 2,
+          force3D: true,
+        });
+      });
     }
+  }, [slide.cur_slide]);
 
-    useEffect(() => {
+  useEffect(() => {
 
-      // ref_list.forEach((ref, index) => {
-      //   console.log("ref", ref)
-      //   gsap.to(ref.current, {y: moveY*(index+1)/2, force3D: true})
-      // })
+    if(visible && slide.cur_slide === slide.slide_id)
+ {   ref_list.forEach((ref, index) => {
+      TweenLite.to(ref.current, {
+        y: (moveY * (index + 1)) / 2,
+        force3D: true,
+      });
+    });}
+  }, [moveY]);
 
-      if(ref1.current)
-    {  gsap.to(ref1.current, {y: moveY*2, force3D: true})
-      gsap.to(ref2.current, {y: moveY*1.2, force3D: true})
-      gsap.to(ref3.current, {y: moveY*0.9, force3D: true})
+  useEffect(() => {
+    if(visible && slide.cur_slide === slide.slide_id){
+    ref_list.forEach((ref, index) => {
+      TweenLite.to(ref.current, { y: 0, force3D: true });
+    }); 
+  }
+
+  console.log("props", props)
+  }, []);
+
+
+  useEffect(() => {
+    if (visible && slide.cur_slide !== slide.slide_id) {
+
+    console.log("set ref")
+
+
+      if (slide.direction === "next") {
+        ref_list.forEach((ref, index) => {
+          TweenLite.to(ref.current, { y: -800, force3D: true });
+        });
+      } else
+        ref_list.forEach((ref, index) => {
+          TweenLite.to(ref.current, { y: 800, force3D: true });
+        });
     }
-
-    }, [moveY])
+  }, [slide.slide_id]);
 
   return (
-  <Container pos = "absolute" h = "100vh" w = "100%" of = "hidden"  
-  
-    sx = {css`
+    <Container pos="absolute" h="100vh" w="100%" of="hidden">
+      <Items
+        left="20%"
+        top="10%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tref={ref_list[0]}
+        tf="translate(0, 800px)  scale(2) rotate(230deg) "
+      />
 
-        & div{
+      <Items
+        right="10%"
+        top="30%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tf="translate(0, 800px)  scale(2) rotate(130deg)  "
+        tref={ref_list[1]}
+      />
+      <Items
+        left="15%"
+        top="40%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tf="translate(0, 800px)  scale(4) rotate(50deg)  "
+        tref={ref_list[2]}
+      />
+      <Items
+        left="10%"
+        bottom="0%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tf="translate(0, 800px)  scale(1) rotate(230deg)  "
+        tref={ref_list[3]}
+      />
 
-          animation : ${direction === "down" ? css`${sliderItemUpTransition} 1s linear forwards `: css`${sliderItemDownTransition} 1s linear forwards`};
-          transition : 1s all ease;
-        }
-
-    
-    `}
-  >
-
-  
-    
-    
-
-  </Container>
-  )
+      <Items
+        right="10%"
+        bottom="10%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tf="translate(0, 800px)  scale(1) rotate(230deg)  "
+        tref={ref_list[4]}
+      />
+      <Items
+        left="50%"
+        bottom="30%"
+        itype={slideOptionMapper[slide.cur_slide]}
+        tf="translate(0, 800px)  scale(1) rotate(230deg)  "
+        tref={ref_list[5]}
+      />
+    </Container>
+  );
 }
