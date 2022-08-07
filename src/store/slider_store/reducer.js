@@ -7,7 +7,9 @@ export const initial_state = {
     moveY : 0,
     moveX  : 0,
     animation_id: 0,
-    direction : "up"
+    direction : "next",
+    cur_slide_id : 0,
+    slide_length : 3
 
 }
 
@@ -24,6 +26,12 @@ export const slideReducer = (state = initial_state, action) => {
                 ...payload
             }
         case "MOVE_SLIDER_BG":
+            console.log("MOVE_SLIDER_BG", payload)    
+            return{
+                ...state,
+                ...payload
+            }
+        case "UPDATE":
             return{
                 ...state,
                 ...payload

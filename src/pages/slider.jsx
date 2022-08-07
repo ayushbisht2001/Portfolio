@@ -23,18 +23,16 @@ import { SlideContext, SlideContextProvider } from "../store/slider_store";
 
 function Slider(props) {
 
-  const { state : {
-
-  }, slideContextDispatch }  = useContext(SlideContext) 
+  const { state, slideContextDispatch }  = useContext(SlideContext) 
 
 
   const[vs, setVS] = useState(null)
   const[slide, setSlideState]  = useState({
-
     slide_id : 0,
     direction : "down",
-    transformY : 0
-
+    transformY : 0,
+    prev_slide_id : 0,
+    cur_slide : 0
   })
 
   
@@ -42,36 +40,22 @@ function Slider(props) {
   const handler_ref = useRef()
   const target_ref = useRef()
 
-  const handleScroll = (event) =>{
-   
-    let targetModifier = event.deltaY
-    vs.state.targetPosY += targetModifier
-    vs.state.oldDeltaY = event.deltaY
-    vs.debouncedBackToSlide()
-    console.log("handle scroll babes")
-  }
-
+ 
   useEffect(() => {
     
-    let vs_obj =  new VS(handler_ref.current, target_ref.current, setSlideState, slideContextDispatch)
+    let vs_obj =  new VS(handler_ref.current, target_ref.current, state, slideContextDispatch)
     setVS(vs_obj)
-
-
     return () => {
       vs_obj.destroy();
     };
-
-
   }, []);
 
 
   useEffect(() => {
 
     if(vs){
-    
     let bindWheel = vs.wheelLoop.bind(vs);
     requestAnimationFrame(bindWheel)
-
     }
 
   }, [vs])
@@ -84,26 +68,25 @@ useEffect(() => {
     console.log("state reset")
     // vs.resetWheel()
     
-    setTimeout(() => {
-
-      setSlide(slide.slide_id)
-    }, 200)
     setTimeout(() =>{
-      vs.sliderIsAnimating = false;
-
+      vs.has_animated()
     }, [1000])
+    
   }
 }, [slide])
   return (
-    <ContainerFluid    pos = "auto"  of = "hidden" bg = "transparent" > 
-      <SliderBg   {...slide} />
+    <ContainerFluid    pos = "auto"  of = "hidden"
+    bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
+    h = "100vh"
+    > 
+      {/* <SliderBg   {...slide} vs = {vs} /> */}
 
        <Container h="100vh" ref={handler_ref} w="100%"  of = "hidden"
         bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
-       >          
-        <AboutSlide visible = {selectSlide === 0} {...slide} ref = {target_ref}  />
-        <Testimonials visible = {selectSlide === 1} {...slide} ref = {target_ref} />
-        <Contact visible = {selectSlide === 2} {...slide} ref = {target_ref}  />
+       >    
+        <AboutSlide key = {"About1"} visible = {slide.slide_id === 0} slide = {slide} setSlideState = {setSlideState}   vs = {vs}  />
+        <AboutSlide key = {"About2"} visible = {slide.slide_id === 1} slide = {slide} setSlideState = {setSlideState}  vs = {vs} />
+        <AboutSlide key = {"About3"} visible = {slide.slide_id === 2} slide = {slide} setSlideState = {setSlideState}   vs = {vs} />
 
       </Container>
 

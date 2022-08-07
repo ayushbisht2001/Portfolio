@@ -239,17 +239,17 @@ export const Shape = styled.svg`
 
 
 export const Circle = (props) => {
-  const { sx, isLive = false, scale = 1 } = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler } = props;
   const ref = useRef();
   const [state, setState] = useState()
 
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props) );
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
 
@@ -262,20 +262,20 @@ export const Circle = (props) => {
 };
 
 export const Ring = (props) => {
-  const { sx, isLive = false, scale = 1} = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler} = props;
   const ref = useRef();
   const [state, setState] = useState()
 
-  
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
+
   return (
     <Shape {...props} width="200" height="200"  ref = {ref} >
       <path
@@ -320,17 +320,17 @@ export const ULines = (props) => {
 };
 
 export const Triangle = (props) => {
-  const { sx, isLive = false , scale=1} = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler} = props;
   const ref = useRef();
   const [state, setState] = useState()
 
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
   return (
@@ -344,17 +344,17 @@ export const Triangle = (props) => {
 };
 
 export const ORing = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler} = props;
   const ref = useRef();
   const [state, setState] = useState()
 
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
 
@@ -670,17 +670,17 @@ export const Strips = (props) => {
 };
 
 export const Square = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler} = props;
   const ref = useRef();
   const [state, setState] = useState()
-  
+
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
   return (
@@ -691,17 +691,17 @@ export const Square = (props) => {
 };
 
 export const Rectangle = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
+  const { sx, isLive = false, scale = 1, shapeTransitionHandler} = props;
   const ref = useRef();
   const [state, setState] = useState()
-  
+
   useEffect(()=>{    
     
     if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
+    window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
 
     return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
+      window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };
   },[]);
   return (

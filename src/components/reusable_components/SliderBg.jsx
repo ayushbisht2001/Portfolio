@@ -6,6 +6,7 @@ import { sliderItemDownTransition, sliderItemUpTransition } from '../../utility/
 import { css } from 'styled-components';
 import { SlideContext } from '../../store/slider_store';
 import gsap from 'gsap';
+import { handleSliderShapes } from '../../utility';
 
 
 
@@ -41,7 +42,8 @@ export default function SliderBg(props) {
 
     const{
         direction = "up",
-        slide_id = 0
+        slide_id = 0,
+        vs
     } = props;
 
     const {
@@ -60,6 +62,14 @@ export default function SliderBg(props) {
     const ref3 = useRef()
 
 
+    function handleAnimation(e){
+
+      if(vs){
+        vs.has_animated()
+      }
+
+
+    }
 
     useEffect(() => {
 
@@ -72,96 +82,29 @@ export default function SliderBg(props) {
     {  gsap.to(ref1.current, {y: moveY*2, force3D: true})
       gsap.to(ref2.current, {y: moveY*1.2, force3D: true})
       gsap.to(ref3.current, {y: moveY*0.9, force3D: true})
-}
+    }
 
     }, [moveY])
 
   return (
   <Container pos = "absolute" h = "100vh" w = "100%" of = "hidden"  
+  
     sx = {css`
 
-        & svg{
+        & div{
 
-            animation : ${direction === "down" ? css`${sliderItemUpTransition} 1s linear forwards `: css`${sliderItemDownTransition} 1s linear forwards`};
-
+          animation : ${direction === "down" ? css`${sliderItemUpTransition} 1s linear forwards `: css`${sliderItemDownTransition} 1s linear forwards`};
+          transition : 1s all ease;
         }
 
     
     `}
-  
-  
   >
-    <Box 
-     left="7%"
-     top="20%"
-     type="p"
-     ref = {ref1}
-     direction={-1}
- bg = "red"
 
-     trans = "all 1s ease-out"
-     itype = {slideOptionMapper[slide_id]}
-      pos = "absolute"
-      w = "100px"
-      h = "100px"
-    />
-    <Box
-     left="27%"
-     top="30%"
-     type="p"
-    itype = {slideOptionMapper[slide_id]}
-    ref = {ref2}
-    pos = "absolute"
-    w = "100px"
-    h = "100px"
-    direction={-1}
-     trans = "all 0.6s ease-out"
-    bg = "red"
-     
-    />
-    <Box
-     left="47%"
-     top="20%"
-     type="p"
-    itype = {slideOptionMapper[slide_id]}
-    ref = {ref3}
-    pos = "absolute"
-    w = "100px"
-    h = "100px"
- bg = "red"
-     direction={1}
-     trans = "all 1.2s ease-out"
-     
-    />
-    <Box
-     left="77%"
-     top="60%"
-     type="p"
-     pos = "absolute"
-     w = "100px"
-     h = "100px"
-     direction={-1}
-     trans = "all 0.7s ease-out"
- bg = "red"
-     
-     itype = {slideOptionMapper[slide_id]}
-    
-    />
-    <Box
-     right="5%"
-     top="40%"
-     type="p"
-     itype = {slideOptionMapper[slide_id]}
-     pos = "absolute"
-     w = "100px"
-     h = "100px"
-     direction={1}
-     trans = "all 1s ease-out"
-     
- bg = "red"
-    
-    />
   
+    
+    
+
   </Container>
   )
 }
