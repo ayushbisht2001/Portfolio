@@ -229,6 +229,7 @@ export const Shape = styled.svg`
       }
     }
   }
+  
 
   stroke-width : ${props => props.strokeW || ""};
 

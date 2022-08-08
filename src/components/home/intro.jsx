@@ -99,13 +99,15 @@ export default function Intro(props) {
       visible={visible ? "inherit" : "hidden"}
     >
       <Container ref = {ani_ref} pos="absolute"   zi = "1" w = "100%" h = "100%" of = "hidden">
-        {/* <LiveShape
+        <LiveShape
           stype = "triangle"
-          right="1%"
-          bottom="12%"
-          tf="rotate(45deg) scale(2.4)"
-          type="p"
-        /> */}
+          left="20%"
+          isLive={true}
+          bottom="32%"
+          tf="scale(1)"
+          type="s"
+          pfill = "none"
+        />
         {/* <Square left="-5%" bottom="-3%" tf="rotate(30deg) scale(1.2) " />
         <ORing
           left="0%"
@@ -128,7 +130,11 @@ export default function Intro(props) {
           pfill = "none"
 
         />
-        {/* <Circle left="0%" top="0%" tf="scale(0.8)" /> */}
+        <LiveShape stype = "circle" right="30%" top="20%" tf="scale(0.2)"
+        scale = {0.2}
+          isLive={true}
+        
+        />
         {/* <ULines right="-80px" top="-120px" tf="scale(0.4) " fo="0.4" type="s" /> */}
 
         <LiveShape
@@ -142,17 +148,33 @@ export default function Intro(props) {
           direction = {-1}
           pfill = "none"
         />
-        <CurlyRing left="55%" top="50%" tf="scale(1.3)" type="p" />
+        <CurlyRing left="55%" top="50%" tf="scale(2.3)" type="p" 
+          sm = {`
+            bottom : -5%;
+            top : unset;
+            left : 40%;
 
-        {/* <LiveShape
-          stype = "triangle"
-    left="22%"
-    top="20%"
-    tf="rotate(30deg) scale(0.8) "
-    type="s"
-  /> */}
-        {/* <LiveShape
-          stype = "triangle" left="10%" top="30%" tf="rotate(30deg) scale(0.5)" type="t" /> */}
+          `}
+
+        />
+
+        <LiveShape
+          stype = "ring"
+          left="22%"
+          top="20%"
+          tf="scale(0.3) "
+          scale={0.3}
+
+          type="s"
+          isLive={true}
+
+          pfill = "none"
+        />
+        <LiveShape
+          isLive={true}
+          pfill = "none"
+          stype = "square" scale = {0.4} right="5%" top="30%" tf="rotate(30deg) scale(0.4)" type="t" />
+
         <LiveShape
           stype = "triangle"
           left="7%"
