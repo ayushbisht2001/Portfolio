@@ -23,23 +23,23 @@ import { TweenLite } from "gsap/gsap-core";
 
 const slideOptionMapper = {
   0: "triangle",
-  1: "cirlce",
-  2: "square",
+  2: "cirlce",
+  1: "square",
 };
 
 const Items = (props) => {
   const { itype = "circle", tref } = props;
 
   useEffect(() => {
-    console.log("items props", props);
+    //console.log("items props", props);
   }, []);
 
   return itype === "triangle" ? (
-    <Triangle {...props} tref={tref} pfill = "none" />
+    <Triangle {...props} tref={tref}  />
   ) : (itype === "square" ? 
-    <Square   {...props} tref={tref}  pfill = "none" />
+    <Square   {...props} tref={tref}   />
    : (
-    <Circle   {...props} tref={tref}  pfill = "none"  />
+    <Circle   {...props} tref={tref}    />
   ));
 };
 
@@ -62,7 +62,7 @@ export default function SliderBg(props) {
 
   useEffect(() => {
     if (visible && slide.cur_slide === slide.slide_id) {
-      console.log("ref", ref_list);
+      //console.log("ref", ref_list);
 
       ref_list.forEach((ref, index) => {
         TweenLite.to(ref.current, {
@@ -91,14 +91,14 @@ export default function SliderBg(props) {
     }); 
   }
 
-  console.log("props", props)
+  //console.log("props", props)
   }, []);
 
 
   useEffect(() => {
     if (visible && slide.cur_slide !== slide.slide_id) {
 
-    console.log("set ref")
+    //console.log("set ref")
 
 
       if (slide.direction === "next") {
@@ -155,7 +155,7 @@ export default function SliderBg(props) {
         left="50%"
         bottom="30%"
         itype={slideOptionMapper[slide.cur_slide]}
-        tf="translate(0, 800px)  scale(1) rotate(230deg)  "
+        tf="translate(0, 800px)  scale(3) rotate(230deg)  "
         tref={ref_list[5]}
       />
     </Container>

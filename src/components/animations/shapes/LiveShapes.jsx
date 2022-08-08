@@ -1,11 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import { handleLiveShape } from "../../../utility";
 import { BsConeStriped } from "react-icons/bs";
-import { Circle, Square, Triangle } from "./shapes";
+import { Circle, Ring, Square, Triangle } from "./shapes";
 import { Box } from "../../../utility/styled_components/box";
 
 const LiveShape = (props) => {
-  const {  scale = 1, shapeTransitionHandler } = props;
+  const {  scale = 1, shapeTransitionHandler, isLive, stype } = props;
   const ref = useRef();
 
   useEffect(()=>{    
@@ -19,10 +19,11 @@ const LiveShape = (props) => {
   },[]);
   return(
 
-    type == "cirlce" ? <Circle ref = {ref} {...props} />
-    : (type == "triagle" ? <Triangle ref= {ref} {...props} />
-    : ( type == "square" ? <Square ref={ref} {...props} /> 
-      : <Box ref = {ref} {...props}  />
+    stype === "circle" ? <Circle tref = {ref} {...props} />
+    : (stype === "triangle" ? <Triangle tref= {ref} {...props} />
+    : ( stype === "square" ? <Square tref={ref} {...props} /> 
+      : ( stype === "ring" ? <Ring tref = {ref} {...props} /> 
+        :<Box ref = {ref} {...props}  />  )  
     )
     )
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState, useEffect, useRef, useContext} from "react";
 import {
   ContainerFluid,
   Container,
@@ -24,19 +24,83 @@ import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { iuri } from "../../utility/styled_components/colors";
 import NavBar from "../navigation/NavBar";
+import _ from "lodash";
+import { TweenLite } from "gsap/gsap-core";
+import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
+import { SlideContext } from "../../store/slider_store";
+import SliderBg from "../reusable_components/SliderBg";
+import Wrapper from "../reusable_components/wrapper";
+import LiveShape from "../animations/shapes/LiveShapes";
+
+
 
 export default function Intro(props) {
 
- 
+  const {
+    state: { moveY },
+    slideContextDispatch,
+  } = useContext(SlideContext);
+
+  const [dir, setDir] = useState(0);
+
+  const ref = useRef();
+
+  const ani_ref = useRef();
+  const ani_ref_2 = useRef();
+
+
+  const { slide, vs, visible, setSlideState } = props;
+
+  const changeSlide = (e) => {
+    setSlideState((prev) => ({
+      ...prev,
+      cur_slide: prev.slide_id,
+    }));
+
+    //console.log("changeslide", setSlideState);
+  };
+
+  useEffect(() => {
+    if (ani_ref && visible && slide.cur_slide !== slide.slide_id) {
+      if (slide.direction === "next") {
+        // ani_ref.current.style.transform = "translate(0, -600px)"
+        TweenLite.to(ani_ref.current, { y: -600, onComplete: changeSlide });
+        TweenLite.to(ani_ref_2.current, { y: -600, onComplete: changeSlide });
+
+      } else 
+      {TweenLite.to(ani_ref.current, { y: 600, onComplete: changeSlide });
+      TweenLite.to(ani_ref_2.current, { y: 600, onComplete: changeSlide });
+      
+    }
+      //console.log("about gsap", slide.slide_id);
+    }
+  }, [slide.slide_id]);
+
+  useEffect(() => {
+    if (visible && slide.cur_slide === slide.slide_id) {
+      TweenLite.to(ani_ref.current, { y: 0 });
+      TweenLite.to(ani_ref_2.current, { y: 0 });
+
+    }
+  }, [slide.cur_slide]);
+
+
+  
   return (
     <ContainerFluid
       mh="100vh"
-      h="auto"
-      sx="overflow-x : hidden;"
-      pos="relative"
+      h="100vh"
+      w = "100%"
+      of = "hidden"
+      pos="absolute"
+      ref={ref}
+      visible={visible ? "inherit" : "hidden"}
     >
-      <Container pos="absolute" w = "100%" h = "100%" of = "hidden">
-        {/* <Triangle
+      <Container ref = {ani_ref} pos="absolute"   zi = "1" w = "100%" h = "100%" of = "hidden">
+        {/* <LiveShape
+          stype = "triangle"
           right="1%"
           bottom="12%"
           tf="rotate(45deg) scale(2.4)"
@@ -53,8 +117,9 @@ export default function Intro(props) {
           scale={0.7}
         /> */}
 
-        <Ring
+        <LiveShape
           type="s"
+          stype ="circle"
           right="2%"
           bottom="5%"
           tf="scale(0.2)"
@@ -66,7 +131,8 @@ export default function Intro(props) {
         {/* <Circle left="0%" top="0%" tf="scale(0.8)" /> */}
         {/* <ULines right="-80px" top="-120px" tf="scale(0.4) " fo="0.4" type="s" /> */}
 
-        <Ring
+        <LiveShape
+          stype = "ring"
           type="t"
           right="-10px"
           bottom="-40px"
@@ -78,14 +144,17 @@ export default function Intro(props) {
         />
         <CurlyRing left="55%" top="50%" tf="scale(1.3)" type="p" />
 
-        {/* <Triangle
+        {/* <LiveShape
+          stype = "triangle"
     left="22%"
     top="20%"
     tf="rotate(30deg) scale(0.8) "
     type="s"
   /> */}
-        {/* <Triangle left="10%" top="30%" tf="rotate(30deg) scale(0.5)" type="t" /> */}
-        <Triangle
+        {/* <LiveShape
+          stype = "triangle" left="10%" top="30%" tf="rotate(30deg) scale(0.5)" type="t" /> */}
+        <LiveShape
+          stype = "triangle"
           left="7%"
           top="30%"
           type="s"
@@ -97,7 +166,8 @@ export default function Intro(props) {
 
         />
 
-        <Triangle
+        <LiveShape
+          stype = "triangle"
           left="10%"
           bottom="15%"
           type="t"
@@ -106,7 +176,8 @@ export default function Intro(props) {
           pfill="none"
           tf="scale(0.4)"
         />
-        <Square
+        <LiveShape
+          stype = "square"
           left="55%"
           bottom="53%"
           type="s"
@@ -115,7 +186,8 @@ export default function Intro(props) {
           pfill="none"
           tf="scale(0.2)"
         />
-        <Ring
+        <LiveShape
+          stype = "ring"
           type="t"
           left="20%"
           bottom="20%"
@@ -127,7 +199,8 @@ export default function Intro(props) {
           strokeW = "0"
         />
 
-        <Triangle
+        <LiveShape
+          stype = "triangle"
           left="30%"
           bottom="5%"
           type="s"
@@ -136,7 +209,8 @@ export default function Intro(props) {
           pfill="none"
           tf="scale(0.4)"
         />
-        <Rectangle
+        <LiveShape
+          stype = "square"
           left="15%"
           top="13%"
           type="s"
@@ -147,7 +221,7 @@ export default function Intro(props) {
         />
       </Container>
 
-      <Box pos="absolute" top="33%" left="10%">
+      <Box pos="absolute" top="33%" p ="10px"   ref = {ani_ref_2}>
         <AniHeading
           title={"Namaste, my name is"}
           weight="200"
@@ -163,7 +237,12 @@ export default function Intro(props) {
           secondary="#F1FAEE"
           size="3rem"
         /> */}
-
+      <AniHeading
+          title={"Ayush Bisht"}
+          sx={{ display: "block" }}
+          size="5rem"
+          type="p"
+        />
         <AniHeading
           title={"I'm a Software Developer"}
           sx={{ display: "block" }}

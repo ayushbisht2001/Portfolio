@@ -63,7 +63,7 @@ export const handleSliderShapes = (e, ref, props) => {
     rotateY = 0,
   } = props
 
-  console.log("slider handle shape")
+  //console.log("slider handle shape")
 
   if(ref.current)
   {      ref.current.style.transform = `

@@ -19,6 +19,7 @@ export const Shape = styled.svg`
   position: ${(props) => props.pos || "absolute"};
   top: ${(props) => props.top || ""};
   border-radius: ${(props) => props.rad || ""};
+  margin : ${props => props.m || ""};
   bottom: ${(props) => props.bottom || ""};
   right: ${(props) => props.right || ""};
   left: ${(props) => props.left || ""};
@@ -62,7 +63,8 @@ export const Shape = styled.svg`
 
 }
   & #circle {
-    stroke-width: 3;
+    stroke-width : ${(props) => props.strokeW || "2"};
+
     --fill-val: ${(props) =>
       props.pfill ||
       (props.type == "s"
@@ -219,7 +221,7 @@ export const Shape = styled.svg`
     animation: triangle-ani 4s linear forwards;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    
+    fill-opacity : 0.3;
     @keyframes triangle-ani {
       100% {
         fill: var(--fill-val);
@@ -253,9 +255,11 @@ const{
 
 export const Ring = (props) => {
 
-
+  const{
+    tref
+  } = props;
   return (
-    <Shape {...props} width="200" height="200"   >
+    <Shape {...props} ref = {tref} width="200" height="200"   >
       <path
         id="ring"
         d="M97.5 169C43.7612 169 -4.84318e-09 131.154 -3.12036e-09 84.5C-1.39754e-09 37.8456 43.7612 1.61598e-09 97.5 3.60041e-09C151.239 5.58484e-09 195 37.8456 195 84.5C195 131.154 151.239 169 97.5 169ZM97.5 8.80888C49.1876 8.80888 9.97755 42.7394 9.97755 84.5C9.97755 126.261 49.1876 160.191 97.5 160.191C145.812 160.191 185.022 126.261 185.022 84.5C185.022 42.7394 145.637 8.80888 97.5 8.80888Z"

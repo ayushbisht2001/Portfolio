@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef, useContext} from 'react'
 import { Section } from '../../utility/styled_components/container'
-import { Row, Col, Box } from '../../utility/styled_components/box'
+import { Row, Col, Box, LinkBox } from '../../utility/styled_components/box'
 import { Button } from '../../utility/styled_components/button';
 import { getElementXY } from '../../utility';
 import _ from "lodash"
@@ -9,11 +9,15 @@ import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import AniHeading from '../reusable_components/heading'
-import { Span } from '../../utility/styled_components/text'
+import { Span , PText} from '../../utility/styled_components/text'
 import { Strips } from '../animations/shapes/shapes'
 import {SlideContext} from '../../store/slider_store'
 import SliderBg from '../reusable_components/SliderBg'
-
+import { LinkIcon } from "../../utility/styled_components/button";
+import { BsLinkedin } from "react-icons/bs";
+import { GoMarkGithub } from "react-icons/go";
+import { FaTwitterSquare } from "react-icons/fa";
+import ContactForm, { SimpleContactForm } from '../reusable_components/ContactForm';
 
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -47,7 +51,7 @@ export default function Contact(props) {
             cur_slide : prev.slide_id
         }))
 
-        console.log("changeslide", setSlideState)
+        //console.log("changeslide", setSlideState)
     }
 
 
@@ -61,13 +65,13 @@ export default function Contact(props) {
         if(slide.direction === "next")
       { 
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, {y : -600, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : -1200, onComplete : changeSlide})
         }
         else
-        TweenLite.to(ani_ref.current, {y : 600, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
 
         
-        console.log("about gsap", slide.slide_id)
+        //console.log("about gsap", slide.slide_id)
     }
      
     }, [slide.slide_id])
@@ -92,32 +96,44 @@ export default function Contact(props) {
         
       <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "circle" />
 
-        <Box
-        d = "flex"
-        direction = "columns"
-        w = "100%"
-        h = "100%"
-        align = "center"
-        justify = "center"
-        gap = "20px"
+      <Box
+        d="flex"
+        direction="columns"
+        w="100%"
+        h="100%"
+        align="center"
+        wrap = "wrap"
+      >
+        <Box ref={ani_ref} w="auto" h="auto" tf="translate(0, 1200px)"
+          maxW = "600px"
         >
-        <Box
-            w = "100px"
-            h = "100px"
-        >
+          <AniHeading type="p" title="Let's connect" size="4rem" />
+          <br></br>
+          <Span type="t" size = "1.8rem"  >
+          Follow me at ... 
+         </Span>
+          
+         
+        <LinkBox>
+          <LinkIcon size="2rem" to="localhost.com">
+            <BsLinkedin />
+          </LinkIcon>
+          <LinkIcon size="2rem" to="localhost.com">
+            <GoMarkGithub />
+          </LinkIcon>
+          <LinkIcon size="2rem" to="localhost.com">
+            <FaTwitterSquare />
+          </LinkIcon>
+        </LinkBox>
+        <PText type="s" size = "1.2rem" >
+        Interested in collaborating or investing?
+        I’m always open to discussing product design work or partnership opportunities.
+         </PText>
+            <SimpleContactForm />
 
-        </Box>
-        <Box
-        ref = {ani_ref}
-        w = "auto"
-        h = "auto"
-        tf = "translate(0, 600px)"
-        >
-        <AniHeading  type = "p" title = "About Me" size = "4rem"  />
-        <Span   type ="s">I'm a typical software engineer!  + { slide.cur_slide}</Span>
-        </Box>
-
-        </Box>
+          </Box>
+        
+      </Box>
        
     
    </Section>

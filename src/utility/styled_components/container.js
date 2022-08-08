@@ -26,6 +26,8 @@ export const Container = styled.div`
   transform : ${props => props.tf || ""};
   margin-top : ${props => props.mt || ""};
   border   : ${props => props.border || ""};
+visibility : ${props => props.visible || ""};
+
   ${props => css`${props.sx}`};
 
   @media (max-width: 1400px) {   
@@ -64,7 +66,7 @@ export const Section = styled.section`
 background: ${(props) => props.bg || props.theme.palette.bg };
 padding : ${(props) => props.p || "auto"};   
 margin : ${props => props.m || "auto"};
-width : ${props => props.w || "min( 100% , 900px )"};
+width : ${props => props.w || "min( 100% , 1200px )"};
 height: ${(props) => props.h || "auto"};
 min-height : ${props => props.mh || ""};
 min-width : ${props => props.mw || ""};

@@ -9,10 +9,13 @@ import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import AniHeading from "../reusable_components/heading";
-import { Span } from "../../utility/styled_components/text";
+import { PText, Span } from "../../utility/styled_components/text";
 import { Strips } from "../animations/shapes/shapes";
 import { SlideContext } from "../../store/slider_store";
 import SliderBg from "../reusable_components/SliderBg";
+import Wrapper from "../reusable_components/wrapper";
+
+
 
 gsap.registerPlugin(MotionPathPlugin);
 
@@ -36,7 +39,7 @@ export default function AboutSlide(props) {
       cur_slide: prev.slide_id,
     }));
 
-    console.log("changeslide", setSlideState);
+    //console.log("changeslide", setSlideState);
   };
 
   useEffect(() => {
@@ -46,7 +49,7 @@ export default function AboutSlide(props) {
         TweenLite.to(ani_ref.current, { y: -600, onComplete: changeSlide });
       } else TweenLite.to(ani_ref.current, { y: 600, onComplete: changeSlide });
 
-      console.log("about gsap", slide.slide_id);
+      //console.log("about gsap", slide.slide_id);
     }
   }, [slide.slide_id]);
 
@@ -70,6 +73,8 @@ export default function AboutSlide(props) {
         visible={visible}
         itype="circle"
       />
+
+    
       <Box
         d="flex"
         direction="columns"
@@ -77,14 +82,28 @@ export default function AboutSlide(props) {
         h="100%"
         align="center"
       >
-        <Box ref={ani_ref} w="auto" h="auto" tf="translate(0, 600px)">
+        <Box ref={ani_ref} w="auto" h="auto" tf="translate(0, 600px)"
+          maxW = "600px"
+        >
           <AniHeading type="p" title="About Me" size="5rem" />
-          <Span type="s">
-            I'm a typical software engineer! + {slide.cur_slide}
-          </Span>
+          <PText type="s" size = "1rem" >
+          Hey, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, currently I'm pursing 
+          Computer Science and Engineering.
+          
+          </PText>
+          <br></br>
+          <PText type="s" size = "1rem">
+          I have been doing coding stuff since 9th standard and had build numerous projects for the web.
+          I worked with various startups as a Full-stack developer. I'm good at React Js and Python for frontend and backend respectively.
+
+          </PText> 
+               
+          </Box>
+        <Box w="100px" h="100px">
+          
         </Box>
-        <Box w="100px" h="100px"></Box>
       </Box>
+     
     </Section>
   );
 }

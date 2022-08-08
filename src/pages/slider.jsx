@@ -16,6 +16,8 @@ import SliderBg from "../components/reusable_components/SliderBg";
 import Testimonials from "../components/home/testimonials";
 import Contact from "../components/home/contact_me";
 import { SlideContext, SlideContextProvider } from "../store/slider_store";
+import SlideWrapper from "../components/reusable_components/SlideWrapper";
+
 
 function Slider(props) {
   const {
@@ -24,6 +26,7 @@ function Slider(props) {
   } = useContext(SlideContext);
 
   const [vs, setVS] = useState(null);
+
   const [slide, setSlideState] = useState({
     slide_id: 0,
     direction: "down",
@@ -32,9 +35,11 @@ function Slider(props) {
     cur_slide: 0,
   });
 
+
   const [selectSlide, setSlide] = useState(0);
   const handler_ref = useRef();
   const target_ref = useRef();
+
 
   useEffect(() => {
     let vs_obj = new VS(
@@ -49,6 +54,7 @@ function Slider(props) {
     };
   }, []);
 
+
   useEffect(() => {
     if (vs) {
       let bindWheel = vs.wheelLoop.bind(vs);
@@ -56,42 +62,57 @@ function Slider(props) {
     }
   }, [vs]);
 
+
   useEffect(() => {
     if (vs) {
-      console.log("state reset");
-      // vs.resetWheel()
 
+      //console.log("state reset");
+      // vs.resetWheel()
       setTimeout(() => {
-        vs.has_animated();
+      vs.has_animated();
+
       }, [1000]);
     }
   }, [slide]);
+
   return (
-    <Wrapper spine={true} pos="auto" of="hidden" h="100vh">
-      <Container h="100vh" ref={handler_ref}   of="hidden" w = "min(100%, 900px)" >
-        <AboutSlide
-          key={"About1"}
-          visible={slide.cur_slide === 0}
-          slide={slide}
-          setSlideState={setSlideState}
-          vs={vs}
+    <SlideWrapper of = "hidden" slide = {slide.slide_id} >
+
+      <ContainerFluid h="100%" w = "100%" of="hidden" ref = {handler_ref}  >
+        <Intro
+              key={"Intro"}
+              visible={slide.cur_slide === 0}
+              slide={slide}
+              setSlideState={setSlideState}
+              vs={vs}
+        
         />
-        <Contact
-          key={"Contact"}
+        <AboutSlide
+          key={"About"}
           visible={slide.cur_slide === 1}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
         />
-        <Testimonials
+          <Testimonials
           key={"Testimonials"}
           visible={slide.cur_slide === 2}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
         />
-      </Container>
-    </Wrapper>
+        <Contact
+          key={"Contact"}
+          visible={slide.cur_slide === 3}
+          slide={slide}
+          setSlideState={setSlideState}
+          vs={vs}
+        />
+      
+
+      </ContainerFluid>
+      </SlideWrapper>
+
   );
 }
 

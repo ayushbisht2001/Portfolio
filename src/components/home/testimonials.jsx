@@ -9,10 +9,11 @@ import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import AniHeading from '../reusable_components/heading'
-import { Span } from '../../utility/styled_components/text'
+import { Span, PText } from '../../utility/styled_components/text'
 import { Strips } from '../animations/shapes/shapes'
 import {SlideContext} from '../../store/slider_store'
 import SliderBg from '../reusable_components/SliderBg'
+import TestimonialCard from '../reusable_components/TestimonialCard';
 
 
 gsap.registerPlugin(MotionPathPlugin);
@@ -31,6 +32,8 @@ export default function Testimonials(props) {
     const ref = useRef()
 
     const ani_ref = useRef()
+    const ani_ref_2 = useRef()
+
 
     const {
         slide,
@@ -47,7 +50,7 @@ export default function Testimonials(props) {
             cur_slide : prev.slide_id
         }))
 
-        console.log("changeslide", setSlideState)
+        //console.log("changeslide", setSlideState)
     }
 
 
@@ -61,13 +64,18 @@ export default function Testimonials(props) {
         if(slide.direction === "next")
       { 
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, {y : -600, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : -1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref_2.current, {y : -1200, onComplete : changeSlide})
+
         }
         else
-        TweenLite.to(ani_ref.current, {y : 600, onComplete : changeSlide})
+      {
+          TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref_2.current, {y : 1200, onComplete : changeSlide})
 
+}
         
-        console.log("about gsap", slide.slide_id)
+        //console.log("about gsap", slide.slide_id)
     }
      
     }, [slide.slide_id])
@@ -77,6 +85,8 @@ export default function Testimonials(props) {
         if(visible && slide.cur_slide === slide.slide_id){
 
             TweenLite.to(ani_ref.current, { y : 0})
+            TweenLite.to(ani_ref_2.current, { y : 0})
+
         }
 
     }, [slide.cur_slide])
@@ -91,33 +101,35 @@ export default function Testimonials(props) {
     >
         
       <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "square" />
-
-        <Box
-        d = "flex"
-        direction = "columns"
-        w = "100%"
-        h = "100%"
+      <Box
+        d="flex"
+        direction="row"
+        w="100%"
+        h="100%"
         align = "center"
-        justify = "center"
-        gap = "20px"
+        p = "20px 10px"
+        md = {`
+          flex-direction : column;
+          justify-content : center;
+          align-items : unset;
+        
+        `}
+        
+      >
+        <Box ref={ani_ref} w="auto" h="auto" p = "20px 10px" tf="translate(0, 1200px)"
+          maxW = "600px"
+          talign  = "left"
         >
-        <Box
-            w = "100px"
-            h = "100px"
-        >
-
+          <AniHeading type="p" title="Testimonials" size="4rem" />
+          <Span type="t" size = "1.8rem" m = "0px" >
+          People I've worked with have said some nice things...
+        </Span>
+      
+          </Box>
+        <Box w="auto" h="auto" ref = {ani_ref_2} >
+          <TestimonialCard />
         </Box>
-        <Box
-        ref = {ani_ref}
-        w = "auto"
-        h = "auto"
-        tf = "translate(0, 600px)"
-        >
-        <AniHeading  type = "p" title = "About Me" size = "4rem"  />
-        <Span   type ="s">I'm a typical software engineer!  + { slide.cur_slide}</Span>
-        </Box>
-
-        </Box>
+      </Box>
        
     
    </Section>

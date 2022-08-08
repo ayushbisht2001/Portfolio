@@ -26,7 +26,7 @@ export const slideReducer = (state = initial_state, action) => {
                 ...payload
             }
         case "MOVE_SLIDER_BG":
-            console.log("MOVE_SLIDER_BG", payload)    
+            //console.log("MOVE_SLIDER_BG", payload)    
             return{
                 ...state,
                 ...payload

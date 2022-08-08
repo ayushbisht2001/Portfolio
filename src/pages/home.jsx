@@ -7,20 +7,20 @@ import {
 import NavBar from "../components/navigation/NavBar";
 import Slider from "./slider";
 import { SlideContextProvider } from "../store/slider_store";
+import SlideWrapper from "../components/reusable_components/SlideWrapper";
  
 function Home(props) {
  
 
   return (
     <ContainerFluid h="100vh"  
-    bg = "linear-gradient(142.47deg, rgba(233, 227, 227, 0.08) 30.57%, rgba(104, 42, 233, 0.24) 65.26%, rgba(104, 42, 233, 0.29) 81.64%, rgba(104, 42, 233, 0.37) 94.68%)"
-    
-    
+    of = "hidden"
     >
-      {/* <NavBar /> */}
-      {/* <Intro /> */}
+      <NavBar />
       <SlideContextProvider>
-          <Slider />
+        
+        <Slider />
+
       </SlideContextProvider>
    
     </ContainerFluid>

@@ -48,7 +48,7 @@ export default  class VS{
  
 
     print(){
-        console.log(this.vs)
+        //console.log(this.vs)
     }
 
     events(){
@@ -67,14 +67,14 @@ export default  class VS{
         this.oldDeltaY = event.deltaY
          }
          
-        console.log("wheel events", this.targetPosY)
+        //console.log("wheel events", this.targetPosY)
         this.debouncedBackToSlide()
     }
 
     scroll(el){
 
         // this.handl( prev => ({ ...prev, el}))
-        // console.log(this.x)
+        // //console.log(this.x)
         console.table(this)
 
     }
@@ -91,7 +91,7 @@ export default  class VS{
       
         prevSlide(){
 
-        console.log("move previous", this)
+        //console.log("move previous", this)
 
         // gsap.to(this.handler, { y : 0, force3D : true})
         
@@ -109,12 +109,12 @@ export default  class VS{
     }
       
         nextSlide(){
-          console.log("move next", this)
+          //console.log("move next", this)
         //   gsap.to(this.handler, { y : 400, force3D : true})
         this.handleState((prev) => ({
             ...prev,
             prev_slide_id : prev.slide_id,
-            slide_id : prev.slide_id + 1 >= 2 ? 2 : prev.slide_id + 1,
+            slide_id : prev.slide_id + 1 >= 3 ? 3 : prev.slide_id + 1,
             direction : "next",
 
         }))
@@ -130,7 +130,7 @@ export default  class VS{
                 this.slideTransform = 0;
                 this.oldDeltaY = 0;
              
-                console.log("reset whee", this)
+                //console.log("reset whee", this)
                 gsap.set(this.handler, {y: 0, force3D: true})
                 requestAnimationFrame(this.wheelLoop.bind(this))
                 
@@ -140,7 +140,7 @@ export default  class VS{
     let slideLimit = 165;
     let newSlideTransformTemp = this.slideTransform + (this.targetPosY - this.slideTransform) * .09
     newSlideTransformTemp =  this.getRoundedValue(newSlideTransformTemp)
-    console.log("wheel loop", this.slideTransform)
+    //console.log("wheel loop", this.slideTransform)
 
     if(newSlideTransformTemp !== this.oldSlideTransform)
     {    this.oldSlideTransform = this.slideTransform;
@@ -180,7 +180,7 @@ export default  class VS{
     backToSlide(){
 
 
-    console.log("debounce, here", this)
+    //console.log("debounce, here", this)
     this.targetPosY = 0;
 
     }

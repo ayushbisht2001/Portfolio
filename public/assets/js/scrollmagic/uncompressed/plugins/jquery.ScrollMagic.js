@@ -47,7 +47,7 @@
 
 	var
 		console = window.console || {},
-		err = Function.prototype.bind.call(console.error || console.log || function () {}, console);
+		err = Function.prototype.bind.call(console.error || //console.log || function () {}, console);
 	if (!ScrollMagic) {
 		err("(" + NAMESPACE + ") -> ERROR: The ScrollMagic main module could not be found. Please make sure it's loaded before this plugin or use an asynchronous loader like requirejs.");
 	}
