@@ -6,15 +6,22 @@ import {
 } from "../utility/styled_components/container";
 import NavBar from "../components/navigation/NavBar";
 import Slider from "./slider";
+import { SlideContextProvider } from "../store/slider_store";
+import SlideWrapper from "../components/reusable_components/SlideWrapper";
  
 function Home(props) {
  
 
   return (
-    <ContainerFluid h="100vh" bg="white" of="hidden">
+    <ContainerFluid h="100vh"  
+    of = "hidden"
+    >
       <NavBar />
-      <Intro />
-      {/* <Slider /> */}
+      <SlideContextProvider>
+        
+        <Slider />
+
+      </SlideContextProvider>
    
     </ContainerFluid>
   );

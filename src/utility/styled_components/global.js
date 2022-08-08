@@ -471,26 +471,26 @@ export const Link = styled.a`
 
 
 export const Box = styled.div`
-  width: ${(props) => props.width || "auto"};
-  height: ${(props) => props.height || "auto"};
-  background: ${(props) => props.background || ""};
+  width: ${(props) => props.w || "auto"};
+  height: ${(props) => props.h || "auto"};
+  background: ${(props) => props.bg || ""};
   color: ${(props) => props.color || "black"};
-  display: ${(props) => props.display || "block"};
+  display: ${(props) => props.d || "block"};
   align-items: ${(props) => props.align || ""};
   justify-content: ${(props) => props.justify || ""};
   border : ${props => props.border || "none"};
   flex-direction : ${(props) => props.direction || ""};
   flex-wrap : ${(props) => props.wrap || ""};
   border-radius : ${props => props.radius || "3px"};
-  margin : ${(props) => props.margin || "0px"};
-  padding : ${(props) => props.padding || "0px"};   
+  margin : ${(props) => props.m || "0px"};
+  padding : ${(props) => props.p || "0px"};   
   min-width : ${(props) => props.minWidth || ""};
   max-width : ${(props)=> props.maxWidth || ""};
   min-height : ${(props) => props.minHeight || ""};
   max-height : ${(props) => props.maxHeight || ""};
   position : ${props => props.position || "relative" };
   text-align : ${props => props.textAlign || "left"};
-  position : ${props => props.position || "relative" };
+  position : ${props => props.pos || "relative" };
   top : ${props => props.top || ""};
   bottom : ${props => props.bottom || ""};
   right : ${props => props.right || ""};
@@ -505,7 +505,7 @@ export const Box = styled.div`
   transition : ${props=> props.transition || "0.5s all"};
   z-index : ${props => props.zIndex || "0"};
   style : ${(props) => ({...props}) };
-
+ 
   ${ (props) => props.childStyle}
 
   @media (max-width: 1400px) {   

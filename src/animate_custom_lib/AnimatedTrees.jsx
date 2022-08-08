@@ -15,7 +15,7 @@ function drawCT(ctx, startX , startY , height , angle  , p, q){
         return;
     }
 
-    console.log(p, q)
+    //console.log(p, q)
 
     ctx.beginPath();
     ctx.save();
@@ -27,7 +27,7 @@ function drawCT(ctx, startX , startY , height , angle  , p, q){
     ctx.lineTo(0, height);
     ctx.stroke();
 
-    console.log("hello")
+    //console.log("hello")
 
     drawCT(ctx, 0, height, height*0.8, angle+6,  p - 1, q - 1 ) ;
     drawCT(ctx, 0, height, height*0.8, angle-6,  p - 1, q  );

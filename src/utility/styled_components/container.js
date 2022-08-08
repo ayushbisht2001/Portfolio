@@ -26,6 +26,8 @@ export const Container = styled.div`
   transform : ${props => props.tf || ""};
   margin-top : ${props => props.mt || ""};
   border   : ${props => props.border || ""};
+visibility : ${props => props.visible || ""};
+
   ${props => css`${props.sx}`};
 
   @media (max-width: 1400px) {   
@@ -81,7 +83,11 @@ z-index : ${props => props.zi || ""};
 transform : ${props => props.tf || ""};
 margin-top : ${props => props.mt || ""};
 visibility : ${props => props.visible || ""};
-
+border : ${props => props.border || ""};
+opacity : ${props => props.o || ""};
+animation : ${props => props.animate || ""};
+font-family : ${props => props.family || "inherit"};
+transition : ${props => props.trans || ""};
 ${props => css`${props.sx}`};
 
 @media (max-width: 1400px) {   

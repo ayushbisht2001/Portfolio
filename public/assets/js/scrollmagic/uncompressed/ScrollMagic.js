@@ -482,7 +482,7 @@
 		 *
 		 * // define a new scroll function with an additional parameter
 		 * controller.scrollTo(function (newScrollPos, message) {
-		 *  console.log(message);
+		 *  //console.log(message);
 		 *	$(this).animate({scrollTop: newScrollPos});
 		 * });
 		 * // call as usual, but supply an extra parameter to the defined custom function
@@ -502,7 +502,7 @@
 		 * });
 		 * // call as usual, but supply an extra parameter, which is used as a callback in the previously defined custom scroll function
 		 * controller.scrollTo(100, function() {
-		 *	console.log("scroll has finished.");
+		 *	//console.log("scroll has finished.");
 		 * });
 		 *
 		 * @param {mixed} scrollTarget - The supplied argument can be one of these types:
@@ -855,7 +855,7 @@
 		 *
 		 * @example
 		 * scene.on("start", function (event) {
-		 * 	console.log("Hit start point of scene.");
+		 * 	//console.log("Hit start point of scene.");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -876,7 +876,7 @@
 		 *
 		 * @example
 		 * scene.on("end", function (event) {
-		 * 	console.log("Hit end point of scene.");
+		 * 	//console.log("Hit end point of scene.");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -897,7 +897,7 @@
 		 *
 		 * @example
 		 * scene.on("enter", function (event) {
-		 * 	console.log("Scene entered.");
+		 * 	//console.log("Scene entered.");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -918,7 +918,7 @@
 		 *
 		 * @example
 		 * scene.on("leave", function (event) {
-		 * 	console.log("Scene left.");
+		 * 	//console.log("Scene left.");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -936,7 +936,7 @@
 		 *
 		 * @example
 		 * scene.on("update", function (event) {
-		 * 	console.log("Scene updated.");
+		 * 	//console.log("Scene updated.");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -956,7 +956,7 @@
 		 *
 		 * @example
 		 * scene.on("progress", function (event) {
-		 * 	console.log("Scene progress changed to " + event.progress);
+		 * 	//console.log("Scene progress changed to " + event.progress);
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -974,7 +974,7 @@
 		 *
 		 * @example
 		 * scene.on("change", function (event) {
-		 * 	console.log("Scene Property \"" + event.what + "\" changed to " + event.newval);
+		 * 	//console.log("Scene Property \"" + event.what + "\" changed to " + event.newval);
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -995,7 +995,7 @@
 		 *
 		 * @example
 		 * scene.on("shift", function (event) {
-		 * 	console.log("Scene moved, because the " + event.reason + " has changed.)");
+		 * 	//console.log("Scene moved, because the " + event.reason + " has changed.)");
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -1038,7 +1038,7 @@
 		 *
 		 * @example
 		 * scene.on("add", function (event) {
-		 * 	console.log('Scene was added to a new controller.');
+		 * 	//console.log('Scene was added to a new controller.');
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -1056,7 +1056,7 @@
 		 *
 		 * @example
 		 * scene.on("remove", function (event) {
-		 * 	console.log('Scene was removed from its controller.');
+		 * 	//console.log('Scene was removed from its controller.');
 		 * });
 		 *
 		 * @property {object} event - The event Object passed to each callback
@@ -1071,7 +1071,7 @@
 		 *
 		 * @example
 		 * function callback (event) {
-		 * 		console.log("Event fired! (" + event.type + ")");
+		 * 		//console.log("Event fired! (" + event.type + ")");
 		 * }
 		 * // add listeners
 		 * scene.on("change update progress start end enter leave", callback);
@@ -1110,7 +1110,7 @@
 		 *
 		 * @example
 		 * function callback (event) {
-		 * 		console.log("Event fired! (" + event.type + ")");
+		 * 		//console.log("Event fired! (" + event.type + ")");
 		 * }
 		 * // add listeners
 		 * scene.on("change update", callback);
@@ -1901,7 +1901,7 @@
 		 * // get the current scroll offset for the start and end of the scene.
 		 * var start = scene.scrollOffset();
 		 * var end = scene.scrollOffset() + scene.duration();
-		 * console.log("the scene starts at", start, "and ends at", end);
+		 * //console.log("the scene starts at", start, "and ends at", end);
 		 *
 		 * @returns {number} The scroll offset (of the container) at which the scene will trigger. Y value for vertical and X value for horizontal scrolls.
 		 */
@@ -2630,12 +2630,12 @@
 			loglevels = ["error", "warn", "log"],
 			console = window.console || {};
 
-		console.log = console.log || function () {}; // no console log, well - do nothing then...
+		//console.log = //console.log || function () {}; // no console log, well - do nothing then...
 		// make sure methods for all levels exist.
 		for (i = 0; i < loglevels.length; i++) {
 			var method = loglevels[i];
 			if (!console[method]) {
-				console[method] = console.log; // prefer .log over nothing
+				console[method] = //console.log; // prefer .log over nothing
 			}
 		}
 		U.log = function (loglevel) {

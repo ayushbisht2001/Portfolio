@@ -165,3 +165,27 @@ export const moveDown = keyframes`
     }
 
 `
+
+
+
+export const sliderItemUpTransition = keyframes`
+
+from{
+    top : -1000px;
+}
+to{
+    
+}
+
+`
+
+export const sliderItemDownTransition = keyframes`
+
+from{
+    top :1000px;
+}
+to{
+   
+}
+
+`

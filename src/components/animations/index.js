@@ -29,20 +29,23 @@ ${props => css`${props.sx}`};
 export const Spine = styled.div`
 
 width : 1.2px;
-height : calc(100vh - 18rem);
-position : fixed;
+height : ${props => props.h || "calc(100vh - 18rem)"};
+position : ${props => props.pos || "fixed" };
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
 
-left : calc( 34vw  - 10rem);
-top : calc( 60vh);
-bottom : 0px;
+left : ${props => props.left || "calc( 34vw  - 10rem)"} ;
+top : ${props => props.top || "calc( 60vh)"} ;
+bottom : ${props => props.bottom || "0"} ;
+right : ${props => props.right || "0"} ;
+
 transition : 1s all ease 0.5;
 
 @media(max-width : 500px){
     &{
         left : calc( 34vw  - 5rem);
         top : calc( 50vh);
+        ${props => props.md || ""};
 
     }
 }

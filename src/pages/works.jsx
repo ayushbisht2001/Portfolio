@@ -27,11 +27,8 @@ const Work = () => {
   }, [card_coord]);
 
   return (
-    <Wrapper spine={true} 
-      
-    >
+    <Wrapper spine={true}  >
       <NavBar />
-
       <Container
         pos="fixed"
         w="100vw"

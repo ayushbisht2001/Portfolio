@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, usetRef, useState} from 'react'
 import styled, { css } from "styled-components";
 import { Box } from "../../../utility/styled_components/box";
 import { handleLiveShape } from '../../../utility';
@@ -19,6 +19,7 @@ export const Shape = styled.svg`
   position: ${(props) => props.pos || "absolute"};
   top: ${(props) => props.top || ""};
   border-radius: ${(props) => props.rad || ""};
+  margin : ${props => props.m || ""};
   bottom: ${(props) => props.bottom || ""};
   right: ${(props) => props.right || ""};
   left: ${(props) => props.left || ""};
@@ -31,7 +32,7 @@ export const Shape = styled.svg`
   transform: ${(props) => props.tf || "scale(1)"};
   fill-opacity: ${(props) => props.fo || "0.5"};
   transform-origin: ${(props) => props.tforigin || "center"};
-
+  transition : ${props => props.trans || ""};
   & path {
     fill : ${(props) => props.pfill || props.theme.palette.shape.primary};
     stroke-width : ${(props) => props.strokeW || "1"};
@@ -62,7 +63,8 @@ export const Shape = styled.svg`
 
 }
   & #circle {
-    stroke-width: 3;
+    stroke-width : ${(props) => props.strokeW || "2"};
+
     --fill-val: ${(props) =>
       props.pfill ||
       (props.type == "s"
@@ -219,7 +221,7 @@ export const Shape = styled.svg`
     animation: triangle-ani 4s linear forwards;
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    
+    fill-opacity : 0.3;
     @keyframes triangle-ani {
       100% {
         fill: var(--fill-val);
@@ -239,45 +241,25 @@ export const Shape = styled.svg`
 
 
 export const Circle = (props) => {
-  const { sx, isLive = false, scale = 1 } = props;
-  const ref = useRef();
-  const [state, setState] = useState()
-
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref));
-
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref) );
-    };
-  },[]);
-
+ 
+const{
+  tref
+} = props;
   return (
-    <Shape {...props} width="180" height="180" ref = {ref}     >
-<path id="circle" d="M178 89.9999C178 138.601 138.601 178 90 178C41.3989 178 2 138.601 2 89.9999C2 41.3989 41.3989 2 90 2C138.601 2 178 41.3989 178 89.9999Z"   stroke-width="4"/>
+    <Shape {...props} ref = {tref} width="40" height="40"      >
+<path id="circle" d="M38 20C38 29.9411 29.9411 38 20 38C10.0589 38 2 29.9411 2 20C2 10.0589 10.0589 2 20 2C29.9411 2 38 10.0589 38 20Z" fill="#457B9D" fill-opacity="0.44" stroke="black" stroke-width="4"/>
  
       </Shape>
   );
 };
 
 export const Ring = (props) => {
-  const { sx, isLive = false, scale = 1} = props;
-  const ref = useRef();
-  const [state, setState] = useState()
 
-  
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
-
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
-    };
-  },[]);
+  const{
+    tref
+  } = props;
   return (
-    <Shape {...props} width="200" height="200"  ref = {ref} >
+    <Shape {...props} ref = {tref} width="200" height="200"   >
       <path
         id="ring"
         d="M97.5 169C43.7612 169 -4.84318e-09 131.154 -3.12036e-09 84.5C-1.39754e-09 37.8456 43.7612 1.61598e-09 97.5 3.60041e-09C151.239 5.58484e-09 195 37.8456 195 84.5C195 131.154 151.239 169 97.5 169ZM97.5 8.80888C49.1876 8.80888 9.97755 42.7394 9.97755 84.5C9.97755 126.261 49.1876 160.191 97.5 160.191C145.812 160.191 185.022 126.261 185.022 84.5C185.022 42.7394 145.637 8.80888 97.5 8.80888Z"
@@ -320,46 +302,22 @@ export const ULines = (props) => {
 };
 
 export const Triangle = (props) => {
-  const { sx, isLive = false , scale=1} = props;
-  const ref = useRef();
-  const [state, setState] = useState()
-
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
-
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
-    };
-  },[]);
+  const{
+    tref
+  } = props;
   return (
-    <Shape {...props} width="70" height="76" ref = {ref} >
-      <path
-        id="triangle"
-        d="M1.62952 34.3366L69.1872 1.20297L63.3166 74.8293L1.62952 34.3366Z"
-      />
+    <Shape {...props} width="40" height="41"  ref = {tref} >
+<path id="triangle" d="M39.1939 39.7313L0.812623 39.5041L20.2655 1.23664L39.1939 39.7313Z" fill="#E63946" fill-opacity="0.71" stroke="black"/>
+     
     </Shape>
   );
 };
 
 export const ORing = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
-  const ref = useRef();
-  const [state, setState] = useState()
 
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
-
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
-    };
-  },[]);
 
   return (
-    <Shape {...props} height="207" viewBox="0 0 222 207" ref= {ref}>
+    <Shape {...props} height="207" viewBox="0 0 222 207">
       <g id="oCircle">
         <path
           id="XMLID_1597_"
@@ -670,42 +628,21 @@ export const Strips = (props) => {
 };
 
 export const Square = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
-  const ref = useRef();
-  const [state, setState] = useState()
-  
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
-
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
-    };
-  },[]);
+  const{
+    tref
+  } = props;
   return (
-    <Shape {...props} width="163" height="163" ref = {ref} >
-      <rect id="square" x="0.5" y="0.5" width="162" height="162" />
+    <Shape {...props} width="40" height="40" ref = {tref} >
+<rect id="square" x="0.5" y="0.5" width="39" height="39" fill="#457B9D" fill-opacity="0.52" stroke="#457B9D"/>
+
     </Shape>
   );
 };
 
 export const Rectangle = (props) => {
-  const { sx, isLive = false, scale  = 1} = props;
-  const ref = useRef();
-  const [state, setState] = useState()
-  
-  useEffect(()=>{    
-    
-    if(isLive)
-    window.addEventListener("mousemove", (e) => handleLiveShape(e, ref, props));
 
-    return () =>{
-      window.removeEventListener('mousemove', (e) => handleLiveShape(e, ref, props));
-    };
-  },[]);
   return (
-    <Shape {...props} width="163" height="163" ref = {ref} >
+    <Shape {...props} width="163" height="163"  >
       <rect id="square" x="0.5" y="0.5" width="100" height="162" />
     </Shape>
   );

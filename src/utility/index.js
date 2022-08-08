@@ -27,7 +27,7 @@ export const mouse = {
     const{
       scale = 1,
       direction = 1
-    } = props
+    } = props || {}
     let x = e.x;
     let y = e.y;
     let moveX = 30*x/1000;
@@ -52,13 +52,25 @@ export const mouse = {
   }
 
 
-  // export const winScrollPosition = {
-  //   left : 0,
-  //   top : 0
-  // }
+export const handleSliderShapes = (e, ref, props) => {
 
-  // window.addEventListener('scroll', function(e) {
-  //   winScrollPosition.left = e.scrollLeft;
-  //   winScrollPosition.top = e.scrollTop;
+  const {
+    scale = 1,
+    direction = 1,
+    moveX = 0,
+    moveY = 0,
+    rotateX = 0,
+    rotateY = 0,
+  } = props
 
-  // })
+  //console.log("slider handle shape")
+
+  if(ref.current)
+  {      ref.current.style.transform = `
+        matrix3d(${scale}, 0, 0.06, 0,
+                 0,${scale}, 0, 0, 
+                 -0.03 ,0, 1, 0, 
+                 ${moveX}, ${moveY}, 0, 1)`;  
+  
+                }
+}
