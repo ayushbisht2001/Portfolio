@@ -42,11 +42,12 @@ const WrapperContainer = styled(ContainerFluid)`
         top : 50vh;
         left : calc( 34vw - 10rem);
         border-radius : 100%;
-z
+
         @media(max-width : 500px){
 
-            top : 40vh;
-            left : calc( 34vw - 5rem);
+            top : 20vh;
+            height : calc(100% - 20rem);
+            left : calc( 34vw - 7.5rem);
         }
     }
 

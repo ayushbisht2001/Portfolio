@@ -71,7 +71,8 @@ const Card = (props) => {
           of="hidden"
           p="0px 20px"
           sm={`
-          width : 80%;
+          width : 90%;
+          padding : 0px 0px 0px 5px;
         `}
         >
           <Span family="Comfortaa" type="t" size="1.3rem">
@@ -99,7 +100,7 @@ const Card = (props) => {
             ""
           )}
           <Span type="t" size="1.3rem" family="Comfortaa">
-            desc :
+            context :
           </Span>
           <PText size="1.2rem" type="s" m="10px 10px" weight="0">
             " {desc} "<Span>{","}</Span>
