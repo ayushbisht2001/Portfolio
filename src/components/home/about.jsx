@@ -15,6 +15,7 @@ import { SlideContext } from "../../store/slider_store";
 import SliderBg from "../reusable_components/SliderBg";
 import Wrapper from "../reusable_components/wrapper";
 
+const URL = process.env.PUBLIC_URL;
 
 
 gsap.registerPlugin(MotionPathPlugin);
@@ -75,16 +76,20 @@ export default function AboutSlide(props) {
       />
 
     
-      <Box
-        d="flex"
-        direction="columns"
+      <Row
         w="100%"
         h="100%"
         align="center"
-      >
-        <Box ref={ani_ref} w="auto" h="auto" tf="translate(0, 600px)"
+        wrap = "wrap"
+        rows = "100%"
+        justify = "center"
+>
+        <Col ref={ani_ref}   h="auto"    tf="translate(0, 600px)"
           maxW = "600px"
-        >
+          // md = {`
+          //   grid-area : 2 / 1;
+          // `}
+>
           <AniHeading type="p" title="About Me" size="5rem" />
           <PText type="s" size = "1rem" >
           Hey, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, currently I'm pursing 
@@ -98,11 +103,52 @@ export default function AboutSlide(props) {
 
           </PText> 
                
-          </Box>
-        <Box w="100px" h="100px">
+          </Col>
+        {/* <Col    h="auto" p ="10px"
+          w = "100%"
+          md = {`
+
+          width : 100%;
+          height : 100%;
           
-        </Box>
-      </Box>
+          `}
+        >
+            <Box
+              w = "300px"
+              h = "300px"
+              p = "5px"
+              border = "1px solid #414141"
+              sx = {`
+
+              & img{
+                opacity : 0.3;
+                filter : grayscale(100%);
+
+              }
+              
+              `}
+
+              md = {`
+
+              width : 100vw;
+              height : 30%;
+              position : absolute;
+              top : 0px;
+              left : 0px;
+              & img{
+                
+                height : 300px;
+                width : 100vw;
+
+              }
+              `}
+
+            
+>
+              <img width = "100%" height = "100%" src = {`${URL}/assets/images/testimonials/ayush.jpg`} />
+            </Box>
+        </Col> */}
+      </Row>
      
     </Section>
   );

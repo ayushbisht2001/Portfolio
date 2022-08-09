@@ -106,18 +106,43 @@ export default function Skills(props) {
         align="center"
         wrap = "wrap"
       >
-        <Box ref={ani_ref} w="auto" h="auto" tf="translate(0, 1200px)"
-          maxW = "600px"
+        <Box ref={ani_ref} w="100%" h="auto" tf="translate(0, 1200px)"
+          maxW = "800px"
         >
           <AniHeading type="p" title="Skills" size="4rem" />
-          <br></br>
-        <PText type="s" size = "1.2rem" >
-            </PText>
 
-          </Box>
+            <Row 
+              w = "min( 100% , 800px)"
+              cols = "auto auto auto"
+              rows = "auto"
+              family = "Comfortaa"
+              gap = "5px 5px"
+              sm = {`
+
+              grid-template-columns : 50% 50%;
+
+              `}
+            >
+              
+              <Span size = "1.2rem" type = "s" >Python,&nbsp;&nbsp;Django,&nbsp;&nbsp;DRF</Span>
+              <Span size = "1.2rem" type = "s" >Javascript,&nbsp;&nbsp;React JS,&nbsp;&nbsp;Jquery</Span>
+              <Span size = "1.2rem" type = "s" >HTML,&nbsp;&nbsp;Canvas,&nbsp;&nbsp;SVG</Span>
+              <Span size = "1.2rem" type = "s" >CSS3,&nbsp;&nbsp;SCSS</Span>
+              <Span size = "1.2rem" type = "s" >Bootstrap,&nbsp;&nbsp;MUI</Span>
+
+              <Span size = "1.2rem" type = "s" > C/C++ </Span>
+              <Span size = "1.2rem" type = "s" >Redux</Span>
+              <Span size = "1.2rem" type = "s" >DBMS,&nbsp;&nbsp;MSQL,&nbsp;&nbsp;Postgres</Span>
+
+
+
+
+            </Row>
+
+        </Box>
 
           <Box>
-            <SkillBubble />
+            {/* <SkillBubble /> */}
           </Box>
         
       </Box>

@@ -33,7 +33,7 @@ import { SlideContext } from "../../store/slider_store";
 import SliderBg from "../reusable_components/SliderBg";
 import Wrapper from "../reusable_components/wrapper";
 import LiveShape from "../animations/shapes/LiveShapes";
-
+import { NativeLink } from "../../utility/styled_components/button";
 
 
 export default function Intro(props) {
@@ -272,17 +272,39 @@ export default function Intro(props) {
           type="t"
         />
 
-        <LinkBox>
-          <LinkIcon size="2rem" to="localhost.com">
-            <BsLinkedin />
-          </LinkIcon>
-          <LinkIcon size="2rem" to="localhost.com">
-            <GoMarkGithub />
-          </LinkIcon>
-          <LinkIcon size="2rem" to="localhost.com">
-            <FaTwitterSquare />
-          </LinkIcon>
-        </LinkBox>
+          <LinkBox>
+            <NativeLink
+              p="0"
+              size="2rem"
+              title="LinkedIn Profile"
+              type="p"
+              target="_blank"
+              href="https://www.linkedin.com/in/ayush-bisht-9a5582192/"
+            >
+              <BsLinkedin />
+            </NativeLink>
+            <NativeLink
+              p="0"
+              size="2rem"
+              title="LinkedIn Profile"
+              type="p"
+              target="_blank"
+              href = "https://github.com/ayushbisht2001"
+
+            >
+                <GoMarkGithub />
+            </NativeLink>
+            <NativeLink
+              p="0"
+              size="2rem"
+              title="LinkedIn Profile"
+              type="p"
+              target="_blank"
+              href="https://twitter.com/Ayu_Bisht21"
+            >
+              <FaTwitterSquare />
+            </NativeLink>
+          </LinkBox> 
       </Box>
     </ContainerFluid>
   );

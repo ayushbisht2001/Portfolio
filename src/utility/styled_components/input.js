@@ -76,7 +76,6 @@ export const Input = styled.textarea`
     color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.ternary  )};
 
 
-
 `
 
 

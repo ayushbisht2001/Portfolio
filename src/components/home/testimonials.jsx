@@ -120,8 +120,8 @@ export default function Testimonials(props) {
           maxW = "600px"
           talign  = "left"
         >
-          <AniHeading type="p" title="Testimonials" size="4rem" />
-          <Span type="t" size = "1.8rem" m = "0px" >
+          <AniHeading type="p"  title="Testimonials" size="4rem" />
+          <Span type="t" p ="0"  m = "0" size = "1.4rem"   >
           People I've worked with have said some nice things...
         </Span>
       

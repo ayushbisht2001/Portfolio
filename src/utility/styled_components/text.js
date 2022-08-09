@@ -170,7 +170,7 @@ export const Heading2 = styled(HeadingMain)`
 export const Span = styled.span`
   height : ${props => props.h || ""};
   width : ${props => props.w || ""};
-
+  display : ${props => props.d  ||""};
   font-size: ${(props) => props.size || "inherit"};
   font-family: ${(props) => props.family || "inherit"};
   font-weight: ${(props) => props.weight || "inherit"};

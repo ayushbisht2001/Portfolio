@@ -3,6 +3,17 @@ import { styles } from "./global";
 import { Link } from "react-router-dom";
 
 export const Button = styled.button`
+
+  width : ${props => props.w || "auto"};
+  height : ${props => props.h || "auto"};
+  padding : ${props => props.p || "5px 10px"};
+  margin : ${props => props.m || "5px"};
+  background : ${props => props.bg || props.theme.palette.primary};
+  border-radius : ${props => props.rad || "10px"};
+  border : ${props => props.border || "none"};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.secondary  )};
+  cursor : pointer;
+  float : ${props => props.float || ""};
   ${(props) =>
     css`
       ${props.sx}
@@ -10,6 +21,9 @@ export const Button = styled.button`
 `;
 
 export const PrimaryBtn = styled(Button)`
+
+background : ${props => props.bg || props.theme.palette.primary};
+
   ${(props) =>
     css`
       ${props.sx}
@@ -17,6 +31,9 @@ export const PrimaryBtn = styled(Button)`
 `;
 
 export const SecondaryBtn = styled(Button)`
+
+background : ${props => props.bg || props.theme.palette.secondary};
+
   ${(props) =>
     css`
       ${props.sx}
