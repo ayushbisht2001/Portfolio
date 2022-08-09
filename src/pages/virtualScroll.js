@@ -20,7 +20,7 @@ export default  class VS{
             keyStep : 400
         }
         );
-        this.debouncedBackToSlide = _.debounce(this.backToSlide, 200);
+        this.debouncedBackToSlide = _.debounce(this.backToSlide, 500);
         this.target = target;
         this.handler = ele;
         this.targetPosY= 0;

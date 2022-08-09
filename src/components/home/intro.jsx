@@ -34,6 +34,8 @@ import SliderBg from "../reusable_components/SliderBg";
 import Wrapper from "../reusable_components/wrapper";
 import LiveShape from "../animations/shapes/LiveShapes";
 import { NativeLink } from "../../utility/styled_components/button";
+import { Span } from "../../utility/styled_components/text";
+const URL = process.env.PUBLIC_URL;
 
 
 export default function Intro(props) {
@@ -65,13 +67,13 @@ export default function Intro(props) {
   useEffect(() => {
     if (ani_ref && visible && slide.cur_slide !== slide.slide_id) {
       if (slide.direction === "next") {
-        // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, { y: -600, onComplete: changeSlide });
-        TweenLite.to(ani_ref_2.current, { y: -600, onComplete: changeSlide });
+        // ani_ref.current.style.transform = "translate(0, -700px)"
+        TweenLite.to(ani_ref.current, { y: -700, onComplete: changeSlide });
+        TweenLite.to(ani_ref_2.current, { y: -700, onComplete: changeSlide });
 
       } else 
-      {TweenLite.to(ani_ref.current, { y: 600, onComplete: changeSlide });
-      TweenLite.to(ani_ref_2.current, { y: 600, onComplete: changeSlide });
+      {TweenLite.to(ani_ref.current, { y: 700, onComplete: changeSlide });
+      TweenLite.to(ani_ref_2.current, { y: 700, onComplete: changeSlide });
       
     }
       //console.log("about gsap", slide.slide_id);
@@ -303,6 +305,21 @@ export default function Intro(props) {
               href="https://twitter.com/Ayu_Bisht21"
             >
               <FaTwitterSquare />
+            </NativeLink>
+            <NativeLink
+
+              title="LinkedIn Profile"
+              fill
+              p = "5px 10px"
+              target="_blank"
+              rad = "0.4rem"
+              m = "0px 0px 10px 5px"
+              href={`${URL}/assets/files/resume.pdf`}
+              color = "black"
+              hbg = "white"
+              hcolor = "black"
+>
+                Resume
             </NativeLink>
           </LinkBox> 
       </Box>

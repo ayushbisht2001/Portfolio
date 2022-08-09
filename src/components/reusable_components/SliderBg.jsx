@@ -38,9 +38,9 @@ const Items = (props) => {
     <Triangle {...props} tref={tref}  />
   ) : (itype === "square" ? 
     <Square   {...props} tref={tref}   />
-   : (
-    <Circle   {...props} tref={tref}    />
-  ));
+   : itype ==="circle"  ? (
+    <Circle   {...props} tref={tref}    />) : 
+    ( <Rectangle {...props} tref = {tref} /> ) );
 };
 
 export default function SliderBg(props) {
@@ -117,7 +117,7 @@ export default function SliderBg(props) {
       <Items
         left="20%"
         top="10%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tref={ref_list[0]}
         tf="translate(0, 800px)  scale(2) rotate(230deg) "
       />
@@ -125,21 +125,21 @@ export default function SliderBg(props) {
       <Items
         right="10%"
         top="30%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tf="translate(0, 800px)  scale(2) rotate(130deg)  "
         tref={ref_list[1]}
       />
       <Items
         left="15%"
         top="40%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tf="translate(0, 800px)  scale(4) rotate(50deg)  "
         tref={ref_list[2]}
       />
       <Items
         left="10%"
         bottom="0%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tf="translate(0, 800px)  scale(1) rotate(230deg)  "
         tref={ref_list[3]}
       />
@@ -147,14 +147,14 @@ export default function SliderBg(props) {
       <Items
         right="10%"
         bottom="10%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tf="translate(0, 800px)  scale(1) rotate(230deg)  "
         tref={ref_list[4]}
       />
       <Items
         left="50%"
         bottom="30%"
-        itype={slideOptionMapper[slide.cur_slide]}
+        itype={itype}
         tf="translate(0, 800px)  scale(3) rotate(230deg)  "
         tref={ref_list[5]}
       />

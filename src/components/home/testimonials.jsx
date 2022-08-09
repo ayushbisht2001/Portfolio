@@ -49,6 +49,7 @@ export default function Testimonials(props) {
             ...prev,
             cur_slide : prev.slide_id
         }))
+        
 
         //console.log("changeslide", setSlideState)
     }
@@ -64,14 +65,14 @@ export default function Testimonials(props) {
         if(slide.direction === "next")
       { 
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, {y : -1200, onComplete : changeSlide})
-        TweenLite.to(ani_ref_2.current, {y : -1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : -700, onComplete : changeSlide})
+        TweenLite.to(ani_ref_2.current, {y : -700, onComplete : changeSlide})
 
         }
         else
       {
-          TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
-        TweenLite.to(ani_ref_2.current, {y : 1200, onComplete : changeSlide})
+          TweenLite.to(ani_ref.current, {y : 700, onComplete : changeSlide})
+        TweenLite.to(ani_ref_2.current, {y : 700, onComplete : changeSlide})
 
 }
         
@@ -100,7 +101,7 @@ export default function Testimonials(props) {
     visible = {visible ? "inherit" : "hidden"}  
     >
         
-      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "square" />
+      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "circle" />
       <Box
         d="flex"
         direction="row"
@@ -116,12 +117,12 @@ export default function Testimonials(props) {
         `}
         
       >
-        <Box ref={ani_ref} w="auto" h="auto" p = "20px 10px" tf="translate(0, 1200px)"
+        <Box ref={ani_ref} w="auto" h="auto" p = "20px 10px" tf="translate(0, 700px)"
           maxW = "600px"
           talign  = "left"
         >
           <AniHeading type="p"  title="Testimonials" size="4rem" />
-          <Span type="t" p ="0"  m = "0" size = "1.4rem"   >
+          <Span type="s" family = "Comfortaa" p ="0"  m = "0" size = "1.4rem"   >
           People I've worked with have said some nice things...
         </Span>
       

@@ -43,6 +43,8 @@ export default function Contact(props) {
       cur_slide: prev.slide_id,
     }));
 
+    
+
     //console.log("changeslide", setSlideState)
   };
 
@@ -50,9 +52,9 @@ export default function Contact(props) {
     if (ani_ref && visible && slide.cur_slide !== slide.slide_id) {
       if (slide.direction === "next") {
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, { y: -1200, onComplete: changeSlide });
+        TweenLite.to(ani_ref.current, { y: -700, onComplete: changeSlide });
       } else
-        TweenLite.to(ani_ref.current, { y: 1200, onComplete: changeSlide });
+        TweenLite.to(ani_ref.current, { y: 700, onComplete: changeSlide });
 
       //console.log("about gsap", slide.slide_id)
     }
@@ -77,7 +79,7 @@ export default function Contact(props) {
         vs={vs}
         slide={slide}
         visible={visible}
-        itype="circle"
+        itype="rectangle"
       />
 
       <Box
@@ -92,7 +94,7 @@ export default function Contact(props) {
           ref={ani_ref}
           w="auto"
           h="auto"
-          tf="translate(0, 1200px)"
+          tf="translate(0, 700px)"
           maxW="600px"
         >
           <AniHeading type="p" title="Let's connect" size="4rem" />

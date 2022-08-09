@@ -65,8 +65,7 @@ function Slider(props) {
 
 
   useEffect(() => {
-    if (vs) {
-
+    if (vs && slide.slide_id === slide.cur_slide) {
       //console.log("state reset");
       // vs.resetWheel()
       setTimeout(() => {
@@ -90,14 +89,14 @@ function Slider(props) {
         />
         <AboutSlide
           key={"About"}
-          visible={slide.cur_slide === 1}
+          visible={slide.cur_slide == 1}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
         />
         <Skills 
           key={"skills"}
-          visible={slide.cur_slide === 2}
+          visible={slide.cur_slide == 2}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
@@ -105,14 +104,14 @@ function Slider(props) {
         />
           <Testimonials
           key={"Testimonials"}
-          visible={slide.cur_slide === 3}
+          visible={slide.cur_slide == 3}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
         />
         <Contact
           key={"Contact"}
-          visible={slide.cur_slide === 4}
+          visible={slide.cur_slide == 4}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}

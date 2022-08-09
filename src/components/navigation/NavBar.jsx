@@ -280,6 +280,7 @@ const XLNavbar = () => {
                size="1.5rem"
                title="LinkedIn Profile"
                type="p"
+               
                target="_blank"
               href = "https://www.linkedin.com/in/ayush-bisht-9a5582192/" >
               <BsLinkedin />

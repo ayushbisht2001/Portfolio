@@ -53,6 +53,7 @@ export default function Skills(props) {
             cur_slide : prev.slide_id
         }))
 
+        
         //console.log("changeslide", setSlideState)
     }
 
@@ -67,10 +68,10 @@ export default function Skills(props) {
         if(slide.direction === "next")
       { 
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, {y : -1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : -700, onComplete : changeSlide})
         }
         else
-        TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : 700, onComplete : changeSlide})
 
         
         //console.log("about gsap", slide.slide_id)
@@ -96,7 +97,7 @@ export default function Skills(props) {
     visible = {visible ? "inherit" : "hidden"}  
     >
         
-      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "circle" />
+      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "triangle" />
 
       <Box
         d="flex"
@@ -106,7 +107,7 @@ export default function Skills(props) {
         align="center"
         wrap = "wrap"
       >
-        <Box ref={ani_ref} w="100%" h="auto" tf="translate(0, 1200px)"
+        <Box ref={ani_ref} w="100%" h="auto" tf="translate(0, 700px)"
           maxW = "800px"
         >
           <AniHeading type="p" title="Skills" size="4rem" />
