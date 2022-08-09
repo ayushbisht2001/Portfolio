@@ -61,7 +61,7 @@ export default  class VS{
     }
 
     wheel(event){
-        let targetModifier = event.deltaY
+        let targetModifier = Math.min(event.deltaY, 100)
         if(!this.sliderIsAnimating)
        { this.targetPosY += targetModifier
         this.oldDeltaY = event.deltaY
@@ -114,7 +114,7 @@ export default  class VS{
         this.handleState((prev) => ({
             ...prev,
             prev_slide_id : prev.slide_id,
-            slide_id : prev.slide_id + 1 >= 3 ? 3 : prev.slide_id + 1,
+            slide_id : prev.slide_id + 1 >= 4 ? 4 : prev.slide_id + 1,
             direction : "next",
 
         }))
@@ -179,7 +179,7 @@ export default  class VS{
 
     backToSlide(){
 
-
+    
     //console.log("debounce, here", this)
     this.targetPosY = 0;
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react";
 import { Row, Col, LinkBox } from "../../utility/styled_components/box";
 import { Container } from "../../utility/styled_components/container";
 import { Span } from "../../utility/styled_components/text";
-import { LinkIcon } from "../../utility/styled_components/button";
+import { LinkIcon, NativeLink } from "../../utility/styled_components/button";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
@@ -154,8 +154,7 @@ export const MobNavBar = () => {
             justify="center"
             family="Comfortaa"
             gap="1rem"
-            animate = { css`${attrs.navLinkTransition} 1s linear forwards ` }
-            trans="all 1s ease-out"
+            animate = { css`${attrs.navLinkTransition} 0.6s linear forwards ` }
           >
             <Span size="4rem" type="s">
               <Span p="0px" type="s">
@@ -179,12 +178,26 @@ export const MobNavBar = () => {
               </Span>
             </Span>
             <LinkBox>
-              <LinkIcon to="localhost.com" size="3rem" m="8px 0px 0px 5px">
-                <BsLinkedin />
-              </LinkIcon>
-              <LinkIcon to="localhost.com" size="3rem" m="8px 0px 0px 5px">
+              <NativeLink 
+                 p="0"
+                 size="2.5rem"
+                 title="LinkedIn Profile"
+                 type="p"
+                 target="_blank"
+              href = "https://www.linkedin.com/in/ayush-bisht-9a5582192/" >
+              <BsLinkedin />
+              </NativeLink>
+              
+                <NativeLink 
+                   p="0"
+                   size="2.5rem"
+                   title="Github Profile"
+                   type="p"
+                   target="_blank"
+                href = "https://github.com/ayushbisht2001">
                 <GoMarkGithub />
-              </LinkIcon>
+                </NativeLink>
+
             </LinkBox>
           </Box>
         </Box>
@@ -262,12 +275,25 @@ const XLNavbar = () => {
               </Span>
             </Span>
 
-            <LinkIcon to="localhost.com" size="1.5rem" m="8px 0px 0px 5px">
+              <NativeLink 
+               p="0"
+               size="1.5rem"
+               title="LinkedIn Profile"
+               type="p"
+               target="_blank"
+              href = "https://www.linkedin.com/in/ayush-bisht-9a5582192/" >
               <BsLinkedin />
-            </LinkIcon>
-            <LinkIcon to="localhost.com" size="1.5rem" m="8px 0px 0px 5px">
-              <GoMarkGithub />
-            </LinkIcon>
+              </NativeLink>
+              
+                <NativeLink 
+                 p="10px"
+                 size="1.5rem"
+                 title="Github profile"
+                 type="p"
+                 target="_blank"
+                href = "https://github.com/ayushbisht2001">
+                <GoMarkGithub />
+                </NativeLink>
           </Col>
         </Row>
       </Container>

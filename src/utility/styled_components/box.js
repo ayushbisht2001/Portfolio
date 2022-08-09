@@ -105,7 +105,7 @@ flex-wrap : ${(props) => props.wrap || "wrap"};
 font-family : ${props => props.family || "inherit"};
 width : ${props => props.w || "100%"};
 height: ${(props) => props.h || "100%"};
-
+grid-area : ${props => props.gname || ""};
 `
 
 export const LinkBox = styled(Box)`

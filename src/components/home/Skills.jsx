@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef, useContext} from 'react'
 import { Section } from '../../utility/styled_components/container'
-import { Row, Col, Box } from '../../utility/styled_components/box'
+import { Row, Col, Box, LinkBox } from '../../utility/styled_components/box'
 import { Button } from '../../utility/styled_components/button';
 import { getElementXY } from '../../utility';
 import _ from "lodash"
@@ -9,18 +9,23 @@ import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin.js";
 import AniHeading from '../reusable_components/heading'
-import { Span, PText } from '../../utility/styled_components/text'
+import { Span , PText} from '../../utility/styled_components/text'
 import { Strips } from '../animations/shapes/shapes'
 import {SlideContext} from '../../store/slider_store'
 import SliderBg from '../reusable_components/SliderBg'
-import TestimonialCard from '../reusable_components/TestimonialCard';
+import { LinkIcon } from "../../utility/styled_components/button";
+import { BsLinkedin } from "react-icons/bs";
+import { GoMarkGithub } from "react-icons/go";
+import { FaTwitterSquare } from "react-icons/fa";
+import ContactForm, { SimpleContactForm } from '../reusable_components/ContactForm';
+import SkillBubble from "../reusable_components/SkillBubble"
 
 
 gsap.registerPlugin(MotionPathPlugin);
 
 
  
-export default function Testimonials(props) {
+export default function Skills(props) {
 
     
   const { state : {
@@ -32,8 +37,6 @@ export default function Testimonials(props) {
     const ref = useRef()
 
     const ani_ref = useRef()
-    const ani_ref_2 = useRef()
-
 
     const {
         slide,
@@ -65,15 +68,10 @@ export default function Testimonials(props) {
       { 
         // ani_ref.current.style.transform = "translate(0, -600px)"
         TweenLite.to(ani_ref.current, {y : -1200, onComplete : changeSlide})
-        TweenLite.to(ani_ref_2.current, {y : -1200, onComplete : changeSlide})
-
         }
         else
-      {
-          TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
-        TweenLite.to(ani_ref_2.current, {y : 1200, onComplete : changeSlide})
+        TweenLite.to(ani_ref.current, {y : 1200, onComplete : changeSlide})
 
-}
         
         //console.log("about gsap", slide.slide_id)
     }
@@ -85,8 +83,6 @@ export default function Testimonials(props) {
         if(visible && slide.cur_slide === slide.slide_id){
 
             TweenLite.to(ani_ref.current, { y : 0})
-            TweenLite.to(ani_ref_2.current, { y : 0})
-
         }
 
     }, [slide.cur_slide])
@@ -100,35 +96,55 @@ export default function Testimonials(props) {
     visible = {visible ? "inherit" : "hidden"}  
     >
         
-      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "square" />
+      <SliderBg   {...slide} vs = {vs} slide = {slide} visible = {visible} itype = "circle" />
+
       <Box
         d="flex"
-        direction="row"
+        direction="columns"
         w="100%"
         h="100%"
-        align = "center"
-        p = "20px 10px"
-        md = {`
-          flex-direction : column;
-          justify-content : center;
-          align-items : unset;
-        
-        `}
-        
+        align="center"
+        wrap = "wrap"
       >
-        <Box ref={ani_ref} w="auto" h="auto" p = "20px 10px" tf="translate(0, 1200px)"
-          maxW = "600px"
-          talign  = "left"
+        <Box ref={ani_ref} w="100%" h="auto" tf="translate(0, 1200px)"
+          maxW = "800px"
         >
-          <AniHeading type="p"  title="Testimonials" size="4rem" />
-          <Span type="t" p ="0"  m = "0" size = "1.4rem"   >
-          People I've worked with have said some nice things...
-        </Span>
-      
-          </Box>
-        <Box w="auto" h="auto" ref = {ani_ref_2} >
-          <TestimonialCard />
+          <AniHeading type="p" title="Skills" size="4rem" />
+
+            <Row 
+              w = "min( 100% , 800px)"
+              cols = "auto auto auto"
+              rows = "auto"
+              family = "Comfortaa"
+              gap = "5px 5px"
+              sm = {`
+
+              grid-template-columns : 50% 50%;
+
+              `}
+            >
+              
+              <Span size = "1.2rem" type = "s" >Python,&nbsp;&nbsp;Django,&nbsp;&nbsp;DRF</Span>
+              <Span size = "1.2rem" type = "s" >Javascript,&nbsp;&nbsp;React JS,&nbsp;&nbsp;Jquery</Span>
+              <Span size = "1.2rem" type = "s" >HTML,&nbsp;&nbsp;Canvas,&nbsp;&nbsp;SVG</Span>
+              <Span size = "1.2rem" type = "s" >CSS3,&nbsp;&nbsp;SCSS</Span>
+              <Span size = "1.2rem" type = "s" >Bootstrap,&nbsp;&nbsp;MUI</Span>
+
+              <Span size = "1.2rem" type = "s" > C/C++ </Span>
+              <Span size = "1.2rem" type = "s" >Redux</Span>
+              <Span size = "1.2rem" type = "s" >DBMS,&nbsp;&nbsp;MSQL,&nbsp;&nbsp;Postgres</Span>
+
+
+
+
+            </Row>
+
         </Box>
+
+          <Box>
+            {/* <SkillBubble /> */}
+          </Box>
+        
       </Box>
        
     

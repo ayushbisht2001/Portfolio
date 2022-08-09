@@ -14,6 +14,7 @@ const FormInput = (props) => {
         label_sx,
         w,
         h,
+        name
 
     } = props;
 
@@ -32,6 +33,7 @@ const FormInput = (props) => {
             <SimpleContactInput 
                w = {"100%"}
                h = {h}
+               name = {name}
                 sx = {sx}
                 placeholder = {ph}
                 >

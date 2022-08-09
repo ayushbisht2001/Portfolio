@@ -17,6 +17,7 @@ import Testimonials from "../components/home/testimonials";
 import Contact from "../components/home/contact_me";
 import { SlideContext, SlideContextProvider } from "../store/slider_store";
 import SlideWrapper from "../components/reusable_components/SlideWrapper";
+import Skills from "../components/home/Skills";
 
 
 function Slider(props) {
@@ -94,16 +95,24 @@ function Slider(props) {
           setSlideState={setSlideState}
           vs={vs}
         />
+        <Skills 
+          key={"skills"}
+          visible={slide.cur_slide === 2}
+          slide={slide}
+          setSlideState={setSlideState}
+          vs={vs}
+        
+        />
           <Testimonials
           key={"Testimonials"}
-          visible={slide.cur_slide === 2}
+          visible={slide.cur_slide === 3}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
         />
         <Contact
           key={"Contact"}
-          visible={slide.cur_slide === 3}
+          visible={slide.cur_slide === 4}
           slide={slide}
           setSlideState={setSlideState}
           vs={vs}
