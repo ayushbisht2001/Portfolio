@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Spine, Pulse } from '../animations';
 import { Chips } from '../../utility/styled_components/box';
 
-const SlideWrapper = (props) => {
+const SpineWrapper = (props) => {
 
     const{
         spine = false,
@@ -24,23 +24,16 @@ const SlideWrapper = (props) => {
             w = "100%"
             h = "100%"
             className='spine-box' 
-            of = "hidden"
             
         >
         {<Spine 
-            pos = "absolute"
-            right = "30px"
-            left = "none"
-            top = "none"
+            pos = "fixed"
+            right = "100px"
+            top = "unset"
             bottom = "0px"
+            left = "15rem"
             h = "calc(100vh  - 23rem)"
             md = {`
-            left : unset;
-            top : unset;
-            bottom : 0px;
-            right : 10px;
-            height : calc(100vh - 22rem);
-
             `}
         >
             <Pulse top = "-9px"  left = "-6px" 
@@ -64,7 +57,7 @@ const SlideWrapper = (props) => {
     );
 }
 
-export default SlideWrapper;
+export default SpineWrapper;
 
 
 const WrapperContainer = styled(ContainerFluid)`
@@ -72,7 +65,6 @@ const WrapperContainer = styled(ContainerFluid)`
     height : 100%;
     width : 100%;
     position : relative;
-
     grid-template-columns : max(20%, 10px) calc(100% - max(20%, 10px));
     
     & .spine-box::before{

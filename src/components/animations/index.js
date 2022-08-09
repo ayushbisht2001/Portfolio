@@ -43,11 +43,15 @@ transition : 1s all ease 0.5;
 
 @media(max-width : 500px){
     &{
-        left : calc( 34vw  - 5rem);
-        top : calc( 50vh);
+        left : calc( 34vw  - 7.5rem);
+        top : calc( 33vh);
+        height : calc(100vh - 15rem);
         ${props => props.md || ""};
 
     }
 }
+
+${props => css`${props.sx}`};
+
 
 `
