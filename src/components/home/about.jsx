@@ -40,6 +40,7 @@ export default function AboutSlide(props) {
       cur_slide: prev.slide_id,
     }));
 
+    
     //console.log("changeslide", setSlideState);
   };
 
@@ -47,8 +48,8 @@ export default function AboutSlide(props) {
     if (ani_ref && visible && slide.cur_slide !== slide.slide_id) {
       if (slide.direction === "next") {
         // ani_ref.current.style.transform = "translate(0, -600px)"
-        TweenLite.to(ani_ref.current, { y: -600, onComplete: changeSlide });
-      } else TweenLite.to(ani_ref.current, { y: 600, onComplete: changeSlide });
+        TweenLite.to(ani_ref.current, { y: -700, onComplete: changeSlide });
+      } else TweenLite.to(ani_ref.current, { y: 700, onComplete: changeSlide });
 
       //console.log("about gsap", slide.slide_id);
     }
@@ -72,7 +73,7 @@ export default function AboutSlide(props) {
         vs={vs}
         slide={slide}
         visible={visible}
-        itype="circle"
+        itype="square"
       />
 
     
@@ -84,7 +85,7 @@ export default function AboutSlide(props) {
         rows = "100%"
         justify = "center"
 >
-        <Col ref={ani_ref}   h="auto"    tf="translate(0, 600px)"
+        <Col ref={ani_ref}   h="auto"    tf="translate(0, 700px)"
           maxW = "600px"
           // md = {`
           //   grid-area : 2 / 1;
@@ -92,17 +93,15 @@ export default function AboutSlide(props) {
 >
           <AniHeading type="p" title="About Me" size="5rem" />
           <PText type="s" size = "1rem" >
-          Hey, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, currently I'm pursing 
-          Computer Science and Engineering.
+          Hey 👋, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, based in Uttarakhand.
           
           </PText>
           <br></br>
           <PText type="s" size = "1rem">
-          I have been doing coding stuff since 9th standard and had build numerous projects for the web.
-          I worked with various startups as a Full-stack developer. I'm good at React Js and Python for frontend and backend respectively.
-
+              I have been doing programming  since 11th standard and had build countless projects since then. 
           </PText> 
-               
+          <PText>
+          </PText>  
           </Col>
         {/* <Col    h="auto" p ="10px"
           w = "100%"

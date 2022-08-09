@@ -641,10 +641,13 @@ export const Square = (props) => {
 };
 
 export const Rectangle = (props) => {
-
+  const{
+    tref
+  } = props;
   return (
-    <Shape {...props} width="163" height="163"  >
-      <rect id="square" x="0.5" y="0.5" width="100" height="162" />
+    <Shape {...props} width="40" height="70" ref = {tref}  >
+    <rect id="square" x="0.5" y="0.5" width="39" height="60" fill="#457B9D" fill-opacity="0.52" stroke="#457B9D"/>
+
     </Shape>
   );
 };

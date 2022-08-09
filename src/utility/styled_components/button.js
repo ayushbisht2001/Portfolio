@@ -69,24 +69,29 @@ export const NativeLink = styled.a`
 text-decoration: none;
 width: ${(props) => props.w || "auto"};
 padding : ${props => props.p || "5px"};
-
+border-radius : ${props => props.rad || "0.5rem"};
 margin : ${props => props.m || "5px"};
 text-align: center;
 height: ${(props) => props.h || "auto"};
-background: none;
+background : ${(props) => (props.bg || props.fill && (props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.secondary : props.theme.palette.text.primary ) )};
+
 color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
 text-align: center;
 font-size:  ${(props) => props.size || "inherit"};
 font-family : ${props => props.family || "inherit"};
+transition: all 0.6s ease 0s;
 
 &:hover {
   color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};
+  background : ${(props) => (props.hbg || props.fill && (props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.secondary : props.theme.palette.text.primary ) )};
+  transform: scale(1.1);
+
 }
 
 
 & svg {
   margin: 5px 10px 5px 0px;
-  transition: all 0.2s ease 0s;
+  transition: all 0.6s ease 0s;
 
   &:hover {
     color : ${(props) => props.hcolor || (  props.type == "s" ? props.theme.palette.text.primary : props.type == "t" ? props.theme.palette.text.primary : props.theme.palette.text.secondary  )};

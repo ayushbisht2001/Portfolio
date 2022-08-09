@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef} from 'react';
 import { Box } from '../../utility/styled_components/box';
 import { Heading2, PText, Span } from '../../utility/styled_components/text';
 import { Circle, Shape, ShapeBox, Triangle } from '../animations/shapes/shapes';
-import { TestinomialList } from '../../utility/data/testinomials';
+import { TestimonialList } from '../../utility/data/testinomials';
 import styled from 'styled-components';
 
 const URL = process.env.PUBLIC_URL;
@@ -49,7 +49,7 @@ const TestimonialCard = () => {
                 }
             `}
         >
-            <img  width = "100px" height = "100px" src = {`${URL}/assets/images/testimonials/ayush.jpg`}  />
+            <img  width = "100px" height = "100px" src = {`${URL}/assets/images/${TestimonialList[state].img}`}  />
         </Box>
         <Box 
             h = "auto"
@@ -57,10 +57,10 @@ const TestimonialCard = () => {
             w = "max( 50%, 200px )"
             talign = "center"
         >
-        <Span size = "1.2rem"> {TestinomialList[state].name} </Span>
-        <PText weight="600" m = "0px" size = "1rem" type = "t"> {TestinomialList[state].designation} </PText> 
+        <Span size = "1.2rem"> {TestimonialList[state].name} </Span>
+        <PText weight="600" m = "0px" size = "1rem" type = "t"> {TestimonialList[state].designation} </PText> 
         <PText size = "0.8rem" type = "s" >
-        {TestinomialList[state].context}
+        {TestimonialList[state].context}
         </PText>
       
         </Box>
