@@ -127,7 +127,7 @@ export default function Testimonials(props) {
         </Span>
       
           </Box>
-        <Box w="auto" h="auto" ref = {ani_ref_2} >
+        <Box w="auto" h="auto" ref = {ani_ref_2}   tf="translate(0, 700px)" >
           <TestimonialCard />
         </Box>
       </Box>

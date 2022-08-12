@@ -31,6 +31,8 @@ export default function AboutSlide(props) {
   const ref = useRef();
 
   const ani_ref = useRef();
+  const ani_ref2 = useRef();
+
 
   const { slide, vs, visible, setSlideState } = props;
 
@@ -49,8 +51,13 @@ export default function AboutSlide(props) {
       if (slide.direction === "next") {
         // ani_ref.current.style.transform = "translate(0, -600px)"
         TweenLite.to(ani_ref.current, { y: -700, onComplete: changeSlide });
-      } else TweenLite.to(ani_ref.current, { y: 700, onComplete: changeSlide });
+        TweenLite.to(ani_ref2.current, { y: -700, onComplete: changeSlide });
 
+      } else {
+        TweenLite.to(ani_ref.current, { y: 700, onComplete: changeSlide });
+        TweenLite.to(ani_ref2.current, { y: 700, onComplete: changeSlide });
+
+}
       //console.log("about gsap", slide.slide_id);
     }
   }, [slide.slide_id]);
@@ -58,6 +65,9 @@ export default function AboutSlide(props) {
   useEffect(() => {
     if (visible && slide.cur_slide === slide.slide_id) {
       TweenLite.to(ani_ref.current, { y: 0 });
+      TweenLite.to(ani_ref2.current, { y: 0 });
+
+
     }
   }, [slide.cur_slide]);
 
@@ -77,77 +87,65 @@ export default function AboutSlide(props) {
       />
 
     
-      <Row
+      <Box
+        d = "flex"
+        direction = "row"
         w="100%"
         h="100%"
         align="center"
-        wrap = "wrap"
-        rows = "100%"
-        justify = "center"
->
-        <Col ref={ani_ref}   h="auto"    tf="translate(0, 700px)"
+        gap = "0px 30px"
+        md = {`
+        gap : 40px 0px;
+        flex-direction : column;
+        justify-content : center;
+        align-items : center;
+        `}
+
+> 
+        <Box ref={ani_ref}   h="auto"    tf="translate(0, 700px)"
           maxW = "600px"
-          // md = {`
-          //   grid-area : 2 / 1;
-          // `}
+       
 >
           <AniHeading type="p" title="About Me" size="5rem" />
           <PText type="s" size = "1rem" >
-          Hey 👋, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, based in Uttarakhand.
-          
+          Hey 👋, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, based in Uttarakhand with proven technical, 
+          organizational, and communication skills, working with Agile and designing software solutions.  
+          Offering strong React skills and working experience with SQL, Python, Django, JavaScript frameworks, and many more.
           </PText>
-          <br></br>
-          <PText type="s" size = "1rem">
+          {/* <PText type="s" size = "1rem">
               I have been doing programming  since 11th standard and had build countless projects since then. 
-          </PText> 
-          <PText>
-          </PText>  
-          </Col>
-        {/* <Col    h="auto" p ="10px"
-          w = "100%"
-          md = {`
-
-          width : 100%;
-          height : 100%;
-          
-          `}
-        >
+          </PText>  */}
+          </Box>
             <Box
               w = "300px"
               h = "300px"
-              p = "5px"
-              border = "1px solid #414141"
+              p = "15px"
+              rad = "5px"
+              border = "2px solid #414141"
+              trans = "filter 0.6s ease"
+              tf="translate(0, 700px)"
               sx = {`
+              cursor : pointer;
+              filter : grayscale(90%);
 
               & img{
-                opacity : 0.3;
-                filter : grayscale(100%);
+                border-radius : inherit;
+              }
+              &:hover{
+                filter : grayscale(0%);
 
               }
-              
+
+
               `}
+              ref = {ani_ref2}
 
-              md = {`
-
-              width : 100vw;
-              height : 30%;
-              position : absolute;
-              top : 0px;
-              left : 0px;
-              & img{
-                
-                height : 300px;
-                width : 100vw;
-
-              }
-              `}
 
             
 >
-              <img width = "100%" height = "100%" src = {`${URL}/assets/images/testimonials/ayush.jpg`} />
+              <img width = "100%" height = "100%" src = {`${URL}/assets/images/profile.jpg`} />
             </Box>
-        </Col> */}
-      </Row>
+      </Box>
      
     </Section>
   );

@@ -128,12 +128,13 @@ export default function Skills(props) {
               <Span size = "1.2rem" type = "s" >Python,&nbsp;&nbsp;Django,&nbsp;&nbsp;DRF</Span>
               <Span size = "1.2rem" type = "s" >Javascript,&nbsp;&nbsp;React JS,&nbsp;&nbsp;Jquery</Span>
               <Span size = "1.2rem" type = "s" >HTML,&nbsp;&nbsp;Canvas,&nbsp;&nbsp;SVG</Span>
-              <Span size = "1.2rem" type = "s" >CSS3,&nbsp;&nbsp;SCSS</Span>
+              <Span size = "1.2rem" type = "s" >CSS3,&nbsp;&nbsp;SASS</Span>
               <Span size = "1.2rem" type = "s" >Bootstrap,&nbsp;&nbsp;MUI</Span>
 
               <Span size = "1.2rem" type = "s" > C/C++ </Span>
               <Span size = "1.2rem" type = "s" >Redux</Span>
               <Span size = "1.2rem" type = "s" >DBMS,&nbsp;&nbsp;MSQL,&nbsp;&nbsp;Postgres</Span>
+              <Span size = "1.2rem" type = "s" >Git,&nbsp;&nbsp;Git-bash</Span>
 
 
 
