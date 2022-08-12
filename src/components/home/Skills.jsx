@@ -134,6 +134,7 @@ export default function Skills(props) {
               <Span size = "1.2rem" type = "s" > C/C++ </Span>
               <Span size = "1.2rem" type = "s" >Redux</Span>
               <Span size = "1.2rem" type = "s" >DBMS,&nbsp;&nbsp;MSQL,&nbsp;&nbsp;Postgres</Span>
+              <Span size = "1.2rem" type = "s" >Git,&nbsp;&nbsp;Git-bash</Span>
 
 
 
