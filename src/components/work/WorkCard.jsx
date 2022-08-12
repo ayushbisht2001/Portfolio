@@ -102,8 +102,18 @@ const Card = (props) => {
           <Span type="t" size="1.3rem" family="Comfortaa">
             context :
           </Span>
-          <PText size="1.2rem" type="s" m="10px 10px" weight="0">
-            " {desc} "<Span>{","}</Span>
+          <PText size="1.2rem"  type="s" m="10px 10px" weight="0" family="Comfortaa" 
+            sx = {`
+            & ul{
+              padding : 0px 0px 0px 25px;
+            }
+            & ul  li{
+              font-family : inherit;
+            }
+
+            `}
+          >
+           <Span type = "t">"</Span>  {desc}<Span type = "t">"</Span> <Span>{","}</Span>
           </PText>
           <Span type="t" size="1.3rem" family="Comfortaa">
             stack :

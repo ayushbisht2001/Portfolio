@@ -2,10 +2,26 @@ export const WorkList = [
   {
     title: "AiInsight",
     time: "Sep 2021 – Nov 2021 ",
-    desc: `Build ML based web application used for models
-      training and testing.
-      Lead the team and did several meetings with
-      international clients`,
+    desc: (
+      <ul>
+        <li>
+          Carried out the Machine Learning-based web application development
+          using modern JavaScript frameworks and libraries including React,
+          SAAS, and MUI.
+        </li>        
+        <li>
+          Redesigned the complete UI of the application for version 2.0 and also
+          Integrate Rest APIs for engine status, model building, model query,
+          PayPal, and stripe payment gateway endpoints at the frontend.
+        </li>        
+        <li>
+          Collaborated in an agile manner with cross-functional team sprints,
+          and participated in 100% of daily scrums, and also carried out weekly
+          feedback sessions on the product design and progress report with
+          international clients.
+        </li>
+      </ul>
+    ),
     links: null,
     stack: ["React", "Redux"],
     role: "Full Stack developer ( intern )",
@@ -19,12 +35,19 @@ export const WorkList = [
   {
     title: "Sacrd",
     time: "Jul 2021 – Sep 2021",
-    desc: `Build SACRD for Multi-GAAP
-    Financial Reporting Automation.
-    Did researches and benchmark analysis for
-    optimizing the productivity and performance of
-    application.`,
-    links: null,
+    desc: <ul>
+    <li>
+    Work on SACRD, a web application for Multi-GAAP Financial Reporting Automation.
+    </li>        
+    <li>
+    Perform Benchmark analysis of the product to optimize the application's productivity and performance.
+    </li>        
+    <li>
+    Eliminate the dead and redundant code from the application and automate the code standardization testing 
+    using a pre-commit library for both frontend and backend.
+    </li>
+  </ul>,
+  links: null,
     stack: ["Python", "Django", "React", "Redux"],
     image: "AON.jpeg",
     role: "Full Stack developer ( intern )",
@@ -79,7 +102,7 @@ export const WorkList = [
       source: "https://github.com/ayushbisht2001/KEC-FEST",
       demo: "https://ayushbisht2001.github.io/KEC-FEST/",
     },
-    stack: [  "React", "SCSS"],
+    stack: ["React", "SCSS"],
     image: "kaivalaya.png",
     frame: [
       { type: "xl", src: "kaivalayaScroll1.png", isAnimate: true },

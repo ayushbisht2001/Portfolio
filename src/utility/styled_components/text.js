@@ -48,7 +48,9 @@ export const Text = styled.p`
 
 export const PText = styled(Text)`
 
-
+${(props) =>  css`
+${props.sx}
+`}
 @media (max-width: 800px) {   
   font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 4 )`};
 }
