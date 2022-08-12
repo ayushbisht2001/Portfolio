@@ -79,7 +79,17 @@ export const WorkList = [
     time: "12 July , 2022",
     role: "Technical Coordinator ( intern )",
 
-    desc: "Developed and managed website for organizing the annual cultural festival.",
+    desc:<ul>
+    <li>
+    Developed and managed website for organizing the annual cultural festival.
+    </li>     
+    <li>
+      Design the wireframe of website in figma.
+    </li>      
+    <li>
+      Create and integrate Rest APIs using Django for handling participants registration and event progress.
+    </li>        
+  </ul>,
     links: {
       source: "https://github.com/Scintilla2k22",
       demo: "https://scintilla2022.tech/",
