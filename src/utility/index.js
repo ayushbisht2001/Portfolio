@@ -1,3 +1,7 @@
+import gsap from "gsap";
+import { TweenLite } from "gsap/gsap-core";
+
+
 export const getElementXY = (ele) =>{
 
     let box = ele.getBoundingClientRect();
@@ -41,11 +45,14 @@ export const mouse = {
     
     */
    if(ref.current)
-{      ref.current.style.transform = `
-      matrix3d(${scale}, 0, 0.06, 0,
-               0,${scale}, 0, 0, 
-               -0.03 ,0, 1, 0, 
-               ${moveX * direction}, ${moveY * direction}, 0, 1)`;  
+{      
+    gsap.to(ref.current, { y : moveY*direction , x : moveX*direction});
+  
+  // ref.current.style.transform = `
+  //     matrix3d(${scale}, 0, 0.06, 0,
+  //              0,${scale}, 0, 0, 
+  //              -0.03 ,0, 1, 0, 
+  //              ${moveX * direction}, ${moveY * direction}, 0, 1)`;  
 
               }
 

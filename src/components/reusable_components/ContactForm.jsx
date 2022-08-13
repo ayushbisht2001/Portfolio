@@ -69,10 +69,10 @@ export const SimpleContactForm = (props) => {
       >
 
       <Col h="auto">
-        <FormInput name = "name" label="Name" ph="Ayush Bisht" h="3rem" />
+        <FormInput required = "true" name = "name" label="Name" ph="Ayush Bisht" h="3rem" />
       </Col>
       <Col h="auto">
-        <FormInput type = "email" name = "email" label="Email" ph="xyz@gmail.com" h="3rem" />
+        <FormInput required = "true" type = "email" name = "email" label="Email" ph="xyz@gmail.com" h="3rem" />
       </Col>
       <Col
         sx={`
@@ -80,7 +80,7 @@ export const SimpleContactForm = (props) => {
         `}
         h="auto"
       >
-        <FormInput name = "message" h="6rem" label="Message" ph="Hi,👋👋" />
+        <FormInput required = "true" name = "message" h="6rem" label="Message" ph="Hi,👋👋" />
       </Col>
       </Box>
       <PText

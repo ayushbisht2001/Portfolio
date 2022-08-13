@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingMain, AniSpan, Span } from "../../utility/styled_components/text";
+import { HeadingMain, AniSpan, Span, PText } from "../../utility/styled_components/text";
 
 const SpanList = function (props) {
   const { data = [], type } = props;
@@ -14,12 +14,12 @@ const SpanList = function (props) {
               return(
                 <>
               {   words.trim().split("").map(word =>{
-                    return <AniSpan type= {type}> {word} </AniSpan>;
+                    return <AniSpan sx = "word-break : keep-all;" type= {type}>{word} </AniSpan>;
                      })
                
                }
                &nbsp;
-                </>
+                 </>
                 
                 )
 

@@ -12,7 +12,6 @@ const LiveShape = (props) => {
     
     if(isLive)
     window.addEventListener("mousemove", (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) : handleLiveShape(e, ref, props));
-
     return () =>{
       window.removeEventListener('mousemove', (e) => shapeTransitionHandler ? shapeTransitionHandler(e, ref, props) :  handleLiveShape(e, ref, props) );
     };

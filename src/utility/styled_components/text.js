@@ -113,15 +113,15 @@ export const HeadingMain = styled.h1`
 
 
   @media (max-width: 800px) {   
-    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.size} / 5)`};
+    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 5)`};
   }
 
   @media (max-width: 500px) {   
-    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.size} / 3)`};
+    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 3)`};
   }
 
-  @media (max-width: 300px) {   
-    font-size : ${(props) => props.xs || `calc( ${props.size} - ${props.size} / 2)`};
+  @media (max-width: 380px) {   
+    font-size : ${(props) => props.xs || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 2.5 )`};
   }
   ${(props) =>
     css`
@@ -194,8 +194,8 @@ export const Span = styled.span`
     font-size : ${(props) => props.sm ||  `calc( ${props.size} - ${props.size} / 2 )`};
   }
 
-  @media (max-width: 300px) {   
-    font-size : ${(props) => props.xs ||  `calc( ${props.size} - ${props.size} / 2 )`};
+  @media (max-width: 350px) {   
+    font-size : ${(props) => props.xs ||  `calc( ${props.size} - ${props.size} / 2 - 30px  )`};
   }
   ${(props) =>
     css`

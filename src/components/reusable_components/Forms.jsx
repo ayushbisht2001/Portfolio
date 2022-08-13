@@ -34,8 +34,9 @@ const FormInput = (props) => {
                w = {"100%"}
                h = {h}
                name = {name}
-                sx = {sx}
-                placeholder = {ph}
+               sx = {sx}
+               placeholder = {ph}
+                required
                 >
 
             </SimpleContactInput>
