@@ -78,9 +78,9 @@ export const WorkList = [
     stack: ["Django", "DRF", "React", "Redux"],
     image: "scintilla.png",
     frame: [
-      { type: "xl", src: "scintillaScroll1.png", isAnimate: true },
+      { type: "xl", src: "sbfs2.png", isAnimate: true },
       { type: "md", src: "scintilla.png" },
-      { type: "sm", src: "scintillaScroll2.png", isAnimate: true },
+      { type: "sm", src: "sbfs1.png", isAnimate: true },
     ],
   },
   {
