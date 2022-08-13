@@ -2,7 +2,12 @@ export const ProjectList = [
   {
     title: "PyPaint",
     time: "March 2020 -  April 2020 ",
-    desc: "Design and develop pypaint - a GUI paint and text editor application built with python and Tkinter embedded with speech-to-text translation functionality. ",
+    desc:( 
+      <ul>
+        <li>
+        Design and develop pypaint - a GUI paint and text editor application built with python and Tkinter embedded with speech-to-text translation functionality. 
+        </li>
+      </ul>) ,
     links: {
       source: "https://github.com/ayushbisht2001/pypaint",
       demo: "https://github.com/ayushbisht2001/pypaint",
@@ -62,7 +67,7 @@ export const ProjectList = [
       source: "https://github.com/ayushbisht2001/LeetCodeClone",
       demo: "https://ayush-leetcode.vercel.app/",
     },
-    stack: ["React", "Redux"],
+    stack: ["React", "Redux", "MUI"],
     image: "AON.jpeg",
     frame: [
       { type: "xl", src: "leetcodeclone2.png", isAnimate: true },

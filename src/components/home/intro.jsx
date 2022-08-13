@@ -150,7 +150,24 @@ export default function Intro(props) {
           direction = {-1}
           pfill = "none"
         />
-        <CurlyRing left="55%" top="50%" tf="scale(2.3)" type="p" 
+
+        <LiveShape 
+          stype ="cring"
+          isLive={true}
+          direction = {-1}
+          left="55%" top="50%" 
+          tf="scale(2.3)" 
+          type="p"
+          scale = {2.3} 
+          sm = {`
+            bottom : -5%;
+            top : unset;
+            left : 40%;
+
+          `}
+        />
+
+        {/* <CurlyRing left="55%" top="50%" tf="scale(2.3)" type="p" 
           sm = {`
             bottom : -5%;
             top : unset;
@@ -158,7 +175,7 @@ export default function Intro(props) {
 
           `}
 
-        />
+        /> */}
 
         <LiveShape
           stype = "ring"
