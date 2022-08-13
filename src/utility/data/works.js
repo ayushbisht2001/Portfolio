@@ -74,7 +74,10 @@ export const WorkList = [
         <li>Integrate REST APIs for dynamic fuel prices</li>
       </ul>
     ),
-    links: null,
+    links:   {
+      source: "https://github.com/ayushbisht2001/sbj-gas-station",
+      demo: "https://62f7932beb22371388c2ae2c--whimsical-froyo-d236fd.netlify.app"
+    },
     stack: ["Django", "DRF", "React", "Redux"],
     image: "scintilla.png",
     frame: [
