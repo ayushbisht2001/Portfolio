@@ -107,7 +107,7 @@ export default function AboutSlide(props) {
        
 >
           <AniHeading type="p" title="About Me" size="5rem" />
-          <PText type="s" size = "1rem" >
+          <PText type="s" size = "1.2rem" >
           Hey 👋, my name is Ayush Bisht , a self-taught passionate Full stack developer from India, based in Uttarakhand with proven technical, 
           organizational, and communication skills, working with Agile and designing software solutions.  
           Offering strong React skills and working experience with SQL, Python, Django, JavaScript frameworks, and many more.

@@ -57,8 +57,8 @@ const TestimonialCard = () => {
             w = "max( 50%, 200px )"
             talign = "center"
         >
-        <Span size = "1.2rem"> {TestimonialList[state].name} </Span>
-        <PText weight="600" m = "0px" size = "1rem" type = "t"> {TestimonialList[state].designation} </PText> 
+        <Span size = "1.3rem"> {TestimonialList[state].name} </Span>
+        <PText weight="600" m = "0px" size = "1.2rem" type = "t"> {TestimonialList[state].designation} </PText> 
         <PText size = "0.8rem" type = "s" >
         {TestimonialList[state].context}
         </PText>
