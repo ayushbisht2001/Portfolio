@@ -282,6 +282,7 @@ export default function Intro(props) {
           title={"Ayush Bisht"}
           sx={{ display: "block" }}
           size="5rem"
+          sfactor = {1}
           type="p"
         />
         <AniHeading
