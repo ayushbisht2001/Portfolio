@@ -122,9 +122,9 @@ export default function Testimonials(props) {
           talign  = "left"
         >
           <AniHeading type="p"  title="Testimonials" size="4rem" />
-          <Span type="s" family = "Comfortaa" p ="0"  m = "0" size = "1.4rem"   >
-          People I've worked with have said some nice things...
-        </Span>
+            <PText type="s" family = "Comfortaa" p ="0"  m = "0" size = "1.2rem"   >
+            People I've worked with have said some nice things...
+          </PText>
       
           </Box>
         <Box w="auto" h="auto" ref = {ani_ref_2}   tf="translate(0, 700px)" >

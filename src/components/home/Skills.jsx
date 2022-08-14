@@ -108,12 +108,12 @@ export default function Skills(props) {
         wrap = "wrap"
       >
         <Box ref={ani_ref} w="100%" h="auto" tf="translate(0, 700px)"
-          maxW = "800px"
+          maxW = "900px"
         >
           <AniHeading type="p" title="Skills" size="4rem" />
 
             <Row 
-              w = "min( 100% , 800px)"
+              w = "min( 100% , 900px)"
               cols = "auto auto auto"
               rows = "auto"
               family = "Comfortaa"
@@ -123,18 +123,24 @@ export default function Skills(props) {
               grid-template-columns : 50% 50%;
 
               `}
+
+              xs = {`
+
+              grid-template-columns : 100%;
+
+              `}
             >
               
-              <Span size = "1.2rem" type = "s" >Python,&nbsp;&nbsp; Django, &nbsp;&nbsp;DRF</Span>
-              <Span size = "1.2rem" type = "s" >Javascript, &nbsp;&nbsp;React&nbsp;JS, &nbsp;&nbsp;Jquery</Span>
-              <Span size = "1.2rem" type = "s" >HTML, &nbsp;&nbsp;Canvas, &nbsp;&nbsp;SVG</Span>
-              <Span size = "1.2rem" type = "s" >CSS3, &nbsp;&nbsp;SASS</Span>
-              <Span size = "1.2rem" type = "s" >Bootstrap, &nbsp;&nbsp;MUI</Span>
+              <Span size = "1rem" type = "s" >Python,&nbsp;&nbsp; Django, &nbsp;&nbsp;DRF</Span>
+              <Span size = "1rem" type = "s" >Javascript, &nbsp;&nbsp;React&nbsp;JS, &nbsp;&nbsp;Jquery</Span>
+              <Span size = "1rem" type = "s" >HTML, &nbsp;&nbsp;Canvas, &nbsp;&nbsp;SVG</Span>
+              <Span size = "1rem" type = "s" >CSS3, &nbsp;&nbsp;SASS</Span>
+              <Span size = "1rem" type = "s" >Bootstrap, &nbsp;&nbsp;MUI</Span>
 
-              <Span size = "1.2rem" type = "s" > C/C++ </Span>
-              <Span size = "1.2rem" type = "s" >Redux</Span>
-              <Span size = "1.2rem" type = "s" >DBMS, &nbsp;&nbsp;MSQL, &nbsp;&nbsp; Postgres</Span>
-              <Span size = "1.2rem" type = "s" >Git, &nbsp;&nbsp;Git-bash</Span>
+              <Span size = "1rem" type = "s" > C/C++ </Span>
+              <Span size = "1rem" type = "s" >Redux</Span>
+              <Span size = "1rem" type = "s" >DBMS, &nbsp;&nbsp;MSQL, &nbsp;&nbsp; Postgres</Span>
+              <Span size = "1rem" type = "s" >Git, &nbsp;&nbsp;Git-bash</Span>
 
 
 

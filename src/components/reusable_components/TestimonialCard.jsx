@@ -46,8 +46,10 @@ const TestimonialCard = () => {
                     position : relative;
                     object-fit : cover;
                     border-radius : inherit;
+                    border : 4px solid grey;
                 }
             `}
+             
         >
             <img  width = "100px" height = "100px" src = {`${URL}/assets/images/${TestimonialList[state].img}`}  />
         </Box>
@@ -57,8 +59,8 @@ const TestimonialCard = () => {
             w = "max( 50%, 200px )"
             talign = "center"
         >
-        <Span size = "1.3rem"> {TestimonialList[state].name} </Span>
-        <PText weight="600" m = "0px" size = "1.2rem" type = "t"> {TestimonialList[state].designation} </PText> 
+        <Span size = "1.1rem"> {TestimonialList[state].name} </Span>
+        <PText weight="600" m = "0px" size = "0.9rem" type = "t"> {TestimonialList[state].designation} </PText> 
         <PText size = "0.8rem" type = "s" >
         {TestimonialList[state].context}
         </PText>

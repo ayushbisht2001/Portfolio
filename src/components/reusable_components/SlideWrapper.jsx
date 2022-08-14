@@ -72,7 +72,6 @@ const WrapperContainer = styled(ContainerFluid)`
     height : 100%;
     width : 100%;
     position : relative;
-
     grid-template-columns : max(20%, 10px) calc(100% - max(20%, 10px));
     
     & .spine-box::before{
