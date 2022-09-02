@@ -30,12 +30,13 @@ export const mouse = {
   export const handleLiveShape = (e, ref, props) => {
     const{
       scale = 1,
-      direction = 1
+      direction = 1,
+      movement=30
     } = props || {}
     let x = e.x;
     let y = e.y;
-    let moveX = 30*x/1000;
-    let moveY = 30*y/1000;
+    let moveX = movement*x/1000;
+    let moveY = movement*y/1000;
     /* 
     matrix3d(
       scaleX, skewY, rotateY, d1, 

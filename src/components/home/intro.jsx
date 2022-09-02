@@ -35,6 +35,7 @@ import Wrapper from "../reusable_components/wrapper";
 import LiveShape from "../animations/shapes/LiveShapes";
 import { NativeLink } from "../../utility/styled_components/button";
 import { Span } from "../../utility/styled_components/text";
+import IntroShape from "../animations/Anime/IntroShape";
 const URL = process.env.PUBLIC_URL;
 
 
@@ -150,7 +151,7 @@ export default function Intro(props) {
           direction = {-1}
           pfill = "none"
         />
-
+{/* 
         <LiveShape 
           stype ="cring"
           isLive={true}
@@ -165,7 +166,15 @@ export default function Intro(props) {
             left : 40%;
 
           `}
-        />
+        /> */}
+
+        <IntroShape 
+           right="15%" 
+           bottom="27%" 
+           tf="scale(3.5)" 
+          movement = {0.7}
+           />
+
 
         {/* <CurlyRing left="55%" top="50%" tf="scale(2.3)" type="p" 
           sm = {`

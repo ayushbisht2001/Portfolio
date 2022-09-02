@@ -33,6 +33,7 @@ export const Shape = styled.svg`
   fill-opacity: ${(props) => props.fo || "0.5"};
   transform-origin: ${(props) => props.tforigin || "center"};
   transition : ${props => props.trans || ""};
+  
   & path {
     fill : ${(props) => props.pfill || props.theme.palette.shape.primary};
     stroke-width : ${(props) => props.strokeW || "1"};
@@ -200,6 +201,7 @@ export const Shape = styled.svg`
   }
 
   & #triangle, #square , #oCircle path{
+
     --fill-val: ${(props) =>
       props.pfill ||
       (props.type == "s"
@@ -229,6 +231,62 @@ export const Shape = styled.svg`
       }
     }
   }
+  
+  .intro-anime path, .intro-anime g path{
+    stroke-width : 0.4;
+ 
+    --stroke-val: ${(props) =>
+      props.stroke ||
+      (props.type == "s"
+        ? props.theme.palette.shape.secondary
+        : props.type == "t"
+        ? props.theme.palette.shape.ternary
+        : props.theme.palette.shape.primary)};
+
+    stroke: var(--stroke-val);
+
+    animation: triangle-ani 10s linear forwards;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    
+    @keyframes triangle-ani {
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+
+  
+  .intro-anime  #hand-anime{
+    transform-origin : bottom;
+    animation : hi-anim 2s linear infinite;
+    
+    @keyframes hi-anim {
+      50%{
+        transform : rotate(5deg);
+
+      }
+    }
+  }
+
+  .intro-anime #eyes  {
+
+    #left_eye path , #right_eye path {
+
+      --fill-val: ${(props) =>
+        props.pfill ||
+        (props.type == "s"
+          ? props.theme.palette.shape.secondary
+          : props.type == "t"
+          ? props.theme.palette.shape.ternary
+          : props.theme.palette.shape.secondary)};
+  
+         stroke: ${props =>props.theme.palette.shape.secondary };
+    }
+ 
+
+  }
+
   
 
   stroke-width : ${props => props.strokeW || ""};
