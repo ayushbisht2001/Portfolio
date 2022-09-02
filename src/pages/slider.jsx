@@ -18,6 +18,7 @@ import Contact from "../components/home/contact_me";
 import { SlideContext, SlideContextProvider } from "../store/slider_store";
 import SlideWrapper from "../components/reusable_components/SlideWrapper";
 import Skills from "../components/home/Skills";
+import { memo } from "react";
 
 
 function Slider(props) {
@@ -124,4 +125,4 @@ function Slider(props) {
   );
 }
 
-export default Slider;
+export default memo(Slider);

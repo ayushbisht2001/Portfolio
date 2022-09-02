@@ -20,6 +20,7 @@ import { SlideContext } from "../../store/slider_store";
 import gsap from "gsap";
 import { handleSliderShapes } from "../../utility";
 import { TweenLite } from "gsap/gsap-core";
+import { memo } from "react";
 
 const slideOptionMapper = {
   0: "triangle",
@@ -43,7 +44,7 @@ const Items = (props) => {
     ( <Rectangle {...props} tref = {tref} /> ) );
 };
 
-export default function SliderBg(props) {
+export const  SliderBg = (props) => {
 
   const { direction = "up", slide_id = 0, vs, slide, visible, itype } = props;
 
@@ -161,3 +162,5 @@ export default function SliderBg(props) {
     </Container>
   );
 }
+
+export default memo(SliderBg)
