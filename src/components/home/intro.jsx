@@ -170,9 +170,16 @@ export default function Intro(props) {
 
         <IntroShape 
            right="15%" 
-           bottom="27%" 
+           bottom="175px" 
            tf="scale(3.5)" 
-          movement = {0.7}
+            movement = {0.7}
+            md = {`
+            transform : scale(2.5);
+            bottom : 100px;
+            top : unset;
+            right : 2%;
+
+          `}
            />
 
 
