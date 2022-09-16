@@ -15,5 +15,7 @@ export const pHColor2 = lightColor1;
 export const blue2 = "rgb(109, 131, 242)";
 
 
-// export const iuri = "#4F3B78";
+// export const iuri = "purple";
 export const iuri = "#682ae9";
+
+ 

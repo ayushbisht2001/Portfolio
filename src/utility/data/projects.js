@@ -1,5 +1,39 @@
 export const ProjectList = [
   {
+    title: "CoviDash",
+    time: "March 2020 -  April 2020 ",
+    desc:( 
+      <ul>
+        <li>
+        Web application built with React, MUI, Redux
+        </li>
+        <li>
+         Complete Dashboard for contactless tracking of covid patient health parameters. 
+        </li>
+        <li>
+        Integrate fast Rest Apis for handling , large number of patients and automating the flow of patient health checkup and admission.
+      </li>
+      <li>
+        Integrate pagination and virtualization for handling high volumne of patient details at the frontend
+      </li>
+      <li>
+      Token based authentication 
+      </li>
+    </ul>),
+    links: {
+      source: "https://github.com/ayushbisht2001/pypaint",
+      demo: "https://covid-dashboard-six.vercel.app/",
+    },
+    stack: ["Python", "Django", "React", "MUI", "Redux"],
+
+    image: "pypaint.png",
+    frame: [
+      { type: "xl", src: "coviDash.jpeg", isAnimate: true },
+      { type: "md", src: "pypaint.png" },
+      { type: "sm", src: "coviDash.jpeg", isAnimate: true },
+    ],
+  },
+  {
     title: "PyPaint",
     time: "March 2020 -  April 2020 ",
     desc:( 

@@ -9,7 +9,7 @@ import { BsLinkedin } from "react-icons/bs";
 import styled, { css } from "styled-components";
 import { Box } from "../../utility/styled_components/box";
 import { Link } from "react-router-dom";
-import { Shape, Square } from "../animations/shapes/shapes";
+import { Bulb, Shape, Square } from "../animations/shapes/shapes";
 import {
   bgReverseTransition,
   bgTransition,
@@ -295,8 +295,13 @@ const XLNavbar = () => {
                 href = "https://github.com/ayushbisht2001">
                 <GoMarkGithub />
                 </NativeLink>
+ 
+
+   
           </Col>
         </Row>
+       
+
       </Container>
     </Container>
   );

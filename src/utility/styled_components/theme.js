@@ -41,7 +41,31 @@ export const darkTheme = {
     },
   },
 };
+export const lightTheme = {
+  palette: {
+    bg: lightColor1,
+    frame: comColor1,
+    primary: iuri,
+    secondary: "gray",
+    ternary: darkGray,
+    text: {
+      primary: iuri,
+      secondary: darkGray,
+      ternary: darkGray,
+    },
 
+    shape: {
+      primary: "gray",
+      secondary: iuri,
+      ternary: "gray",
+    },
+
+    button: {
+      primary: {},
+      secondary: {},
+    },
+  },
+};
 export const comTheme = {
   palette: {
     bg: darkColor6,
@@ -67,26 +91,4 @@ export const comTheme = {
     },
   },
 };
-export const lightTheme = {
-  palette: {
-    bg: lightColor1,
-    frame: comColor1,
 
-    text: {
-      primary: darkColor5,
-      secondary: comColor1,
-      ternary: lightColor2,
-    },
-
-    shape: {
-      primary: blue2,
-      secondary: darkColor5,
-      ternary: lightColor2,
-    },
-
-    button: {
-      primary: {},
-      secondary: {},
-    },
-  },
-};

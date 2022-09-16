@@ -180,6 +180,7 @@ export const Span = styled.span`
   margin : ${(props) => props.m || "5px"};
   padding : ${(props) => props.p || "5px"};
   position : ${props => props.pos || ""};
+  background : ${(props) => props.bg || (  props.bgtype == "p" ? props.theme.palette.primary : props.bgtype == "t" ? props.theme.palette.ternary : "unset" )};
 
   @media (max-width: 1200px) {   
     font-size : ${(props) => props.xl || "inherit"};

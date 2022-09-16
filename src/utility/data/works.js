@@ -72,6 +72,8 @@ export const WorkList = [
       <ul>
         <li>Created and managed petrol pump dynamic website.</li>
         <li>Integrate REST APIs for dynamic fuel prices</li>
+        <li>Integrate token based authentication</li>
+
       </ul>
     ),
     links:   {
