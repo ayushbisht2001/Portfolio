@@ -14,6 +14,7 @@ import { iuri } from "../utility/styled_components/colors";
 import DeviceFrame from "../components/reusable_components/frame";
 import NavBar from "../components/navigation/NavBar";
 import { WorkList } from "../utility/data/works";
+import AniHeading from "../components/reusable_components/heading";
 
 
 const Work = () => {
@@ -47,10 +48,10 @@ const Work = () => {
         h="auto"
         zi="1"
         bg="transparent"
-        mt="25vh"
+        mt="35vh"
         of="hidden"
       >
-        <AnimateText
+        {/* <AnimateText
           width={800}
           height={195}
           title="Work"
@@ -69,6 +70,24 @@ const Work = () => {
           
           `}
           size = "4rem"
+        /> */}
+        
+        <AniHeading
+          title="Works"
+          sx={{
+            position : "relative",
+            background: "transparent",
+            left : "21%"
+          }}
+          sm = {`
+          position : relative;
+          padding :  0px 10% ;
+          
+          `}
+          size = "5rem"
+          sfactor = {1}
+          type="p"
+
         />
         <CardContainer
           pos="relative"

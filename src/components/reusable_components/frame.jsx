@@ -201,7 +201,7 @@ const Frame = styled(Box)`
   transform-style: preserver-3d;
   position : absolute;
   transform : ${props => props.tf || "translateY(400px)"};
-  opacity : 0.35;
+  opacity : 1;
   & div {
     background-size: cover;
     position: absolute;

@@ -11,9 +11,11 @@ export const Button = styled.button`
   background : ${props => props.bg || props.theme.palette.primary};
   border-radius : ${props => props.rad || "10px"};
   border : ${props => props.border || "none"};
-  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.secondary  )};
+  color : ${(props) => props.color || (  props.type == "s" ? props.theme.palette.text.secondary : props.type == "t" ? props.theme.palette.text.ternary : props.theme.palette.text.primary  )};
   cursor : pointer;
   float : ${props => props.float || ""};
+  font-size: ${props => props.size || "1rem"};
+
   ${(props) =>
     css`
       ${props.sx}

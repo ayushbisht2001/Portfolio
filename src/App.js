@@ -10,12 +10,12 @@ import { ThemeContext } from './store/theme_store';
 
 function App() {
   const { state  : {
-    theme
+    curTheme
   }, themeContextDispath} = useContext(ThemeContext)
+
   return (
-      <ThemeProvider theme = {theme} >
+      <ThemeProvider theme = {curTheme} >
       <BrowserRouter>
-      
         <Routes>         
           <Route  path="/" element={<Home />} />    
           <Route  path="/aboutme" element={<AboutMe />} />         

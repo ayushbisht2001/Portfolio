@@ -14,6 +14,7 @@ import { iuri } from "../utility/styled_components/colors";
 import DeviceFrame from "../components/reusable_components/frame";
 import NavBar, { MobNavBar } from "../components/navigation/NavBar";
 import { ProjectList } from "../utility/data/projects";
+import AniHeading from "../components/reusable_components/heading";
 
 const Project = () => {
   const [card_coord, setCardCoord] = useState([]);
@@ -49,10 +50,10 @@ const Project = () => {
         h="auto"
         zi="1"
         bg="transparent"
-        mt="25vh"
+        mt="35vh"
         of="hidden"
       >
-        <AnimateText
+        {/* <AnimateText
           width={800}
           height={200}
           title="Projects"
@@ -71,6 +72,25 @@ const Project = () => {
           
           `}
           size = "4rem"
+        /> */}
+
+
+      <AniHeading
+          title="Projects"
+          sx={{
+            position : "relative",
+            background: "transparent",
+            left : "21%"
+          }}
+          sm = {`
+          position : relative;
+          padding :  0px 10% ;
+          
+          `}
+          size = "5rem"
+          sfactor = {1}
+          type="p"
+
         />
         <CardContainer
           pos="relative"

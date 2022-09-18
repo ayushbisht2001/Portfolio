@@ -1,8 +1,13 @@
-import { darkTheme } from "../../utility/styled_components/theme";
+import { darkTheme, lightTheme } from "../../utility/styled_components/theme";
 
 export const initial_state = {
 
-  theme : darkTheme
+  curTheme : darkTheme,
+  themes : {
+    "light" : lightTheme,
+    "dark" : darkTheme,
+  },
+  type : "dark"
 
 }
 
@@ -13,15 +18,23 @@ export const themeReducer = (state = initial_state, action) => {
 
     switch(type){
 
+        case "TOGGLE_THEME":
+            return{
+                ...state,
+                curTheme : state.themes[payload],
+                type : payload
+                }
+
         case "CHANGE_TEXT_PALETTE":
             return{
+                ...state,
 
-                theme : {
-                    ...state.theme,
+                curTheme : {
+                    ...state.curTheme,
                     palette : {
-                        ...state.theme.palette,
+                        ...state.curTheme.palette,
                         text : { 
-                            ...state.theme.palette.text, 
+                            ...state.curTheme.palette.text, 
                             ...payload
                                 } 
                     }
@@ -33,12 +46,13 @@ export const themeReducer = (state = initial_state, action) => {
         case "CHANGE_SHAPE_PALETTE":
             //console.log("MOVE_SLIDER_BG", payload)    
             return{
-                theme : {
-                    ...state.theme,
+                ...state,
+                curTheme : {
+                    ...state.curTheme,
                     palette : {
-                        ...state.theme.palette,
+                        ...state.curTheme.palette,
                         shape : { 
-                            ...state.theme.palette.shape, 
+                            ...state.curTheme.palette.shape, 
                             ...payload
                                 } 
                     }
@@ -50,10 +64,11 @@ export const themeReducer = (state = initial_state, action) => {
                 }
         case "CHANGE_PALETTE":
             return{
-                theme : {
-                    ...state.theme,
+                ...state,
+                curTheme : {
+                    ...state.curTheme,
                     palette : {
-                        ...state.theme.palette,
+                        ...state.curTheme.palette,
                         ...payload
                                 } 
                     }

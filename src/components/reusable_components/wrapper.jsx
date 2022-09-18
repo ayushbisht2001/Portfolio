@@ -16,7 +16,7 @@ const Wrapper = (props) => {
       
       <WrapperContainer {...props}  of= "hidden"  >
 
-        { spine ? <Spine >
+        { spine ? <Spine top = "50vh" >
                     <Pulse top = "-9px"  left = "-6px"  />
             <Chips rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"></Chips>
         </Spine> : ""
@@ -32,7 +32,7 @@ export default Wrapper;
 const WrapperContainer = styled(ContainerFluid)`
     &::before{
         content : '';
-        height : calc(100% - 30rem);
+        height : calc(100% - 10rem);
         position : absolute;
         background : ${props => props.theme.palette.ternary || "white"};
         opacity : 0.3;

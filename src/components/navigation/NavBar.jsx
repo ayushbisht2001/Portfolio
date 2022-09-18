@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react";
 import { Row, Col, LinkBox } from "../../utility/styled_components/box";
 import { Container } from "../../utility/styled_components/container";
 import { Span } from "../../utility/styled_components/text";
-import { LinkIcon, NativeLink } from "../../utility/styled_components/button";
+import { Button, LinkIcon, NativeLink } from "../../utility/styled_components/button";
 import { GoMarkGithub } from "react-icons/go";
 import { FaTwitterSquare } from "react-icons/fa";
 import { BsLinkedin } from "react-icons/bs";
@@ -18,6 +18,12 @@ import {
   navReverseRightMotion,
   navRightMotion,
 } from "../../utility/styled_components/keyframes";
+import {MdDarkMode, MdOutlineDarkMode} from 'react-icons/md';
+import {ThemeContext } from "../../store/theme_store";
+import { useContext } from "react";
+
+
+
 
 export const NavIcon = (props) => {
   const [animate, setAnimate] = useState("square");
@@ -197,7 +203,7 @@ export const MobNavBar = () => {
                 href = "https://github.com/ayushbisht2001">
                 <GoMarkGithub />
                 </NativeLink>
-
+           
             </LinkBox>
           </Box>
         </Box>
@@ -211,10 +217,32 @@ export const MobNavBar = () => {
 const XLNavbar = () => {
   const [y, setY] = useState(0);
 
+  const { state : {
+    curTheme,
+    type
+  }, themeContextDispatch} =  useContext(ThemeContext);
+
+  const [ theme, toggleTheme ] = useState(type)
+
   const handleScroll = (e) => {
     const val = (window.pageYOffset * 0.9) / 700;
     setY(val);
   };
+
+ 
+  const handleToggle = () => {
+
+    if(type == "dark")
+    themeContextDispatch( { type : "TOGGLE_THEME", payload : "light" });
+    else
+    themeContextDispatch( { type : "TOGGLE_THEME", payload : "dark" });
+
+    toggleTheme( theme === "light" ? "dark" : "light")
+  }
+
+
+
+  
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -295,8 +323,18 @@ const XLNavbar = () => {
                 href = "https://github.com/ayushbisht2001">
                 <GoMarkGithub />
                 </NativeLink>
- 
-
+                <Button
+                  bg = "none" 
+                  size = "1.6rem"  
+                  onClick = {handleToggle} 
+                  type = "s"
+                >
+                { theme=="light" ? 
+                <MdOutlineDarkMode />
+                :
+                <MdDarkMode />
+                  }
+                </Button>
    
           </Col>
         </Row>
