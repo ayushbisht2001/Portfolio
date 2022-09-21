@@ -30,7 +30,7 @@ export const ProjectList = [
     frame: [
       { type: "xl", src: "coviDash.jpeg", isAnimate: true },
       { type: "md", src: "pypaint.png" },
-      { type: "sm", src: "coviDash.jpeg", isAnimate: true },
+      { type: "sm", src: "coviDashDark.jpeg", isAnimate: true },
     ],
   },
   {
