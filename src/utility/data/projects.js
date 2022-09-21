@@ -28,9 +28,9 @@ export const ProjectList = [
 
     image: "pypaint.png",
     frame: [
-      { type: "xl", src: "coviDash.jpeg", isAnimate: true },
+      { type: "xl", src: "coviDashDark.jpeg", isAnimate: true },
       { type: "md", src: "pypaint.png" },
-      { type: "sm", src: "coviDashDark.jpeg", isAnimate: true },
+      { type: "sm", src: "coviDash.jpeg", isAnimate: true },
     ],
   },
   {
