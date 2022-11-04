@@ -20,10 +20,10 @@ export const mouse = {
     radius: 40,
   };
   
-  window.addEventListener("mousemove", function (e) {
-    mouse.x = e.x;
-    mouse.y = e.y;
-  });
+  // window.addEventListener("mousemove", function (e) {
+  //   mouse.x = e.x;
+  //   mouse.y = e.y;
+  // });
   
 
 

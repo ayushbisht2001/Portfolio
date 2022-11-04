@@ -114,6 +114,7 @@ export default  class VS{
     }
       
         nextSlide(){
+
           //console.log("move next", this)
         //   gsap.to(this.handler, { y : 400, force3D : true})
         this.handleState((prev) => ({
@@ -124,10 +125,7 @@ export default  class VS{
 
         }))
 
-
-       
-
-        }
+    }
 
     resetWheel(){
 

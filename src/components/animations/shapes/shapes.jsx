@@ -228,7 +228,7 @@ export const Shape = styled.svg`
 
   #intro-anime path,
   #intro-anime g path {
-    stroke-width: 0.4;
+    stroke-width: 0.3;
 
     --stroke-val: ${(props) =>
       props.stroke ||
