@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
 import {
   ptextColor,
   comColor1,
@@ -33,12 +35,20 @@ export const darkTheme = {
       primary: darkColor4,
       secondary: iuri,
       ternary: lightColor1,
+      c1 : "#E63946",
+      c2 : "#457B9D",
+      c3 : "#F1FAEE",
+      c4 : "#682ae9",
+
     },
 
     button: {
       primary: {},
       secondary: {},
     },
+    border : {
+      dark : "#000"
+    }
   },
 };
 export const lightTheme = {
@@ -58,14 +68,23 @@ export const lightTheme = {
       primary: "gray",
       secondary: iuri,
       ternary: "gray",
+      c1 : "#E63946",
+      c2 : "#457B9D",
+      c3 : "#F1FAEE",
+      c4 : "#682ae9",
+
     },
 
     button: {
       primary: {},
       secondary: {},
     },
+    border : {
+      dark : "#000"
+    }
   },
 };
+
 export const comTheme = {
   palette: {
     bg: darkColor6,
@@ -92,3 +111,12 @@ export const comTheme = {
   },
 };
 
+
+
+export const  useTheme = () => {
+
+  const{ state : {curTheme}} = useContext(ThemeContext);
+
+  return curTheme;
+
+}

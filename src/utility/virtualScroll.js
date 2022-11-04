@@ -59,15 +59,20 @@ export default  class VS{
         requestAnimationFrame(bindWheelLoop)
 
     }
+    
 
     wheel(event){
+
+        if(  event.originalEvent.code === "Space"  )
+            {
+                return;
+            }
         let targetModifier = Math.min(event.deltaY, 100)
         if(!this.sliderIsAnimating)
        { this.targetPosY += targetModifier
         this.oldDeltaY = event.deltaY
          }
          
-        //console.log("wheel events", this.targetPosY)
         this.debouncedBackToSlide()
     }
 

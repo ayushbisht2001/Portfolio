@@ -27,10 +27,12 @@ const Project = () => {
   }, [card_coord]);
 
   return (
+<>
+    <NavBar />
+
     <Wrapper spine={true} 
       
     >
-      <NavBar />
 
       <Container
         pos="fixed"
@@ -80,7 +82,7 @@ const Project = () => {
           sx={{
             position : "relative",
             background: "transparent",
-            left : "21%"
+            left : "15%"
           }}
           sm = {`
           position : relative;
@@ -103,8 +105,8 @@ const Project = () => {
         </CardContainer>
       </Container>
 
-      <Box w="100vw" h="150px"></Box>
     </Wrapper>
+    </>
   );
 };
 

@@ -134,5 +134,5 @@ export const Chips = styled.span`
   bottom : ${props => props.bottom || ""};
   left : ${props => props.left || ""};
   right : ${props => props.right || ""};
-
+  z-index : ${props => props.zi || ""};
 `

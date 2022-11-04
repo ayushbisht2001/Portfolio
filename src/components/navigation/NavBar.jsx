@@ -18,7 +18,7 @@ import {
   navReverseRightMotion,
   navRightMotion,
 } from "../../utility/styled_components/keyframes";
-import {MdDarkMode, MdOutlineDarkMode} from 'react-icons/md';
+import {MdBrightness4, MdDarkMode, MdOutlineDarkMode} from 'react-icons/md';
 import {ThemeContext } from "../../store/theme_store";
 import { useContext } from "react";
 
@@ -239,6 +239,7 @@ const XLNavbar = () => {
 
     toggleTheme( theme === "light" ? "dark" : "light")
   }
+  
 
 
 
@@ -327,13 +328,14 @@ const XLNavbar = () => {
                   bg = "none" 
                   size = "1.6rem"  
                   onClick = {handleToggle} 
-                  type = "s"
+                  type = "p"
                 >
                 { theme=="light" ? 
-                <MdOutlineDarkMode />
-                :
                 <MdDarkMode />
-                  }
+                :
+                <MdBrightness4/>
+
+}
                 </Button>
    
           </Col>

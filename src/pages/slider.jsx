@@ -11,7 +11,7 @@ import { getElementError } from "@testing-library/react";
 import { getElementXY } from "../utility";
 import { Box } from "../utility/styled_components/box";
 import _ from "lodash";
-import VS from "./virtualScroll";
+import VS from "../utility/virtualScroll";
 import SliderBg from "../components/reusable_components/SliderBg";
 import Testimonials from "../components/home/testimonials";
 import Contact from "../components/home/contact_me";

@@ -18,7 +18,11 @@ const Wrapper = (props) => {
 
         { spine ? <Spine top = "50vh" >
                     <Pulse top = "-9px"  left = "-6px"  />
-            <Chips rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"></Chips>
+            <Chips className = "chips" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"> </Chips>
+                <Chips className = "chips" bg = "yellow" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px" ></Chips>
+                <Chips  className = "chips" bg = "red" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px" ></Chips>
+                <Chips  zi = "200" className = "chips" bg = "blue" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px" ></Chips>
+                <Chips className = "chips" bg = "green" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px" ></Chips>
         </Spine> : ""
         }
         {children}
@@ -30,6 +34,11 @@ export default Wrapper;
 
 
 const WrapperContainer = styled(ContainerFluid)`
+
+    & .chips {
+        
+
+    }
     &::before{
         content : '';
         height : calc(100% - 10rem);
@@ -40,7 +49,7 @@ const WrapperContainer = styled(ContainerFluid)`
         z-index: 100;
         transform : translateY(100px); 
         top : 50vh;
-        left : calc( 34vw - 10rem);
+        left : calc( 28.5vw - 10rem);
         border-radius : 100%;
 
         @media(max-width : 500px){

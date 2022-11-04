@@ -3,16 +3,16 @@ import { darkTheme, lightTheme } from "../../utility/styled_components/theme";
 export const initial_state = {
 
   curTheme : darkTheme,
-  themes : {
-    "light" : lightTheme,
-    "dark" : darkTheme,
-  },
-  type : "dark"
+  type : "dark",
 
 }
 
+const themes = {
+    "light" : lightTheme,
+    "dark" : darkTheme,
+}
 
-export const themeReducer = (state = initial_state, action) => {
+export const themeReducer = (state = initial_state, action)   => {
 
     const {type, payload} = action;
 
@@ -21,7 +21,7 @@ export const themeReducer = (state = initial_state, action) => {
         case "TOGGLE_THEME":
             return{
                 ...state,
-                curTheme : state.themes[payload],
+                curTheme : themes[payload] ,
                 type : payload
                 }
 

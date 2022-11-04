@@ -34,7 +34,7 @@ position : ${props => props.pos || "fixed" };
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
 
-left : ${props => props.left || "calc( 34vw  - 10rem)"} ;
+left : ${props => props.left || "calc( 28.5vw  - 10rem)"} ;
 top : ${props => props.top || "calc( 60vh)"} ;
 bottom : ${props => props.bottom || "0"} ;
 right : ${props => props.right || "0"} ;

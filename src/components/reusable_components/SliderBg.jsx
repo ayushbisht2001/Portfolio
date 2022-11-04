@@ -15,7 +15,7 @@ import {
   sliderItemDownTransition,
   sliderItemUpTransition,
 } from "../../utility/styled_components/keyframes";
-import { css } from "styled-components";
+import { css, useTheme } from "styled-components";
 import { SlideContext } from "../../store/slider_store";
 import gsap from "gsap";
 import { handleSliderShapes } from "../../utility";
@@ -30,7 +30,6 @@ const slideOptionMapper = {
 
 const Items = (props) => {
   const { itype = "circle", tref } = props;
-
   useEffect(() => {
     //console.log("items props", props);
   }, []);
@@ -47,6 +46,7 @@ const Items = (props) => {
 export const  SliderBg = (props) => {
 
   const { direction = "up", slide_id = 0, vs, slide, visible, itype } = props;
+  const theme = useTheme()
 
   const [ref_list, setRef] = useState([
     createRef(),
@@ -120,7 +120,8 @@ export const  SliderBg = (props) => {
         top="10%"
         itype={itype}
         tref={ref_list[0]}
-        tf="translate(0, 800px)  scale(2) rotate(230deg) "
+        tf="translate(0, 800px)  scale(0.5) rotate(230deg) "
+        stroke = {theme.palette.shape.c4}
       />
 
       <Items
@@ -129,13 +130,17 @@ export const  SliderBg = (props) => {
         itype={itype}
         tf="translate(0, 800px)  scale(2) rotate(130deg)  "
         tref={ref_list[1]}
+        stroke = {theme.palette.shape.c4}
+
       />
       <Items
         left="15%"
         top="40%"
         itype={itype}
-        tf="translate(0, 800px)  scale(4) rotate(50deg)  "
+        tf="translate(0, 800px)  scale(2) rotate(50deg)  "
         tref={ref_list[2]}
+        stroke = {theme.palette.shape.c4}
+
       />
       <Items
         left="10%"
@@ -143,6 +148,8 @@ export const  SliderBg = (props) => {
         itype={itype}
         tf="translate(0, 800px)  scale(1) rotate(230deg)  "
         tref={ref_list[3]}
+        stroke = {theme.palette.shape.c4}
+
       />
 
       <Items
@@ -151,13 +158,17 @@ export const  SliderBg = (props) => {
         itype={itype}
         tf="translate(0, 800px)  scale(1) rotate(230deg)  "
         tref={ref_list[4]}
+        stroke = {theme.palette.shape.c4}
+
       />
       <Items
         left="50%"
         bottom="30%"
         itype={itype}
-        tf="translate(0, 800px)  scale(3) rotate(230deg)  "
+        tf="translate(0, 800px)  scale(2) rotate(230deg)  "
         tref={ref_list[5]}
+        stroke = {theme.palette.shape.c4}
+
       />
     </Container>
   );

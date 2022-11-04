@@ -77,7 +77,7 @@ const Work = () => {
           sx={{
             position : "relative",
             background: "transparent",
-            left : "21%"
+            left : "15%"
           }}
           sm = {`
           position : relative;
