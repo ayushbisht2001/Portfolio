@@ -9,7 +9,7 @@ import { ProjectList } from "../../utility/data/projects";
 import { Link, NavLink } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { LinkButton, LinkIcon } from "../../utility/styled_components/button";
-import { Row } from "../../utility/styled_components/box";
+import { Row, Col } from "../../utility/styled_components/box";
 import { TbLivePhoto } from "react-icons/tb";
 import { PArray } from "../reusable_components";
 import { NativeLink } from "../../utility/styled_components/button";
@@ -65,20 +65,37 @@ const Card = (props) => {
         <Row
           w="80%"
           h="auto"
-          cols="auto auto"
+          cols="100%"
           rows="auto"
           m="auto"
           of="hidden"
           p="0px 80px"
+
+          sx = {
+            `
+            &  >  div {
+              display: grid ;
+              grid-template-rows : 100%;
+              grid-template-columns : calc( max( 15% , 70px ) ) auto;
+              gap : 2px;
+              align-items : center;
+
+            }
+            `
+          }
           sm={`
           width : 90%;
           padding : 0px 0px 0px 5px;
+        
         `}
         >
+          <Col>
           <Span family="Comfortaa" type="t" size="1.3rem">
             {"title  : "}
           </Span>
           <AniHeading title={title + " ,"} type="p" size={"3rem"} />
+          </Col>
+          <Col>
           <Span family="Comfortaa" type="t" size="1.3rem">
             time :
           </Span>
@@ -86,7 +103,9 @@ const Card = (props) => {
             {" "}
             " {time} "<Span>{","}</Span>
           </Span>
-          {type == "work" ? (
+          </Col>
+          <Col>
+            {type == "work" ? (
             <>
               <Span family="Comfortaa" type="t" size="1.3rem">
                 role :
@@ -99,6 +118,8 @@ const Card = (props) => {
           ) : (
             ""
           )}
+          </Col>
+          <Col>
           <Span type="t" size="1.3rem" family="Comfortaa">
             context :
           </Span>
@@ -115,13 +136,16 @@ const Card = (props) => {
           >
            <Span type = "t">"</Span>  {desc}<Span type = "t">"</Span> <Span>{","}</Span>
           </PText>
+          </Col>
+            <Col>
           <Span type="t" size="1.3rem" family="Comfortaa">
             stack :
           </Span>
           <PArray data={stack}>
             <Span>{","}</Span>
           </PArray>
-
+          </Col>
+            <Col>
           { links ? 
             <>
              <Span type="t" size="1.3rem" family="Comfortaa">
@@ -155,8 +179,11 @@ const Card = (props) => {
           >
             <Span>{","}</Span>
           </PArray>
+          
             </> : ""
         }
+            </Col>
+
         </Row>
         <Span size="2rem" sx=" left  : 15%" pos="relative">
           {" } , "}

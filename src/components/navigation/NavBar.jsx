@@ -330,7 +330,7 @@ const XLNavbar = () => {
                   onClick = {handleToggle} 
                   type = "p"
                 >
-                { theme=="light" ? 
+                { theme=="dark" ? 
                 <MdDarkMode />
                 :
                 <MdBrightness4/>
