@@ -34,12 +34,18 @@ position : ${props => props.pos || "fixed" };
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
 
-left : ${props => props.left || "calc( 28.5vw  - 10rem)"} ;
+left : ${props => props.left || " calc(  50vw - 28rem  )"} ;
 top : ${props => props.top || "calc( 60vh)"} ;
 bottom : ${props => props.bottom || "0"} ;
 right : ${props => props.right || "0"} ;
 
 transition : 1s all ease 0.5;
+
+@media(max-width : 1200px){
+    left : calc( 20vw - 5rem);
+    ${props => props.xl || ""};
+
+}
 
 @media(max-width : 500px){
     &{
@@ -51,7 +57,6 @@ transition : 1s all ease 0.5;
     }
 }
 
-${props => css`${props.sx}`};
 
 
 `

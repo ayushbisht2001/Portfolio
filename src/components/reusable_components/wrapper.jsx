@@ -45,9 +45,13 @@ const WrapperContainer = styled(ContainerFluid)`
         z-index: 100;
         transform : translateY(100px); 
         top : 50vh;
-        left : calc( 28.5vw - 10rem);
+        left : calc( 50vw - 28rem );
         border-radius : 100%;
-
+        
+        @media(max-width : 1200px){
+            left : calc( 20vw - 5rem);
+        }
+        
         @media(max-width : 500px){
 
             top : 20vh;
