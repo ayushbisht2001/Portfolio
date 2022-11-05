@@ -28,8 +28,8 @@ ${props => css`${props.sx}`};
 
 export const Spine = styled.div`
 
-width : 1.2px;
-height : ${props => props.h || "calc(100vh - 18rem)"};
+width : 0.5px;
+height : ${props => props.h || "100vh"};
 position : ${props => props.pos || "fixed" };
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
@@ -50,8 +50,9 @@ transition : 1s all ease 0.5;
 @media(max-width : 500px){
     &{
         left : 1rem;
-        top : calc( 33vh);
-        height : calc(100vh - 15rem);
+        margin-top : 45vh;
+        top : 0px;
+        width : 0.1px;
         ${props => props.md || ""};
 
     }

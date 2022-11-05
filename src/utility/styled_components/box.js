@@ -135,4 +135,10 @@ export const Chips = styled.span`
   left : ${props => props.left || ""};
   right : ${props => props.right || ""};
   z-index : ${props => props.zi || ""};
+  ${props => props.sx};
+
+  @media(max-width : 400px){
+    ${props => props.sm};
+  }
+
 `

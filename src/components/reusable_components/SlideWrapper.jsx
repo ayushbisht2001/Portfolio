@@ -91,7 +91,7 @@ const WrapperContainer = styled(ContainerFluid)`
         position : absolute;
         background : ${props => props.theme.palette.ternary || "white"};
         opacity : 0.3;
-        width : 2px;
+        width : 0.5px;
         transform : ${props => props.slide==0 ? "translateY(100px)" : "0" };
         right : 30px;
         bottom : 0;

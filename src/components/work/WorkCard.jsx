@@ -203,6 +203,7 @@ export default function WorkCard(props) {
       of="hidden"
       sx={` perspective : 200px; perspective-origin : 100% 30%; z-index : 1;`}
     >
+      
       {data.length &&
         data.map((project, ind) => (
           <Card

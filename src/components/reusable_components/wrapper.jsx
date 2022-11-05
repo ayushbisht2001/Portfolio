@@ -18,7 +18,12 @@ const Wrapper = (props) => {
 
         { spine ? <Spine top = "50vh" >
                     <Pulse top = "-9px"  left = "-6px"  />
-            <Chips className = "chips" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"> </Chips>
+            <Chips sm = {` 
+                width : 10px;
+                height : 10px;
+                left : -4px;            
+            `} 
+            className = "chips" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"> </Chips>
         </Spine> : ""
         }
         {children}
@@ -41,22 +46,23 @@ const WrapperContainer = styled(ContainerFluid)`
         position : absolute;
         background : ${props => props.theme.palette.ternary || "white"};
         opacity : 0.3;
-        width : 2px;
+        width : 0.5px;
         z-index: 100;
         transform : translateY(100px); 
         top : 50vh;
         left : calc( 50vw - 28rem );
         border-radius : 100%;
-        
+
         @media(max-width : 1200px){
             left : calc( 20vw - 5rem);
         }
         
         @media(max-width : 500px){
 
-            top : 20vh;
+            top : 35vh;
             height : calc(100% - 20rem);
             left : 1rem;
+            width : 0.3px;
         }
     }
 
