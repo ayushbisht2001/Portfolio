@@ -33,25 +33,20 @@ height : ${props => props.h || "100vh"};
 position : ${props => props.pos || "fixed" };
 background : ${props => props.theme.palette.primary || "orangered"};
 z-index : 101;
-
-left : ${props => props.left || " calc(  50vw - 28rem  )"} ;
-top : ${props => props.top || "calc( 60vh)"} ;
-bottom : ${props => props.bottom || "0"} ;
-right : ${props => props.right || "0"} ;
+left : ${props => props.left || "unset"} ;
+top : ${props => props.top || "calc( 48vh)"} ;
+bottom : ${props => props.bottom || "0px"} ;
+right : ${props => props.right || "0px"} ;
 
 transition : 1s all ease 0.5;
 
 @media(max-width : 1200px){
-    left : calc( 20vw - 5rem);
     ${props => props.xl || ""};
 
 }
 
 @media(max-width : 500px){
     &{
-        left : 1rem;
-        margin-top : 45vh;
-        top : 0px;
         width : 0.1px;
         ${props => props.md || ""};
 

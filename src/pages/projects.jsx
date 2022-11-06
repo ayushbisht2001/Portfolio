@@ -30,16 +30,15 @@ const Project = () => {
 <>
     <NavBar />
 
-    <Wrapper spine={true} 
-      
-    >
+    <Wrapper spine={true} >
 
       <Container
         pos="fixed"
-        w="100vw"
+        w="80%"
         h="100vh"
         top="0px"
         of="hidden"
+        bg = "tranparent"
         sm={`
               display : none;
             `}
@@ -82,11 +81,9 @@ const Project = () => {
           sx={{
             position : "relative",
             background: "transparent",
-            left : "15%"
           }}
           sm = {`
           position : relative;
-          padding :  0px 10% ;
           
           `}
           size = "5rem"
@@ -113,6 +110,5 @@ const Project = () => {
 export default Project;
 
 const CardContainer = styled(Container)`
-  & .line {
-  }
+ 
 `;

@@ -49,7 +49,7 @@ const Card = (props) => {
         d="flex"
         h="auto"
         w="100%"
-        m="20px auto"
+        m="20px 0px"
         wrap="wrap"
         direction="column"
         pos="relative"
@@ -58,7 +58,7 @@ const Card = (props) => {
           setScreen((prev) => (prev === "forward" ? "reverse" : "forward"))
         }
       >
-        <Span size="2rem" sx=" left  : 15%" pos="relative">
+        <Span size="2rem"  pos="relative">
           {"{"}
         </Span>
 
@@ -67,9 +67,8 @@ const Card = (props) => {
           h="auto"
           cols="100%"
           rows="auto"
-          m="auto"
           of="hidden"
-          p="0px 80px"
+          p="0px 40px"
 
           sx = {
             `
@@ -185,7 +184,7 @@ const Card = (props) => {
             </Col>
 
         </Row>
-        <Span size="2rem" sx=" left  : 15%" pos="relative">
+        <Span size="2rem"  pos="relative">
           {" } , "}
         </Span>
       </Box>

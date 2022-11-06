@@ -149,7 +149,7 @@ export const MobNavBar = () => {
 
           <Box
             sx="float : right;"
-            top="22rem"
+            top="42%"
             d = "flex"
             pos="relative"
             direction="column"

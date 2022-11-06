@@ -137,7 +137,7 @@ export const Chips = styled.span`
   z-index : ${props => props.zi || ""};
   ${props => props.sx};
 
-  @media(max-width : 400px){
+  @media(max-width : 600px){
     ${props => props.sm};
   }
 

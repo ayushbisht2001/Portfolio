@@ -28,14 +28,16 @@ const Work = () => {
   }, [card_coord]);
 
   return (
-    <Wrapper spine={true}  >
+    <>
       <NavBar />
+    <Wrapper spine={true}  >
       <Container
         pos="fixed"
-        w="100vw"
+        w="80%"
         h="100vh"
         top="0px"
         of="hidden"
+        bg = "transparent"
         sm={`
               display : none;
             `}
@@ -77,11 +79,9 @@ const Work = () => {
           sx={{
             position : "relative",
             background: "transparent",
-            left : "15%"
           }}
           sm = {`
           position : relative;
-          padding :  0px 10% ;
           
           `}
           size = "5rem"
@@ -100,8 +100,9 @@ const Work = () => {
         </CardContainer>
       </Container>
 
-      <Box w="100vw" h="150px"></Box>
     </Wrapper>
+    </>
+
   );
 };
 

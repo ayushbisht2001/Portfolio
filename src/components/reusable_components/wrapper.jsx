@@ -3,7 +3,7 @@ import { ContainerFluid } from '../../utility/styled_components/container';
 import { Box } from '../../utility/styled_components/global';
 import styled from 'styled-components';
 import { Spine, Pulse } from '../animations';
-import { Chips } from '../../utility/styled_components/box';
+import { Chips, Row } from '../../utility/styled_components/box';
 
 const Wrapper = (props) => {
 
@@ -14,9 +14,10 @@ const Wrapper = (props) => {
 
     return (
       
-      <WrapperContainer {...props}  of= "hidden"  >
+      <WrapperContainer {...props}      cols = "15% auto" >
 
-        { spine ? <Spine top = "50vh" >
+        <Box className = "spine-bar"   top = "0px" h = "auto" >
+        { spine ? <Spine bottom = "0px" h = "52vh" pos = "sticky" left = "100%"   >
                     <Pulse top = "-9px"  left = "-6px"  />
             <Chips sm = {` 
                 width : 10px;
@@ -26,7 +27,10 @@ const Wrapper = (props) => {
             className = "chips" rad = "50%" w = "15px" h = "15px" pos = "absolute" top = "-9px"  left = "-6px"> </Chips>
         </Spine> : ""
         }
+        </Box>
+        <Box zi = "0" pos = "relative" >
         {children}
+        </Box>
         </WrapperContainer>
     );
 }
@@ -34,36 +38,35 @@ const Wrapper = (props) => {
 export default Wrapper;
 
 
-const WrapperContainer = styled(ContainerFluid)`
-
-    & .chips {
-        
-
-    }
-    &::before{
+const WrapperContainer = styled(Row)`
+    width : 100%;
+    height : auto;
+    min-height : 100vh;
+    position : relative;
+    background: ${(props) => props.bg || props.theme.palette.bg};
+    & .spine-bar::before{
         content : '';
-        height : calc(100% - 10rem);
+        height : calc( 100% - 48vh );
         position : absolute;
         background : ${props => props.theme.palette.ternary || "white"};
         opacity : 0.3;
         width : 0.5px;
         z-index: 100;
-        transform : translateY(100px); 
-        top : 50vh;
-        left : calc( 50vw - 28rem );
+        bottom : 0;
+        right : 0px;
         border-radius : 100%;
 
-        @media(max-width : 1200px){
-            left : calc( 20vw - 5rem);
-        }
+      
         
         @media(max-width : 500px){
 
-            top : 35vh;
-            height : calc(100% - 20rem);
-            left : 1rem;
             width : 0.3px;
+
         }
+    }
+
+    @media(max-width: 500px){
+        grid-template-columns : 5% auto;
     }
 
     `
