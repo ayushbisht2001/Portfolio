@@ -83,8 +83,7 @@ const Project = () => {
             background: "transparent",
           }}
           sm = {`
-          position : relative;
-          
+          bottom : 0px;          
           `}
           size = "5rem"
           sfactor = {1}

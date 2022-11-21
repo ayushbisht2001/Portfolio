@@ -108,20 +108,21 @@ export const HeadingMain = styled.h1`
   z-index : 10;
 
   @media (max-width: 1200px) {   
-    font-size : ${(props) => props.xl || `calc( ${props.size}  )`};
+    font-size : ${(props) =>  `calc( ${props.size}  )`};
   }
 
 
   @media (max-width: 1000px) {   
-    font-size : ${(props) => props.md || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 5)`};
+    font-size : ${(props) =>  `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 5)`};
   }
 
   @media (max-width: 500px) {   
-    font-size : ${(props) => props.sm || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 3)`};
+    font-size : ${(props) =>  `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 3)`};
+    ${props => props.sm}
   }
 
   @media (max-width: 380px) {   
-    font-size : ${(props) => props.xs || `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 2.5 )`};
+    font-size : ${(props) =>  `calc( ${props.size} - ${props.sfactor || 1 } * ${props.size} / 2.5 )`};
   }
   ${(props) =>
     css`

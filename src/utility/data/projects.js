@@ -1,4 +1,32 @@
 export const ProjectList = [
+ 
+  {
+    title: "WasmChat",
+    time: "Nov 2022 -  current ",
+    desc:( 
+      <ul>
+        <li>
+       Whatsapp clone using  Next JS , Tailwind, Redux
+        </li>
+      <li>
+      Exploring Web assembly to  introduce fast end-to-end encryption . 
+      </li>
+      <li>
+        Going to implement image optimization and resizing at frontend using WASM.
+      </li>
+    </ul>),
+    links: {
+      source: "https://gitlab.com/ayushbisht2001/wasmchat",
+    },
+    stack: ["Next Js",  "React", "Tailwind", "Redux", "Typescript"],
+
+    image: "wasmchat.png",
+    frame: [
+      { type: "xl", src: "wasmchat.png", isAnimate: false },
+      { type: "md", src: "wasmchat.png" },
+      { type: "sm", src: "wasmchat.png", isAnimate: false },
+    ],
+  },
   {
     title: "CoviDash",
     time: "March 2020 -  April 2020 ",

@@ -43,6 +43,7 @@ const WrapperContainer = styled(Row)`
     height : auto;
     min-height : 100vh;
     position : relative;
+    gap : 20px;
     background: ${(props) => props.bg || props.theme.palette.bg};
     & .spine-bar::before{
         content : '';
