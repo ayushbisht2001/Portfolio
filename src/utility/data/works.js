@@ -7,7 +7,7 @@ export const WorkList = [
         <li>
           Carried out the Machine Learning-based web application development
           using modern JavaScript frameworks and libraries including React,
-          SAAS, and MUI.
+          SASS, and MUI.
         </li>
         <li>
           Redesigned the complete UI of the application for version 2.0 and also
@@ -133,7 +133,7 @@ export const WorkList = [
       source: "https://github.com/ayushbisht2001/KEC-FEST",
       demo: "https://ayushbisht2001.github.io/KEC-FEST/",
     },
-    stack: ["React", "SCSS"],
+    stack: ["React", "SASS"],
     image: "kaivalaya.png",
     frame: [
       { type: "xl", src: "kaivalayaScroll1.png", isAnimate: true },
