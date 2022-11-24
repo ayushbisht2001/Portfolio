@@ -17,8 +17,9 @@ export const ProjectList = [
     </ul>),
     links: {
       source: "https://gitlab.com/ayushbisht2001/wasmchat",
+      demo : "https://wasmchat-o8bg-inu4tpp3g-ayushbisht2001.vercel.app/"
     },
-    stack: ["Next Js",  "React", "Tailwind", "Redux", "Typescript"],
+    stack: ["Next Js",  "React", "Tailwind", "Redux", "Typescript", "SASS", "WASM" ],
 
     image: "wasmchat.png",
     frame: [
